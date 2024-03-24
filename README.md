@@ -1,5 +1,6 @@
 Dự Án Envi-Survey-2.0
 Hướng dẫn mở dự án:
+
 0. Mở folder muốn tải dự án vể bằng terminal
 1. Clone dự án về bằng lệnh git clone
 2. Chạy lệnh npm install để cài đặt node-module
