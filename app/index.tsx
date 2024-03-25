@@ -6,7 +6,6 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import React from "react";
 import Colors from "@/constants/Colors";
 import { description } from "@/constants/Styles";
 import { Link } from "expo-router";
