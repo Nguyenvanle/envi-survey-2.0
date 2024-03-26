@@ -1,5 +1,6 @@
 export default {
   primary: "#00ADB5",
+  teal: "#71C9CE",
   muted: "#3A5A92",
   background: "#393E46",
   gray: "#222831",
@@ -8,7 +9,7 @@ export default {
   yellow: "#F6FDC3",
   orange: "#FFCF96",
   white: "#EEEEEE",
+  blueWhite: "#E3FDFD",
   mint: "#CDFADB",
-  teal: "#71C9CE",
   success: "#00B57F",
 };
