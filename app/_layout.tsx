@@ -5,6 +5,10 @@ import { Stack } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
 import { useEffect } from "react";
 import { StyleSheet } from "react-native";
+<<<<<<< Updated upstream
+=======
+import projectInformation from './projectInformation';
+>>>>>>> Stashed changes
 //============ Là tệp định nghĩa layout chung cho các màn hình trong ứng dụng ===============
 
 export {
@@ -70,5 +74,6 @@ function RootLayoutNav() {
         }}
       />
     </Stack>
+
   );
 }

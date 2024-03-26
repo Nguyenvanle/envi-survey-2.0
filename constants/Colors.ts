@@ -11,4 +11,7 @@ export default {
   mint: "#CDFADB",
   teal: "#71C9CE",
   success: "#00B57F",
+  green: "#00ADB5",
+  blue: "#00199C",
+  black: "#222831",
 };
