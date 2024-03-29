@@ -13,7 +13,8 @@ export default function Layout() {
           borderTopLeftRadius: 26,
           borderTopRightRadius: 26,
           position: "absolute",
-          height: 56,
+          height: 80,
+          paddingBottom: 16,
         },
         headerStyle: {
           backgroundColor: Colors.background,
