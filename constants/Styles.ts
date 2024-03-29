@@ -98,6 +98,20 @@ export const container = StyleSheet.create({
     height: 300,
     borderRadius: 26,
   },
+  header: {
+    alignItems: "center",
+    gap: 10,
+  },
+  body: {
+    flex: 1,
+    padding: 16,
+    paddingTop: 5,
+    alignItems: "center",
+    gap: 20,
+  },
+  input: {
+    justifyContent: "center",
+  },
 });
 
 export const text = StyleSheet.create({
@@ -115,6 +129,26 @@ export const text = StyleSheet.create({
     fontSize: 16,
     color: Colors.white,
     fontStyle: "normal",
+  },
+  header: {
+    fontSize: 24,
+    color: Colors.white,
+    fontWeight: "700",
+  },
+  headerPrimary: {
+    fontSize: 24,
+    color: Colors.primary,
+    fontWeight: "700",
+  },
+  label: {
+    fontSize: 16,
+    color: Colors.white,
+    paddingTop: 15,
+    paddingBottom: 15,
+
+    paddingRight: 25,
+    fontStyle: "normal",
+    fontWeight: "700",
   },
 });
 
@@ -144,5 +178,15 @@ export const button = StyleSheet.create({
   textLight: {
     ...text.normal,
     color: Colors.gray,
+  },
+});
+export const input = StyleSheet.create({
+  normal: {
+    height: 50,
+    padding: 10,
+    backgroundColor: Colors.white,
+    width: "100%",
+    borderRadius: 10,
+    gap: 10,
   },
 });
