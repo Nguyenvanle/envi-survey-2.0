@@ -13,8 +13,7 @@ export default function Layout() {
           borderTopLeftRadius: 26,
           borderTopRightRadius: 26,
           position: "absolute",
-          height: 80,
-          paddingBottom: 16,
+          height: 56,
         },
         headerStyle: {
           backgroundColor: Colors.background,
@@ -37,7 +36,7 @@ export default function Layout() {
           tabBarIcon: ({ color }) => (
             <Octicons name="home" size={24} color={color} />
           ),
-          title: "Trang chủ",
+          title: "Trang Chủ",
           tabBarLabelStyle: {
             fontWeight: "500",
           },
