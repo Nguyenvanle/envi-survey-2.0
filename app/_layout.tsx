@@ -61,6 +61,13 @@ function RootLayoutNav() {
           headerShadowVisible: false,
         }}
       />
+      <Stack.Screen
+        name="createProjectScreen"
+        options={{
+          headerTitle: "Tạo Dự Án",
+          headerTitleAlign: "center",
+        }}
+      />
       <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
     </Stack>
   );
