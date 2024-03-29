@@ -32,6 +32,14 @@ export default function Layout() {
         }}
       />
       <Stack.Screen
+        name="createProjectScreen"
+        options={{
+          headerTitle: "Tạo Dự Án",
+          headerTitleAlign: "center",
+          headerShadowVisible: false,
+        }}
+      />
+      <Stack.Screen
         name="successCreateProject"
         options={{
           headerTitle: "Tạo Dự Án",
