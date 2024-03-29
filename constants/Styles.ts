@@ -78,13 +78,10 @@ export const container = StyleSheet.create({
     gap: 14,
   },
   webview: {
-    flex: 0,
+    flex: 1,
     backgroundColor: Colors.background,
     alignItems: "center",
     justifyContent: "center",
-    height: "auto",
-    maxHeight: 900,
-    minHeight: 626,
   },
   box: {
     flex: 0,
