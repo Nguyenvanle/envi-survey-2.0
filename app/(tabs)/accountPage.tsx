@@ -1,7 +1,9 @@
-import { View, Text } from "react-native";
-import React from "react";
-import { container } from "@/constants/Styles";
+// import { View, Text } from "react-native";
+// import React from "react";
+// import { container } from "@/constants/Styles";
 
-export default function accountPage() {
-  return <View style={container.root}></View>;
-}
+// export default function accountPage() {
+//   return <View style={container.root}></View>;
+// }
+
+//mượn tạm chô để hiển thị
