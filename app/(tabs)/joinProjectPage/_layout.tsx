@@ -4,7 +4,6 @@ import { useFonts } from "expo-font";
 import { Stack } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
 import { useEffect } from "react";
-import successCreateProject from "./successCreateProject";
 //============ Là tệp định nghĩa layout chung cho các màn hình trong ứng dụng ===============
 
 export default function Layout() {
@@ -24,25 +23,9 @@ export default function Layout() {
       }}
     >
       <Stack.Screen
-        name="indexCreateProject"
+        name="enterPassword"
         options={{
-          headerTitle: "Tạo Dự Án",
-          headerTitleAlign: "center",
-          headerShadowVisible: false,
-        }}
-      />
-      <Stack.Screen
-        name="createProjectScreen"
-        options={{
-          headerTitle: "Tạo Dự Án",
-          headerTitleAlign: "center",
-          headerShadowVisible: false,
-        }}
-      />
-      <Stack.Screen
-        name="successCreateProject"
-        options={{
-          headerTitle: "Tạo Dự Án",
+          headerTitle: "Tham gia dự án",
           headerTitleAlign: "center",
           headerShadowVisible: false,
         }}
