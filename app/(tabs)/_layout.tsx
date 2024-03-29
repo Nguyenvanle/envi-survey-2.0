@@ -7,7 +7,7 @@ import createProjectScreen from "./createPage/createProjectScreen";
 export default function Layout() {
   return (
     <Tabs
-      screenOptions={({ route }) => ({
+      screenOptions={{
         tabBarActiveTintColor: Colors.primary,
         tabBarInactiveTintColor: Colors.lightGray,
         tabBarStyle: {
@@ -16,7 +16,6 @@ export default function Layout() {
           position: "absolute",
           height: 80,
           paddingBottom: 16,
-          display: route.name == "createProjectScreen" ? "none" : "flex",
         },
         headerStyle: {
           backgroundColor: Colors.background,
@@ -32,7 +31,7 @@ export default function Layout() {
         },
         headerShown: false,
         tabBarHideOnKeyboard: true,
-      })}
+      }}
     >
       <Tabs.Screen
         name="homePage"

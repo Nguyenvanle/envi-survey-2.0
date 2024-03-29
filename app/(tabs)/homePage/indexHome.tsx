@@ -1,7 +1,11 @@
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, ScrollView } from "react-native";
 import React from "react";
 import { container, text, defaultStyles } from "@/constants/Styles";
-import { AntDesign } from "@expo/vector-icons";
+import {
+  AntDesign,
+  MaterialCommunityIcons,
+  MaterialIcons,
+} from "@expo/vector-icons";
 import Colors from "@/constants/Colors";
 // này để xóa cái cảnh báo xaml của vscode :D
 // @ts-ignore
@@ -9,30 +13,228 @@ import UserAvatar from "react-native-user-avatar";
 
 export default function indexHome() {
   return (
-    <View style={container.root}>
-      <View style={styles.hello}>
-        <View style={styles.textContainer}>
-          <Text style={styles.text}>Hello</Text>
-          <Text style={styles.textPrimary}>James</Text>
+    <ScrollView style={{}}>
+      <View style={container.root}>
+        {/* Hello Frame */}
+        <View style={styles.hello}>
+          <View style={styles.textContainer}>
+            <Text style={styles.text}>Hello</Text>
+            <Text style={styles.textPrimary}>James</Text>
+          </View>
+          <View style={styles.iconContainer}>
+            <AntDesign name="smileo" size={56} color={Colors.teal}></AntDesign>
+          </View>
         </View>
-        <View style={styles.iconContainer}>
-          <AntDesign name="smileo" size={56} color={Colors.teal}></AntDesign>
+        {/* User Info Frame */}
+        <View style={styles.userInfoContainer}>
+          <View style={styles.infoContainer}>
+            <UserAvatar
+              size={48}
+              name="Avishay Bar"
+              bgColors={[Colors.lightGray]}
+              style={styles.avatar}
+            />
+
+            <View style={styles.namePosition}>
+              <Text style={{ ...styles.textPrimary, color: Colors.gray }}>
+                James Cameron
+              </Text>
+              <Text style={{ ...styles.text, color: Colors.gray }}>
+                Quản Lý
+              </Text>
+            </View>
+
+            <View style={styles.icon}>
+              <MaterialIcons
+                name="navigate-next"
+                size={24}
+                color={Colors.white}
+              />
+            </View>
+          </View>
+
+          <View style={defaultStyles.separator}></View>
+
+          <View style={styles.projectContainer}>
+            <View style={styles.divideContainer}>
+              <MaterialCommunityIcons
+                name="folder-check-outline"
+                size={16}
+                color={Colors.gray}
+              />
+
+              <Text style={styles.miniText}>12 dự án</Text>
+            </View>
+
+            <View style={styles.divideContainer}>
+              <MaterialCommunityIcons
+                name="folder-check-outline"
+                size={16}
+                color={Colors.gray}
+              />
+
+              <Text style={styles.miniText}>6 dự án</Text>
+            </View>
+          </View>
+        </View>
+
+        <View style={styles.userInfoContainer}>
+          <View style={styles.infoContainer}>
+            <UserAvatar
+              size={48}
+              name="Avishay Bar"
+              bgColors={[Colors.lightGray]}
+              style={styles.avatar}
+            />
+
+            <View style={styles.namePosition}>
+              <Text style={{ ...styles.textPrimary, color: Colors.gray }}>
+                James Cameron
+              </Text>
+              <Text style={{ ...styles.text, color: Colors.gray }}>
+                Quản Lý
+              </Text>
+            </View>
+
+            <View style={styles.icon}>
+              <MaterialIcons
+                name="navigate-next"
+                size={24}
+                color={Colors.white}
+              />
+            </View>
+          </View>
+
+          <View style={defaultStyles.separator}></View>
+
+          <View style={styles.projectContainer}>
+            <View style={styles.divideContainer}>
+              <MaterialCommunityIcons
+                name="folder-check-outline"
+                size={16}
+                color={Colors.gray}
+              />
+
+              <Text style={styles.miniText}>12 dự án</Text>
+            </View>
+
+            <View style={styles.divideContainer}>
+              <MaterialCommunityIcons
+                name="folder-check-outline"
+                size={16}
+                color={Colors.gray}
+              />
+
+              <Text style={styles.miniText}>6 dự án</Text>
+            </View>
+          </View>
+        </View>
+
+        <View style={styles.userInfoContainer}>
+          <View style={styles.infoContainer}>
+            <UserAvatar
+              size={48}
+              name="Avishay Bar"
+              bgColors={[Colors.lightGray]}
+              style={styles.avatar}
+            />
+
+            <View style={styles.namePosition}>
+              <Text style={{ ...styles.textPrimary, color: Colors.gray }}>
+                James Cameron
+              </Text>
+              <Text style={{ ...styles.text, color: Colors.gray }}>
+                Quản Lý
+              </Text>
+            </View>
+
+            <View style={styles.icon}>
+              <MaterialIcons
+                name="navigate-next"
+                size={24}
+                color={Colors.white}
+              />
+            </View>
+          </View>
+
+          <View style={defaultStyles.separator}></View>
+
+          <View style={styles.projectContainer}>
+            <View style={styles.divideContainer}>
+              <MaterialCommunityIcons
+                name="folder-check-outline"
+                size={16}
+                color={Colors.gray}
+              />
+
+              <Text style={styles.miniText}>12 dự án</Text>
+            </View>
+
+            <View style={styles.divideContainer}>
+              <MaterialCommunityIcons
+                name="folder-check-outline"
+                size={16}
+                color={Colors.gray}
+              />
+
+              <Text style={styles.miniText}>6 dự án</Text>
+            </View>
+          </View>
+        </View>
+
+        <View style={styles.userInfoContainer}>
+          <View style={styles.infoContainer}>
+            <UserAvatar
+              size={48}
+              name="Avishay Bar"
+              bgColors={[Colors.lightGray]}
+              style={styles.avatar}
+            />
+
+            <View style={styles.namePosition}>
+              <Text style={{ ...styles.textPrimary, color: Colors.gray }}>
+                James Cameron
+              </Text>
+              <Text style={{ ...styles.text, color: Colors.gray }}>
+                Quản Lý
+              </Text>
+            </View>
+
+            <View style={styles.icon}>
+              <MaterialIcons
+                name="navigate-next"
+                size={24}
+                color={Colors.white}
+              />
+            </View>
+          </View>
+
+          <View style={defaultStyles.separator}></View>
+
+          <View style={styles.projectContainer}>
+            <View style={styles.divideContainer}>
+              <MaterialCommunityIcons
+                name="folder-check-outline"
+                size={16}
+                color={Colors.gray}
+              />
+
+              <Text style={styles.miniText}>12 dự án</Text>
+            </View>
+
+            <View style={styles.divideContainer}>
+              <MaterialCommunityIcons
+                name="folder-check-outline"
+                size={16}
+                color={Colors.gray}
+              />
+
+              <Text style={styles.miniText}>6 dự án</Text>
+            </View>
+          </View>
         </View>
       </View>
-      <View style={styles.userInfoContainer}>
-        <View style={styles.infoContainer}>
-          <UserAvatar
-            size={42}
-            name="Avishay Bar"
-            bgColors={[Colors.lightGray]}
-          />
-        </View>
-        <View style={styles.line}></View>
-        <View style={styles.projectContainer}>
-          <Text>project</Text>
-        </View>
-      </View>
-    </View>
+    </ScrollView>
   );
 }
 
@@ -60,6 +262,11 @@ const styles = StyleSheet.create({
     fontWeight: "400",
     lineHeight: 19,
   },
+  miniText: {
+    color: Colors.gray,
+    fontSize: 14,
+    fontWeight: "400",
+  },
   textPrimary: {
     ...text.normalNoPadding,
     fontSize: 20,
@@ -76,9 +283,35 @@ const styles = StyleSheet.create({
     borderRadius: 12,
     alignSelf: "stretch", // fill-container
   },
-  infoContainer: {},
-  line: {
-    ...defaultStyles.separator,
+  infoContainer: {
+    flex: 0,
+    justifyContent: "space-between",
+    alignItems: "center",
+    alignSelf: "center",
+    flexDirection: "row",
+    gap: 12,
   },
-  projectContainer: {},
+  avatar: {},
+  namePosition: {
+    flex: 0,
+    alignItems: "flex-start",
+    gap: 8,
+  },
+  icon: {
+    flex: 1,
+    alignItems: "flex-end",
+  },
+  projectContainer: {
+    flex: 0,
+    alignItems: "flex-start",
+    gap: 12,
+    alignSelf: "stretch",
+    flexDirection: "row",
+  },
+  divideContainer: {
+    flex: 1,
+    alignItems: "center",
+    gap: 8,
+    flexDirection: "row",
+  },
 });
