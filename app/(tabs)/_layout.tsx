@@ -2,7 +2,6 @@ import Colors from "@/constants/Colors";
 import { Octicons, Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
 import { Tabs } from "expo-router";
 import createPage from "./createPage/indexCreateProject";
-import createProjectScreen from "./createPage/createProjectScreen";
 
 export default function Layout() {
   return (
@@ -39,7 +38,7 @@ export default function Layout() {
           tabBarIcon: ({ color }) => (
             <Octicons name="home" size={24} color={color} />
           ),
-          title: "Trang chủ",
+          title: "Trang Chủ",
           tabBarLabelStyle: {
             fontWeight: "500",
           },
@@ -72,6 +71,7 @@ export default function Layout() {
             display: "none",
           },
           headerTitleAlign: "center",
+          headerShadowVisible: false,
         }}
       />
       <Tabs.Screen

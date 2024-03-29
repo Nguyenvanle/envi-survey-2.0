@@ -17,8 +17,9 @@ export const defaultStyles = StyleSheet.create({
   },
   // == Dai phan cach == //
   separator: {
-    height: 1,
-    backgroundColor: Colors.white,
+    height: StyleSheet.hairlineWidth,
+    backgroundColor: Colors.lightGray,
+    marginLeft: 50,
   },
 });
 
@@ -78,13 +79,10 @@ export const container = StyleSheet.create({
     gap: 14,
   },
   webview: {
-    flex: 0,
+    flex: 1,
     backgroundColor: Colors.background,
     alignItems: "center",
     justifyContent: "center",
-    height: "auto",
-    maxHeight: 900,
-    minHeight: 626,
   },
   box: {
     flex: 0,
@@ -113,11 +111,6 @@ export const text = StyleSheet.create({
     paddingRight: 25,
     fontStyle: "normal",
     fontWeight: "700",
-  },
-  normalNoPadding: {
-    fontSize: 16,
-    color: Colors.white,
-    fontStyle: "normal",
   },
 });
 

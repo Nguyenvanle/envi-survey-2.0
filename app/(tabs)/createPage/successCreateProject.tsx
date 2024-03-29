@@ -32,7 +32,7 @@ export default function successCreateProject() {
             <Text style={button.textPrimary}>Cấu hình dự án</Text>
           </TouchableOpacity>
         </Link>
-        <Link href={"./createProjectScreen"} asChild>
+        <Link href={"/projectsPage"} asChild>
           {/* 'replace' to remove back button */}
           <TouchableOpacity style={button.light}>
             <Text style={button.textLight}>Chia sẻ dự án</Text>
