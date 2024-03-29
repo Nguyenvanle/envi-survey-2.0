@@ -29,6 +29,7 @@ export default function Layout() {
           paddingVertical: 5,
         },
         headerShown: false,
+        tabBarHideOnKeyboard: true,
       }}
     >
       <Tabs.Screen
