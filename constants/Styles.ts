@@ -112,6 +112,11 @@ export const text = StyleSheet.create({
     fontStyle: "normal",
     fontWeight: "700",
   },
+  normalNoPadding: {
+    fontSize: 16,
+    color: Colors.white,
+    fontStyle: "normal",
+  },
 });
 
 export const button = StyleSheet.create({
