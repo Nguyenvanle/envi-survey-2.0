@@ -37,7 +37,7 @@ export default function Layout() {
           tabBarIcon: ({ color }) => (
             <Octicons name="home" size={24} color={color} />
           ),
-          title: "Trang chủ",
+          title: "Trang Chủ",
           tabBarLabelStyle: {
             fontWeight: "500",
           },

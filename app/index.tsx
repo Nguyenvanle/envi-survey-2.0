@@ -13,7 +13,7 @@ export default function index() {
           <Text>QL2110082</Text>
         </View>
         <View style={container.button}>
-          <Link href={"/(tabs)/homePage/indexHome"} replace asChild>
+          <Link href={"/(tabs)/homePage/indexHome"} asChild>
             <TouchableOpacity style={button.primary}>
               <Text style={button.textPrimary}>Xong</Text>
             </TouchableOpacity>

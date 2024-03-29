@@ -17,8 +17,9 @@ export const defaultStyles = StyleSheet.create({
   },
   // == Dai phan cach == //
   separator: {
-    height: 1,
-    backgroundColor: Colors.white,
+    height: StyleSheet.hairlineWidth,
+    backgroundColor: Colors.lightGray,
+    marginLeft: 50,
   },
 });
 
