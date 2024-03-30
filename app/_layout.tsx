@@ -4,7 +4,6 @@ import { useFonts } from "expo-font";
 import { Stack } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
 import { useEffect } from "react";
-import { StyleSheet } from "react-native";
 //============ Là tệp định nghĩa layout chung cho các màn hình trong ứng dụng ===============
 
 export {
@@ -51,24 +50,26 @@ function RootLayoutNav() {
           fontWeight: "600",
           fontSize: 30,
         },
+        headerShown: false,
       }}
     >
-      <Stack.Screen
-        name="index"
+      {/* <Stack.Screen
+        name="index" //Sửa lại khi code xong
         options={{
-          headerTitle: "Tạo Dự Án",
+          headerTitle: "Đăng Nhập",
           headerTitleAlign: "center",
           headerShadowVisible: false,
         }}
       />
       <Stack.Screen
-        name="createProjectScreen"
+        name="projectInformation"
         options={{
-          headerTitle: "Tạo Dự Án",
+          headerTitle: "Thông Tin Dự Án",
           headerTitleAlign: "center",
-          headerShadowVisible: false,
         }}
-      />
+      /> */}
+      <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
     </Stack>
+
   );
 }
