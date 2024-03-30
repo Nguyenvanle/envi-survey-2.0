@@ -145,7 +145,6 @@ export const text = StyleSheet.create({
     color: Colors.white,
     paddingTop: 15,
     paddingBottom: 15,
-
     paddingRight: 25,
     fontStyle: "normal",
     fontWeight: "700",
