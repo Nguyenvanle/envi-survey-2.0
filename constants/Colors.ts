@@ -1,7 +1,7 @@
 export default {
   primary: "#00ADB5",
   teal: "#71C9CE",
-  muted: "#3A5A92",
+  muted: "#8696BB",
   background: "#393E46",
   gray: "#222831",
   lightGray: "#393E46",

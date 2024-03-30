@@ -59,6 +59,7 @@ export const container = StyleSheet.create({
   root: {
     flex: 1,
     padding: 20,
+    paddingBottom: 100,
     backgroundColor: Colors.background,
     alignItems: "center",
     justifyContent: "center",
