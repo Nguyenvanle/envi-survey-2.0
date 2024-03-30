@@ -14,6 +14,16 @@ export default function createPage() {
           </TouchableOpacity>
         </Link>
       </View>
+
+      <View style={container.button}>
+        <Link href={"/"} replace asChild>
+          <TouchableOpacity
+            style={{ ...button.primary, backgroundColor: Colors.red }}
+          >
+            <Text style={button.textPrimary}>Đăng Xuất</Text>
+          </TouchableOpacity>
+        </Link>
+      </View>
     </View>
   );
 }

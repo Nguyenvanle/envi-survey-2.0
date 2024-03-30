@@ -1,6 +1,5 @@
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
-
 const firebaseConfig = {
   apiKey: "AIzaSyAdKo8yr10BoFnWi0q0O6jEgRS4OETqwx4",
   authDomain: "envi-survey.firebaseapp.com",

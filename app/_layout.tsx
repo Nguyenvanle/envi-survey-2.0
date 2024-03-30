@@ -1,9 +1,11 @@
+import { FIREBASE_AUTH } from "@/FirebaseConfig";
 import Colors from "@/constants/Colors";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 import { useFonts } from "expo-font";
 import { Stack } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
-import { useEffect } from "react";
+import { User, onAuthStateChanged } from "firebase/auth";
+import { useEffect, useState } from "react";
 //============ Là tệp định nghĩa layout chung cho các màn hình trong ứng dụng ===============
 
 export {
@@ -37,10 +39,21 @@ export default function RootLayout() {
 
   return <RootLayoutNav />;
 }
+
 function RootLayoutNav() {
   // https://docs.expo.dev/router/advanced/stack/ to Custom Header
+
+  const [user, setUser] = useState<User | null>(null);
+
+  useEffect(() => {
+    onAuthStateChanged(FIREBASE_AUTH, (user) => {
+      console.log("user", user);
+      setUser(user);
+    });
+  }, []);
   return (
     <Stack
+      initialRouteName="Login"
       screenOptions={{
         headerStyle: {
           backgroundColor: Colors.background,
@@ -53,22 +66,18 @@ function RootLayoutNav() {
         headerShown: false,
       }}
     >
-      <Stack.Screen
-        name="index" //Sửa lại khi code xong
-        options={{
-          headerTitle: "Đăng Nhập",
-          headerTitleAlign: "center",
-          headerShadowVisible: false,
-        }}
-      />
-      <Stack.Screen
-        name="createProjectScreen"
-        options={{
-          headerTitle: "Tạo Dự Án",
-          headerTitleAlign: "center",
-        }}
-      />
-      <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+      {user ? (
+        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+      ) : (
+        <Stack.Screen
+          name="index"
+          options={{
+            headerTitle: "Đăng Nhập",
+            headerTitleAlign: "center",
+            headerShadowVisible: false,
+          }}
+        />
+      )}
     </Stack>
   );
 }
