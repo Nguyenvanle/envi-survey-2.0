@@ -53,7 +53,7 @@ function RootLayoutNav() {
         headerShown: false,
       }}
     >
-      {/* <Stack.Screen
+      <Stack.Screen
         name="index" //Sửa lại khi code xong
         options={{
           headerTitle: "Đăng Nhập",
@@ -67,7 +67,7 @@ function RootLayoutNav() {
           headerTitle: "Tạo Dự Án",
           headerTitleAlign: "center",
         }}
-      /> */}
+      />
       <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
     </Stack>
   );
