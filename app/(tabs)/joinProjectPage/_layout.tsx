@@ -30,6 +30,14 @@ export default function Layout() {
           headerShadowVisible: false,
         }}
       />
+      <Stack.Screen
+        name="successJoinProject"
+        options={{
+          headerTitle: "Tham gia dự án",
+          headerTitleAlign: "center",
+          headerShadowVisible: false,
+        }}
+      />
     </Stack>
   );
 }

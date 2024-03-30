@@ -4,7 +4,7 @@ import Colors from "@/constants/Colors";
 import { button, container, input, text } from "@/constants/Styles";
 import { Link } from "expo-router";
 
-export default function enterPassword() {
+export default function successJoinProject() {
   return (
     <View style={container.root}>
       <View style={container.body}>
@@ -30,7 +30,7 @@ export default function enterPassword() {
           </View>
         </View>
         <View style={container.button}>
-          <Link href={"/(tabs)/joinProjectPage/successJoinProject"} asChild>
+          <Link href={"/(tabs)/createPage/successCreateProject"} asChild>
             <TouchableOpacity style={button.primary}>
               <Text style={button.textPrimary}>Tham gia</Text>
             </TouchableOpacity>
