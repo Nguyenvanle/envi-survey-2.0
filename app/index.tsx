@@ -1,4 +1,3 @@
-<<<<<<< Updated upstream
 import {
   Image,
   StyleSheet,
@@ -7,28 +6,17 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-=======
-import { View, Text, TouchableOpacity, StyleSheet, Image } from "react-native";
->>>>>>> Stashed changes
 import React from "react";
 import Colors from "@/constants/Colors";
 import { description } from "@/constants/Styles";
 import { Link } from "expo-router";
-<<<<<<< Updated upstream
 import createProjectScreen from "./createProjectScreen";
 
 export default function Page() {
   const openLink = () => {};
-=======
-import Colors from "@/constants/Colors";
->>>>>>> Stashed changes
 
   return (
-<<<<<<< Updated upstream
     <View style={styles.container}>
-=======
-    <View style={container.root}>
->>>>>>> Stashed changes
       {/* Create a header image */}
       <Image
         source={require("@/assets/images/illustration.png")}
@@ -39,21 +27,15 @@ import Colors from "@/constants/Colors";
         <Text style={description.headline}>Tạo dự án thành công</Text>
         <Text style={description.default}>
           Chúc mừng bạn đã khởi tạo thành công dự án
-<<<<<<< Updated upstream
         </Text>
         <Text style={description.bold}>Khảo sát đất Bình Thủy</Text>
         <Text style={description.primary} onPress={openLink}>
-=======
-        </Text> 
-        <Text style={description.bold}>Khảo sát đất Bình Thủy</Text>
-        <Text style={description.primary}>
->>>>>>> Stashed changes
           Bạn muốn làm gì tiếp theo?
         </Text>
       </View>
       {/* Create a button container */}
       <View style={styles.buttonContainer}>
-        <Link href={"/createProjectScreen"} asChild>
+        <Link href={"/projectInformation"} asChild>
           {/* 'replace' to remove back button */}
           <TouchableOpacity style={styles.buttonPrimary}>
             <Text style={styles.buttonTextPrimary}>Cấu hình dự án</Text>
@@ -142,8 +124,4 @@ const styles = StyleSheet.create({
     fontStyle: "normal",
     fontWeight: "700",
   },
-<<<<<<< Updated upstream
 });
-=======
-});
->>>>>>> Stashed changes
