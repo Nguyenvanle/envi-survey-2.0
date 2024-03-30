@@ -1,4 +1,5 @@
 import Colors from "@/constants/Colors";
+import { Stack } from "expo-router";
 import { StyleSheet } from "react-native";
 
 export const defaultStyles = StyleSheet.create({
@@ -50,6 +51,194 @@ export const description = StyleSheet.create({
     fontSize: 22,
     fontStyle: "normal",
     fontWeight: "700",
-    height: 32,
+    minHeight: 32,
+  },
+});
+
+export const container = StyleSheet.create({
+  root: {
+    flex: 1,
+    padding: 20,
+    paddingBottom: 100,
+    backgroundColor: Colors.background,
+    alignItems: "center",
+    justifyContent: "center",
+    gap: 20,
+  },
+  scrollView: {
+    flex: 1,
+    backgroundColor: Colors.background,
+  },
+  text: {
+    flex: 0,
+    alignItems: "center",
+    justifyContent: "center",
+    width: "100%",
+    gap: 4,
+    paddingBottom: 10,
+  },
+  button: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    gap: 14,
+  },
+  webview: {
+    flex: 1,
+    backgroundColor: Colors.background,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  box: {
+    flex: 0,
+    padding: 30,
+    backgroundColor: Colors.blueWhite,
+    alignItems: "center",
+    justifyContent: "center",
+    gap: 10,
+    shadowOffset: {
+      width: 0,
+      height: 4,
+    },
+    shadowRadius: 4,
+    height: 300,
+    borderRadius: 26,
+  },
+  header: {
+    alignItems: "center",
+    gap: 10,
+  },
+  body: {
+    flex: 1,
+    padding: 16,
+    paddingTop: 5,
+    alignItems: "center",
+    gap: 20,
+  },
+  input: {
+    justifyContent: "center",
+  },
+  bodyCenter: {
+    flex: 1,
+    padding: 16,
+    paddingTop: 5,
+    justifyContent: "center",
+    alignItems: "center",
+    gap: 20,
+  },
+  boxSuccess: {
+    flex: 0,
+    padding: 10,
+    backgroundColor: Colors.blueWhite,
+    alignItems: "center",
+    justifyContent: "center",
+    shadowOffset: {
+      width: 0,
+      height: 4,
+    },
+    shadowRadius: 4,
+    height: 300,
+    borderRadius: 26,
+  },
+  Center: {
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  CenterGap: {
+    alignItems: "center",
+    justifyContent: "center",
+    gap: 20,
+  },
+});
+
+export const text = StyleSheet.create({
+  normal: {
+    fontSize: 16,
+    color: Colors.white,
+    paddingTop: 15,
+    paddingBottom: 15,
+    paddingLeft: 25,
+    paddingRight: 25,
+    fontStyle: "normal",
+    fontWeight: "700",
+  },
+  normalNoPadding: {
+    fontSize: 16,
+    color: Colors.white,
+    fontStyle: "normal",
+  },
+  header: {
+    fontSize: 24,
+    color: Colors.white,
+    fontWeight: "700",
+  },
+  headerPrimary: {
+    fontSize: 24,
+    color: Colors.primary,
+    fontWeight: "700",
+  },
+  label: {
+    fontSize: 16,
+    color: Colors.white,
+    paddingTop: 15,
+    paddingBottom: 15,
+    paddingRight: 25,
+    fontStyle: "normal",
+    fontWeight: "700",
+  },
+  success: {
+    fontSize: 16,
+    lineHeight: 24,
+    fontWeight: "500",
+    fontStyle: "normal",
+    color: Colors.success,
+  },
+});
+
+export const button = StyleSheet.create({
+  primary: {
+    flex: 1,
+    height: 50,
+    alignItems: "center",
+    justifyContent: "center",
+    borderRadius: 12,
+    backgroundColor: Colors.primary,
+    flexDirection: "row",
+  },
+  success: {
+    flex: 1,
+    height: 50,
+    alignItems: "center",
+    justifyContent: "center",
+    borderRadius: 12,
+    backgroundColor: Colors.success,
+    flexDirection: "row",
+  },
+  light: {
+    flex: 1,
+    height: 50,
+    alignItems: "center",
+    justifyContent: "center",
+    borderRadius: 12,
+    backgroundColor: Colors.white,
+    flexDirection: "row",
+  },
+  textPrimary: {
+    ...text.normal,
+    color: Colors.white,
+  },
+  textLight: {
+    ...text.normal,
+    color: Colors.gray,
+  },
+});
+export const input = StyleSheet.create({
+  normal: {
+    height: 50,
+    padding: 10,
+    backgroundColor: Colors.white,
+    width: "100%",
+    borderRadius: 10,
+    gap: 10,
   },
 });

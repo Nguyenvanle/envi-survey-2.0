@@ -6,15 +6,11 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import React from "react";
 import Colors from "@/constants/Colors";
-import { description } from "@/constants/Styles";
+import { button, container, description } from "@/constants/Styles";
 import { Link } from "expo-router";
-import createProjectScreen from "./createProjectScreen";
 
-export default function Page() {
-  const openLink = () => {};
-
+export default function index() {
   return (
     <View style={styles.container}>
       {/* Create a header image */}
@@ -47,81 +43,21 @@ export default function Page() {
             <Text style={styles.buttonTextLight}>Chia sẻ dự án</Text>
           </TouchableOpacity>
         </Link>
+    <View style={container.root}>
+      <View style={container.box}>
+        <View style={container.text}>
+          <Text style={description.headline}>Dang nhap thanh cong</Text>
+          <Text>Ma quan li cua ban la</Text>
+          <Text>QL2110082</Text>
+        </View>
+        <View style={container.button}>
+          <Link href={"/(tabs)/homePage/indexHome"} replace asChild>
+            <TouchableOpacity style={button.primary}>
+              <Text style={button.textPrimary}>Xong</Text>
+            </TouchableOpacity>
+          </Link>
+        </View>
       </View>
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    padding: 20,
-    backgroundColor: Colors.background,
-    alignItems: "center",
-    justifyContent: "center",
-    gap: 20,
-  },
-  textContainer: {
-    flex: 0,
-    alignItems: "center",
-    justifyContent: "center",
-    width: "67%",
-    gap: 4,
-    paddingBottom: 10,
-  },
-  buttonContainer: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "center",
-    gap: 14,
-  },
-  welcome: {
-    width: "auto",
-    height: "auto",
-    minWidth: 260,
-    minHeight: 262,
-    maxWidth: 260 * 3,
-    maxHeight: 262 * 3,
-    marginRight: 30,
-    marginBottom: 10,
-    flexShrink: 0,
-  },
-  buttonPrimary: {
-    width: "auto",
-    height: 50,
-    alignItems: "center",
-    justifyContent: "center",
-    borderRadius: 12,
-    backgroundColor: Colors.primary,
-    flexDirection: "row",
-  },
-  buttonLight: {
-    width: "auto",
-    height: 50,
-    alignItems: "center",
-    justifyContent: "center",
-    borderRadius: 12,
-    backgroundColor: Colors.white,
-    flexDirection: "row",
-  },
-  buttonTextPrimary: {
-    fontSize: 16,
-    color: Colors.white,
-    paddingTop: 15,
-    paddingBottom: 15,
-    paddingLeft: 25,
-    paddingRight: 25,
-    fontStyle: "normal",
-    fontWeight: "700",
-  },
-  buttonTextLight: {
-    fontSize: 16,
-    color: Colors.gray,
-    paddingTop: 15,
-    paddingBottom: 15,
-    paddingLeft: 25,
-    paddingRight: 25,
-    fontStyle: "normal",
-    fontWeight: "700",
-  },
-});
