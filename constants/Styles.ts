@@ -117,6 +117,37 @@ export const container = StyleSheet.create({
   input: {
     justifyContent: "center",
   },
+  bodyCenter: {
+    flex: 1,
+    padding: 16,
+    paddingTop: 5,
+    justifyContent: "center",
+    alignItems: "center",
+    gap: 20,
+  },
+  boxSuccess: {
+    flex: 0,
+    padding: 10,
+    backgroundColor: Colors.blueWhite,
+    alignItems: "center",
+    justifyContent: "center",
+    shadowOffset: {
+      width: 0,
+      height: 4,
+    },
+    shadowRadius: 4,
+    height: 300,
+    borderRadius: 26,
+  },
+  Center: {
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  CenterGap: {
+    alignItems: "center",
+    justifyContent: "center",
+    gap: 20,
+  },
 });
 
 export const text = StyleSheet.create({
@@ -154,6 +185,13 @@ export const text = StyleSheet.create({
     fontStyle: "normal",
     fontWeight: "700",
   },
+  success: {
+    fontSize: 16,
+    lineHeight: 24,
+    fontWeight: "500",
+    fontStyle: "normal",
+    color: Colors.success,
+  },
 });
 
 export const button = StyleSheet.create({
@@ -164,6 +202,15 @@ export const button = StyleSheet.create({
     justifyContent: "center",
     borderRadius: 12,
     backgroundColor: Colors.primary,
+    flexDirection: "row",
+  },
+  success: {
+    flex: 1,
+    height: 50,
+    alignItems: "center",
+    justifyContent: "center",
+    borderRadius: 12,
+    backgroundColor: Colors.success,
     flexDirection: "row",
   },
   light: {
