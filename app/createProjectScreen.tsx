@@ -1,6 +1,5 @@
 import { WebView } from "react-native-webview";
 import { container } from "@/constants/Styles";
-import { View } from "react-native";
 
 export default function App() {
   return (

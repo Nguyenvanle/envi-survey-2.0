@@ -64,6 +64,10 @@ export const container = StyleSheet.create({
     justifyContent: "center",
     gap: 20,
   },
+  scrollView: {
+    flex: 1,
+    backgroundColor: Colors.background,
+  },
   text: {
     flex: 0,
     alignItems: "center",

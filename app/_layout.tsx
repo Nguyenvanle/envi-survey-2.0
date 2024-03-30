@@ -4,7 +4,6 @@ import { useFonts } from "expo-font";
 import { Stack } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
 import { useEffect } from "react";
-import indexHome from "./(tabs)/homePage/indexHome";
 //============ Là tệp định nghĩa layout chung cho các màn hình trong ứng dụng ===============
 
 export {
@@ -54,8 +53,8 @@ function RootLayoutNav() {
         headerShown: false,
       }}
     >
-      <Stack.Screen
-        name="indexHome" //Sửa lại khi code xong
+      {/* <Stack.Screen
+        name="index" //Sửa lại khi code xong
         options={{
           headerTitle: "Đăng Nhập",
           headerTitleAlign: "center",
@@ -68,7 +67,7 @@ function RootLayoutNav() {
           headerTitle: "Tạo Dự Án",
           headerTitleAlign: "center",
         }}
-      />
+      /> */}
       <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
     </Stack>
   );
