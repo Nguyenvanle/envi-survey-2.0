@@ -12,10 +12,4 @@ export default {
   blueWhite: "#E3FDFD",
   mint: "#CDFADB",
   success: "#00B57F",
-  green: "#00ADB5",
-  blue: "#00199C",
-  black: "#222831",
-  blur_ray: "#8696BB",
-  dark_orange: "#F4A102",
-  purple: "#8F1FAB",
 };
