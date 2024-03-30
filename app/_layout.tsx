@@ -62,13 +62,14 @@ function RootLayoutNav() {
         }}
       />
       <Stack.Screen
-        name="createProjectScreen"
+        name="projectInformation"
         options={{
-          headerTitle: "Tạo Dự Án",
+          headerTitle: "Thông Tin Dự Án",
           headerTitleAlign: "center",
         }}
       /> */}
       <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
     </Stack>
+
   );
 }
