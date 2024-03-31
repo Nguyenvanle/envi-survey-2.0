@@ -75,13 +75,13 @@ export const styles = StyleSheet.create({
           marginVertical: 5,
         },
         colorMainVector: {
-          borderColor: Colors.black,
+          borderColor: Colors.gray,
         },
         colorVector: {
           borderColor: "#222831",
         },
         MainShape: {
-          backgroundColor: Colors.green,
+          backgroundColor: Colors.primary,
           paddingHorizontal: 25,
           paddingVertical: 15,
         },

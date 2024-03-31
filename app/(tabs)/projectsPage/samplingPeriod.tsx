@@ -50,7 +50,7 @@ export default function samplingPeriod() {
                     source={require("@/assets/images/green-clock.png")}
                      style = {styles.smallIcon}>
                   </Image>
-                  <Text style = {StyleSheet.compose(styles.itemText, {color: Colors.green})}>Start: 19/03/2024</Text>
+                  <Text style = {StyleSheet.compose(styles.itemText, {color: Colors.primary})}>Start: 19/03/2024</Text>
                 </View>
 
                 <View style = {styles.itemComponnent}>
@@ -82,7 +82,7 @@ export default function samplingPeriod() {
                     source={require("@/assets/images/green-clock.png")}
                      style = {styles.smallIcon}>
                   </Image>
-                  <Text style = {StyleSheet.compose(styles.itemText, {color: Colors.green})}>Start: 19/03/2024</Text>
+                  <Text style = {StyleSheet.compose(styles.itemText, {color: Colors.primary})}>Start: 19/03/2024</Text>
                 </View>
 
                 <View style = {styles.itemComponnent}>
@@ -112,7 +112,7 @@ export default function samplingPeriod() {
                     source={require("@/assets/images/green-clock.png")}
                      style = {styles.smallIcon}>
                   </Image>
-                  <Text style = {StyleSheet.compose(styles.itemText, {color: Colors.green})}>Start: 19/03/2024</Text>
+                  <Text style = {StyleSheet.compose(styles.itemText, {color: Colors.primary})}>Start: 19/03/2024</Text>
                 </View>
 
                 <View style = {styles.itemComponnent}>
@@ -142,7 +142,7 @@ export default function samplingPeriod() {
                     source={require("@/assets/images/green-clock.png")}
                      style = {styles.smallIcon}>
                   </Image>
-                  <Text style = {StyleSheet.compose(styles.itemText, {color: Colors.green})}>Start: 19/03/2024</Text>
+                  <Text style = {StyleSheet.compose(styles.itemText, {color: Colors.primary})}>Start: 19/03/2024</Text>
                 </View>
 
                 <View style = {styles.itemComponnent}>
@@ -172,7 +172,7 @@ export default function samplingPeriod() {
                     source={require("@/assets/images/green-clock.png")}
                      style = {styles.smallIcon}>
                   </Image>
-                  <Text style = {StyleSheet.compose(styles.itemText, {color: Colors.green})}>Start: 19/03/2024</Text>
+                  <Text style = {StyleSheet.compose(styles.itemText, {color: Colors.primary})}>Start: 19/03/2024</Text>
                 </View>
 
                 <View style = {styles.itemComponnent}>

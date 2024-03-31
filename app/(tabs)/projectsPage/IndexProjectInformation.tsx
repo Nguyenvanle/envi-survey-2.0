@@ -48,7 +48,7 @@ export default function IndexProjectInformation() {
                     source={require("@/assets/images/green-clock.png")}
                      style = {styles.smallIcon}>
                   </Image>
-                  <Text style = {StyleSheet.compose(styles.itemText, {color: Colors.green})}>Start: 19/03/2024</Text>
+                  <Text style = {StyleSheet.compose(styles.itemText, {color: Colors.primary})}>Start: 19/03/2024</Text>
                 </View>
 
                 <View style = {styles.itemComponnent}>
@@ -67,7 +67,7 @@ export default function IndexProjectInformation() {
                     source={require("@/assets/images/blue-clock.png")}
                      style = {styles.smallIcon}>
                   </Image>
-                  <Text style = {StyleSheet.compose(styles.itemText, {color: Colors.blue})}>Còn 1 tháng 7 ngày 24' 12' 45'</Text>
+                  <Text style = {StyleSheet.compose(styles.itemText, {color: Colors.deepBlue})}>Còn 1 tháng 7 ngày 24' 12' 45'</Text>
               </View>
           </View>
         </View>
@@ -82,7 +82,7 @@ export default function IndexProjectInformation() {
                     source={require("@/assets/images/green-paper.png")}
                      style = {styles.smallIcon}>
                   </Image>
-                  <Text style = {StyleSheet.compose(styles.itemText, {color: Colors.green})}>Tổng biểu mẫu hoàn thành: 40/160</Text>
+                  <Text style = {StyleSheet.compose(styles.itemText, {color: Colors.primary})}>Tổng biểu mẫu hoàn thành: 40/160</Text>
                 </View> 
             </View>
 
@@ -142,10 +142,10 @@ export default function IndexProjectInformation() {
 
           <View style = {StyleSheet.compose(styles.RectangleShape,styles.linkShape)}>
             <View style= {styles.itemComponnent}>
-              <Text style={StyleSheet.compose(styles.mainText,{fontSize:16,marginVertical:7,alignSelf:'flex-start'})}>Các thành viên khác</Text>
+              <Text style={StyleSheet.compose(styles.mainText,{fontSize:16,marginVertical:7})}>Các thành viên khác</Text>
               
               
-              <View style = {StyleSheet.compose(styles.SmallRectangleShape,{backgroundColor: Colors.green})}>
+              <View style = {StyleSheet.compose(styles.SmallRectangleShape,{backgroundColor: Colors.primary})}>
                 <Link href={'/(tabs)/projectsPage/samplingPeriod'} asChild>
                   <TouchableOpacity style={button.primary}>
                   <View style = {styles.itemComponnent}>
@@ -167,7 +167,7 @@ export default function IndexProjectInformation() {
           <View style = {StyleSheet.compose(styles.RectangleShape, styles.WhiteShape)}>
             <View style = {styles.aboveInfor}>
                 <View style = {styles.itemComponnent}>
-                  <Text style = {StyleSheet.compose(styles.titleDescription, {color: Colors.purple})}>Đơn vị tài trợ</Text>
+                  <Text style = {StyleSheet.compose(styles.titleDescription, {color: Colors.primary})}>Đơn vị tài trợ</Text>
                 </View> 
             </View>
 
@@ -175,7 +175,7 @@ export default function IndexProjectInformation() {
             
             <View style = {styles.aboveInfor}>
                 <View style = {styles.itemComponnent}>
-                  <Text style = {StyleSheet.compose(styles.titleDescription, {color: Colors.black})}>Viện Nghiên Cứu Khảo Sát NZIN</Text>
+                  <Text style = {StyleSheet.compose(styles.titleDescription, {color: Colors.gray})}>Viện Nghiên Cứu Khảo Sát NZIN</Text>
                 </View> 
             </View>
           </View>
@@ -222,7 +222,7 @@ export default function IndexProjectInformation() {
               <Text style={StyleSheet.compose(styles.mainText,{fontSize:20,marginVertical:7})}>Thông Tin Chi Tiết</Text>
               
               
-              <View style = {StyleSheet.compose(styles.SmallRectangleShape,{backgroundColor: Colors.green})}>
+              <View style = {StyleSheet.compose(styles.SmallRectangleShape,{backgroundColor: Colors.primary})}>
                 <Link href={'/(tabs)/projectsPage/samplingPeriod'} asChild>
                   <TouchableOpacity style={button.primary}>
                   <View style = {styles.itemComponnent}>

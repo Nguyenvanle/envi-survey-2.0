@@ -47,7 +47,7 @@ import {
                       source={require("@/assets/images/green-clock.png")}
                        style = {styles.smallIcon}>
                     </Image>
-                    <Text style = {StyleSheet.compose(styles.itemText, {color: Colors.green})}>Start: 19/03/2024</Text>
+                    <Text style = {StyleSheet.compose(styles.itemText, {color: Colors.primary})}>Start: 19/03/2024</Text>
                   </View>
   
                   <View style = {styles.itemComponnent}>
@@ -77,7 +77,7 @@ import {
                       source={require("@/assets/images/green-clock.png")}
                        style = {styles.smallIcon}>
                     </Image>
-                    <Text style = {StyleSheet.compose(styles.itemText, {color: Colors.green})}>Start: 19/03/2024</Text>
+                    <Text style = {StyleSheet.compose(styles.itemText, {color: Colors.primary})}>Start: 19/03/2024</Text>
                   </View>
   
                   <View style = {styles.itemComponnent}>
@@ -107,7 +107,7 @@ import {
                       source={require("@/assets/images/green-clock.png")}
                        style = {styles.smallIcon}>
                     </Image>
-                    <Text style = {StyleSheet.compose(styles.itemText, {color: Colors.green})}>Start: 19/03/2024</Text>
+                    <Text style = {StyleSheet.compose(styles.itemText, {color: Colors.primary})}>Start: 19/03/2024</Text>
                   </View>
   
                   <View style = {styles.itemComponnent}>
@@ -137,7 +137,7 @@ import {
                       source={require("@/assets/images/green-clock.png")}
                        style = {styles.smallIcon}>
                     </Image>
-                    <Text style = {StyleSheet.compose(styles.itemText, {color: Colors.green})}>Start: 19/03/2024</Text>
+                    <Text style = {StyleSheet.compose(styles.itemText, {color: Colors.primary})}>Start: 19/03/2024</Text>
                   </View>
   
                   <View style = {styles.itemComponnent}>
@@ -167,7 +167,7 @@ import {
                       source={require("@/assets/images/green-clock.png")}
                        style = {styles.smallIcon}>
                     </Image>
-                    <Text style = {StyleSheet.compose(styles.itemText, {color: Colors.green})}>Start: 19/03/2024</Text>
+                    <Text style = {StyleSheet.compose(styles.itemText, {color: Colors.primary})}>Start: 19/03/2024</Text>
                   </View>
   
                   <View style = {styles.itemComponnent}>
@@ -189,7 +189,7 @@ import {
             <View style= {styles.itemComponnent}>
               <Text style={StyleSheet.compose(styles.mainText,{fontSize:20,marginVertical:7})}>Thêm biểu mẫu mới</Text>
               
-              <View style = {StyleSheet.compose(styles.SmallRectangleShape,{backgroundColor: Colors.green})}>
+              <View style = {StyleSheet.compose(styles.SmallRectangleShape,{backgroundColor: Colors.primary})}>
                 <View style = {styles.itemComponnent}>
                 <Image
                     source={require("@/assets/images/circle-plus-icon.png")}
