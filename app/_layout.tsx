@@ -2,7 +2,7 @@ import { FIREBASE_AUTH } from "@/FirebaseConfig";
 import Colors from "@/constants/Colors";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 import { useFonts } from "expo-font";
-import { Stack } from "expo-router";
+import { Stack, router } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
 import { User, onAuthStateChanged } from "firebase/auth";
 import { useEffect, useState } from "react";
@@ -47,10 +47,19 @@ function RootLayoutNav() {
 
   useEffect(() => {
     onAuthStateChanged(FIREBASE_AUTH, (user) => {
-      console.log("user", user);
-      setUser(user);
+      if (user !== null) {
+        router.replace("/homePage/indexHome");
+        setUser(user);
+      } else {
+        console.log();
+      }
+      // open comment này ra khi code xong trang
+
+      // router.replace("/(tabs)/accountPage/profileSetupScreen");
+      // truy cập nhanh vào trang đỡ phải bấm, close comment lúc code xong trang
     });
   }, []);
+
   return (
     <Stack
       initialRouteName="Login"
@@ -66,18 +75,9 @@ function RootLayoutNav() {
         headerShown: false,
       }}
     >
-      {user ? (
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-      ) : (
-        <Stack.Screen
-          name="index"
-          options={{
-            headerTitle: "Đăng Nhập",
-            headerTitleAlign: "center",
-            headerShadowVisible: false,
-          }}
-        />
-      )}
+      <Stack.Screen name="index" options={{ headerShown: false }} />
+      <Stack.Screen name="authScreen" options={{ headerShown: false }} />
+      <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
     </Stack>
   );
 }

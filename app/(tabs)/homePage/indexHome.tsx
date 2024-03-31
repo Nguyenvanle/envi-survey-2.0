@@ -1,28 +1,27 @@
-import {
-  View,
-  Text,
-  StyleSheet,
-  ScrollView,
-  TouchableOpacity,
-} from "react-native";
-import React from "react";
-import { container, text, defaultStyles, button } from "@/constants/Styles";
+import Colors from "@/constants/Colors";
+import { button, container, defaultStyles, text } from "@/constants/Styles";
 import {
   AntDesign,
   Feather,
-  FontAwesome6,
   MaterialCommunityIcons,
   MaterialIcons,
   Octicons,
   SimpleLineIcons,
 } from "@expo/vector-icons";
-import Colors from "@/constants/Colors";
+import { Link } from "expo-router";
+import React from "react";
+import {
+  ScrollView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
+import { SafeAreaProvider } from "react-native-safe-area-context";
+
 // Cái này để xóa cái cảnh báo xaml của vscode :D
 // @ts-ignore
 import UserAvatar from "react-native-user-avatar";
-import { SafeAreaProvider } from "react-native-safe-area-context";
-import { SearchBar } from "@rneui/themed";
-import { Link } from "expo-router";
 
 export default function indexHome() {
   return (

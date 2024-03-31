@@ -93,7 +93,7 @@ export default function Layout() {
         }}
       />
       <Tabs.Screen
-        name="joinProjectPage" //mượn tạm chỗ để hiển thị
+        name="accountPage"
         options={{
           tabBarIcon: ({ color }) => (
             <MaterialCommunityIcons
