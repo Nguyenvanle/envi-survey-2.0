@@ -1,6 +1,7 @@
 import Colors from "@/constants/Colors";
 import { Stack } from "expo-router";
 import { StyleSheet } from "react-native";
+import { text } from "./Styles";
 
 export const styles = StyleSheet.create({
         contentContainer: {
@@ -33,15 +34,6 @@ export const styles = StyleSheet.create({
           flexShrink: 0,
       
         },
-        subMainFrame: {
-          display: 'flex',
-          paddingVertical: 10,
-          paddingHorizontal: 20,
-          flexDirection: 'column',
-          justifyContent: 'center',
-          alignItems: 'center',
-          alignSelf: 'stretch',
-        },
         subFrame: {
           display: 'flex',
           paddingVertical: 10,
@@ -54,6 +46,7 @@ export const styles = StyleSheet.create({
         },
         RectangleShape: {
           minWidth: 300,
+          minHeight: 70,
           width: "auto",
           height: "auto",
           alignItems: "center",
@@ -79,6 +72,7 @@ export const styles = StyleSheet.create({
           height: 0,
           alignSelf: "stretch",
           borderWidth: 0.5,
+          marginVertical: 5,
         },
         colorMainVector: {
           borderColor: Colors.black,
@@ -88,17 +82,13 @@ export const styles = StyleSheet.create({
         },
         MainShape: {
           backgroundColor: Colors.green,
-          paddingTop: 10, // Giá trị padding cho tất cả các hướng
-          paddingRight: 20, // Giá trị padding bên phải
-          paddingBottom: 20, // Giá trị padding bên dưới
-          paddingLeft: 20, // Giá trị padding bên trái
+          paddingHorizontal: 25,
+          paddingVertical: 15,
         },
         WhiteShape: {
           backgroundColor: Colors.white,
-          paddingTop: 10, // Giá trị padding cho tất cả các hướng
-          paddingRight: 16, // Giá trị padding bên phải
-          paddingBottom: 10, // Giá trị padding bên dưới
-          paddingLeft: 16, // Giá trị padding bên trái
+          paddingHorizontal: 20,
+          paddingVertical: 20,
           flexDirection: "column",
           justifyContent: "center",
           alignItems: "center",
@@ -106,14 +96,13 @@ export const styles = StyleSheet.create({
         },
         linkShape: {
           backgroundColor: Colors.white,
-          paddingHorizontal:7,
-          paddingVertical:7,
+          marginVertical: 10,
         },
         memberShape: {
           display: 'flex',
           width: 'auto',
           paddingVertical: 'auto',
-          paddingHorizontal: 15,
+          paddingHorizontal:'auto',
           flexDirection: 'column',
           justifyContent: 'center',
           alignItems: 'center',
@@ -124,7 +113,6 @@ export const styles = StyleSheet.create({
           height: 18,
           alignSelf: "flex-start",
           color: '#00ADB5',
-          fontFamily: 'Poppins',
           fontSize: 16,
           fontStyle: 'normal',
           fontWeight: '700',
@@ -138,8 +126,7 @@ export const styles = StyleSheet.create({
         },
         mainText: {
           color: '#222831',
-          fontFamily: 'Poppins',
-          fontSize: 14,
+          fontSize: 19,
           fontStyle: 'normal',
           fontWeight: '700',
           lineHeight: 16 * 1.4,
@@ -147,8 +134,7 @@ export const styles = StyleSheet.create({
         },
         text: {
             color: '#222831',
-            fontFamily: 'Poppins',
-            fontSize: 14,
+            fontSize: 15,
             fontStyle: 'normal',
             fontWeight: '400',
             lineHeight: 14 * 1.4, // line height based on font size
@@ -157,7 +143,9 @@ export const styles = StyleSheet.create({
         },
         subItem: {
           display: "flex",
-          width: 270,
+          minWidth: 270,
+          width: 'auto',
+          height: 'auto',
           alignItems: "center",
           flexDirection: "row",
           justifyContent: "center",
@@ -165,10 +153,9 @@ export const styles = StyleSheet.create({
           gap: 12,
         },
         itemText: {
-          fontFamily: 'Poppins',
           alignItems: 'center',
           justifyContent: 'space-between',
-          fontSize: 12,
+          fontSize: 15,
           fontStyle: 'normal',
           fontWeight: '400',
           lineHeight: 12 * 1.4, // line height based on font size
@@ -181,15 +168,11 @@ export const styles = StyleSheet.create({
           width: 23,
           height: 23,
         },
-        avatar: {
-          width:45,
-          height:45,
-          marginBottom: 'auto',
-        },
         itemComponnent: {
           display: "flex",
           width: "auto",
           alignItems: "center",
+          alignSelf: 'center',
           gap: 6,
           flexDirection: "row",
         },
@@ -197,7 +180,6 @@ export const styles = StyleSheet.create({
           display: 'flex',
           minWidth: 150,
           width: 'auto',
-          height: 'auto',
           paddingVertical: 'auto',
           paddingHorizontal: 'auto',
           flexDirection: 'column',
@@ -206,20 +188,19 @@ export const styles = StyleSheet.create({
           flex: 1,
         },
         titleDescription: {
-          fontFamily: 'Poppins',
-          fontSize: 15,
+          fontSize: 17,
           fontStyle: 'normal',
           fontWeight: '900',
           lineHeight: 13 * 1.4,
         },
         contentDescription: {
-          width: 270,
+          width: 'auto',
           height: 'auto',
+          alignSelf: "stretch",
           flexShrink: 0,
           color: '#4E4E4E',
           textAlign: 'center',
-          fontFamily: 'Poppins',
-          fontSize: 13,
+          fontSize: 15,
           fontStyle: 'normal',
           fontWeight: '400',
           lineHeight: 13 * 1.4,
@@ -227,10 +208,65 @@ export const styles = StyleSheet.create({
         destinationText: {
           color: '#0048B5',
           textAlign: 'center',
-         fontFamily: 'Poppins',
          fontSize: 20,
          fontStyle: 'normal',
          fontWeight: '600',
          lineHeight: 24, // Height of the text line, adjust as needed
+      },
+      miniText: {
+        color: Colors.gray,
+        fontSize: 14,
+        fontWeight: "400",
+      },
+      textPrimary: {
+        ...text.normalNoPadding,
+        fontSize: 20,
+        fontWeight: "700",
+        lineHeight: 22,
+        color: Colors.primary,
+      },
+      userInfoContainer: {
+        flex: 0,
+        padding: 20,
+        flexDirection: "column",
+        backgroundColor: Colors.primary,
+        gap: 16,
+        borderRadius: 12,
+        alignSelf: "stretch", // fill-container
+      },
+      infoContainer: {
+        flex: 0,
+        justifyContent: "space-between",
+        alignItems: "center",
+        alignSelf: "center",
+        flexDirection: "row",
+        gap: 12,
+      },
+      avatar: {
+        flexShrink: 0,
+        width: 30,
+        height: 30,
+      },
+      namePosition: {
+        flex: 0,
+        alignItems: "flex-start",
+        gap: 8,
+      },
+      icon: {
+        flex: 1,
+        alignItems: "flex-end",
+      },
+      projectContainer: {
+        flex: 0,
+        alignItems: "flex-start",
+        gap: 12,
+        alignSelf: "stretch",
+        flexDirection: "row",
+      },
+      divideContainer: {
+        flex: 1,
+        alignItems: "center",
+        gap: 8,
+        flexDirection: "row",
       },
 })

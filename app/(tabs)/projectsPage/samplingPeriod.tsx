@@ -7,9 +7,10 @@ import {
   TouchableOpacity, 
   ScrollView} from 'react-native'
 import React from 'react'
-import { container } from './../../../constants/Styles';
-import { styles } from './myStyles';
+import { container } from '../../../constants/Styles';
+import { styles } from '../../../constants/TienDatStyles';
 import Colors from '@/constants/Colors';
+import { Link } from 'expo-router';
 
 export default function samplingPeriod() {
   return (
@@ -17,7 +18,8 @@ export default function samplingPeriod() {
       <ScrollView contentContainerStyle={styles.contentContainer}>
       <View style = {StyleSheet.compose(styles.body,{gap: 10})}>
 
-          <View style = {styles.subMainFrame}>
+          <View style = {styles.subFrame}>
+          <Text style = {StyleSheet.compose(styles.subTittle,{color: Colors.white,fontWeight:'400'})}>Thông tin chính</Text>
           <View style = {StyleSheet.compose(styles.RectangleShape,styles.MainShape)}>
             <View style= {styles.aboveInfor}>
               <Text style={styles.mainText}>Khảo sát đất đô thị khu vực 91B</Text>
@@ -30,7 +32,9 @@ export default function samplingPeriod() {
         <View style = {StyleSheet.compose(styles.subFrame,{gap: 20})}>
           <Text style = {styles.subTittle}>Chi tiết mẫu</Text>
 
-          <View style = {StyleSheet.compose(styles.RectangleShape, styles.WhiteShape)}>
+        <Link href={"/projectsPage/destinationForm"} asChild>
+              <TouchableOpacity>
+              <View style = {StyleSheet.compose(styles.RectangleShape, styles.WhiteShape)}>
             
             <View style = {styles.aboveInfor}>
               <Text style = {styles.destinationText}>Đợt 1 - 001</Text>
@@ -59,6 +63,8 @@ export default function samplingPeriod() {
               </View>
             </View>
           </View>
+              </TouchableOpacity>
+          </Link>
 
           <View style = {StyleSheet.compose(styles.RectangleShape, styles.WhiteShape)}>
             

@@ -8,7 +8,7 @@ import {
     ScrollView} from 'react-native'
   import React from 'react'
   import { container } from './../../../constants/Styles';
-  import { styles } from './myStyles';
+  import { styles } from '../../../constants/TienDatStyles';
   import Colors from '@/constants/Colors';
   
   export default function samplingPeriod() {
@@ -17,13 +17,14 @@ import {
         <ScrollView contentContainerStyle={styles.contentContainer}>
           <View style = {StyleSheet.compose(styles.body,{gap: 10})}>
   
-            <View style = {styles.subMainFrame}>
+            <View style = {styles.subFrame}>
             <View style = {StyleSheet.compose(styles.RectangleShape,styles.MainShape)}>
               <View style= {styles.aboveInfor}>
                 <Text style={styles.mainText}>Khảo sát đất đô thị khu vực 91B</Text>
                 <Text style={styles.text}>Mã dự án #456431</Text>
               </View>
               <View style = {StyleSheet.compose(styles.vector, styles.colorMainVector)}></View>
+              <Text style={StyleSheet.compose(styles.mainText,{alignSelf:'center'})}>Đợt 1 - 001</Text>
             </View>
           </View>
   
@@ -182,7 +183,7 @@ import {
           
           </View>
 
-          <View style = {StyleSheet.compose(styles.subMainFrame,{paddingVertical:30})}>
+          <View style = {StyleSheet.compose(styles.subFrame,{paddingVertical:30})}>
 
           <View style = {StyleSheet.compose(styles.RectangleShape,styles.linkShape)}>
             <View style= {styles.itemComponnent}>

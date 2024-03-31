@@ -365,7 +365,7 @@ export default function indexHome() {
   );
 }
 
-const styles = StyleSheet.create({
+export const styles = StyleSheet.create({
   hello: {
     flex: 0,
     flexDirection: "row",
