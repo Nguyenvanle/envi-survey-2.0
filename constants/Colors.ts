@@ -12,4 +12,6 @@ export default {
   blueWhite: "#E3FDFD",
   mint: "#CDFADB",
   success: "#00B57F",
+  filterback: "#6A6B6B",
+  selector: "#858597"
 };

@@ -97,27 +97,15 @@ export default function indexHome() {
           </View>
           {/* Search Button Link Box */}
           <View style={styles.searchBox}>
-            <Link href={"/searchPage"} replace asChild>
-              <TouchableOpacity
-                style={{ ...button.light, alignContent: "flex-start" }}
-              >
-                {/* <SearchBar
-                  placeholder="Tìm kiếm dự án"
-                  platform="android"
-                  containerStyle={styles.searchContainer}
-                ></SearchBar> */}
-                <Octicons name="search" size={24} color={Colors.gray} />
-                <Text
-                  style={{
-                    ...button.textLight,
-                    fontWeight: "400",
-                    color: Colors.lightGray,
-                  }}
-                >
-                  Tìm dự án
-                </Text>
-              </TouchableOpacity>
-            </Link>
+            <View style={container.button}>
+              <Link href={"/(tabs)/searchPage/searchPage"} asChild>
+                <TouchableOpacity style={{ ...button.light, alignContent: "flex-start" }}>
+                  <Octicons name="search" size={24} color={Colors.gray} />
+                    <Text style={{...button.textLight, fontWeight: "700", color: Colors.lightGray,}}
+                    >Tìm Kiếm dự án</Text>
+                </TouchableOpacity>
+              </Link>
+            </View>
           </View>
           {/* My Projects List Title */}
           <View style={{ ...styles.hello, padding: 0 }}>

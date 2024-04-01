@@ -21,6 +21,10 @@ export const defaultStyles = StyleSheet.create({
     backgroundColor: Colors.lightGray,
     marginLeft: 50,
   },
+  button: {
+    padding: 10,
+    borderRadius: 5,
+  },
 });
 
 export const description = StyleSheet.create({
@@ -149,6 +153,78 @@ export const container = StyleSheet.create({
     justifyContent: "center",
     gap: 20,
   },
+  boxFilter: {
+    flex: 0,
+    padding: 10,
+    backgroundColor: Colors.filterback,
+    gap: 20,
+    shadowOffset: {
+      width: 0,
+      height: 4,
+    },
+    shadowRadius: 4,
+    height: 601,
+    borderRadius: 26,
+    width: "100%",
+  },
+  TypeFilter: {
+    marginTop: 20,
+    flex: 0,
+    padding: 1,
+    gap: 10,
+  },
+  selectsContainer: {
+    marginTop: 20,
+    flexDirection: "row",
+    flexWrap: "wrap",
+    gap: 10,
+  },
+  select: {
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: Colors.selector,
+    gap: 20,
+    padding: 10,
+    borderRadius: 10,
+  },
+  selected: {
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: Colors.primary,
+    gap: 20,
+    padding: 10,
+    borderRadius: 10,
+  },
+  headerFilter: {
+    marginTop: 20,
+    alignItems: "center",
+    gap: 10,
+  },
+  selectsContainerButton: {
+    justifyContent: "center",
+    marginTop: 20,
+    flexDirection: "row",
+    flexWrap: "wrap",
+    gap: 10,
+  },
+  selectClear: {
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: Colors.selector,
+    gap: 20,
+    padding: 20,
+    borderRadius: 10,
+  },
+  selectedApply: {
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: Colors.primary,
+    gap: 20,
+    padding: 20,
+    borderRadius: 10,
+    paddingLeft: 140,
+    paddingRight: 140,
+  },
 });
 
 export const text = StyleSheet.create({
@@ -193,6 +269,17 @@ export const text = StyleSheet.create({
     fontStyle: "normal",
     color: Colors.success,
   },
+  headerFilter: {
+    fontSize: 25,
+    color: Colors.white,
+    fontWeight: "700",
+  },
+  select: {
+    fontStyle: "normal",
+    fontWeight: "400",
+    fontSize: 16,
+    color: Colors.white,
+  },
 });
 
 export const button = StyleSheet.create({
@@ -231,6 +318,7 @@ export const button = StyleSheet.create({
     ...text.normal,
     color: Colors.gray,
   },
+  ChooseFilter: {},
 });
 export const input = StyleSheet.create({
   normal: {

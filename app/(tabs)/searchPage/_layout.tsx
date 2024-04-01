@@ -26,11 +26,39 @@ export default function Layout() {
       }}
     >
       <Stack.Screen
-        name="indexHome"
+        name="searchPage"
         options={{
-          headerTitle: "Trang Chủ",
+          headerTitle: "Tìm Kiếm",
           headerTitleAlign: "center",
           headerShadowVisible: false,
+          headerShown: true,
+          headerSearchBarOptions: {
+            placeholder: "Tìm kiếm dự án",
+          },
+          headerRight: () => {
+            return (
+              <View style={container.button}>
+                <Link href={"/(tabs)/searchPage/filterPage"} asChild>
+                  <TouchableOpacity>
+                    <AntDesign
+                      name="filter"
+                      size={24}
+                      color={Colors.white}
+                    ></AntDesign>
+                  </TouchableOpacity>
+                </Link>
+              </View>
+            );
+          },
+        }}
+      />
+      <Stack.Screen
+        name="filterPage"
+        options={{
+          headerTitle: "Filter",
+          headerTitleAlign: "center",
+          headerShadowVisible: false,
+          headerShown: true,
         }}
       />
     </Stack>
