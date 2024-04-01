@@ -15,32 +15,22 @@ export default function Layout() {
           fontWeight: "600",
           fontSize: 30,
         },
-        headerShown: false,
+        headerShown: true,
       }}
     >
       <Stack.Screen
-        name="indexProjectsPage"
+        name="indexAccountPage"
         options={{
-          headerTitle: "indexProjectsPage",
+          headerTitle: "Tài khoản",
           headerTitleAlign: "center",
           headerShadowVisible: false,
-          headerShown: true,
         }}
       />
 
       <Stack.Screen
-        name="projectsInfoPage"
+        name="profileSetupScreen"
         options={{
-          headerTitle: "projectsInfoPage",
-          headerTitleAlign: "center",
-          headerShadowVisible: false,
-          headerShown: true,
-        }}
-      />
-      <Stack.Screen
-        name="joinProjectsPage"
-        options={{
-          headerTitle: "joinProjectPage",
+          headerTitle: "Tài khoản",
           headerTitleAlign: "center",
           headerShadowVisible: false,
         }}
