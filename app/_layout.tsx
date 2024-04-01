@@ -51,7 +51,8 @@ function RootLayoutNav() {
         router.replace("/homePage/indexHome");
         setUser(user);
       } else {
-        console.log();
+        router.replace("/authScreen");
+        setUser(user);
       }
       // open comment này ra khi code xong trang
 

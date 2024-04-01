@@ -41,6 +41,7 @@ export default function authScreen() {
         email,
         password
       );
+      console.log(response);
       alert("Check your emails!");
     } catch (error: any) {
       alert("Sign up failed: " + error.message);

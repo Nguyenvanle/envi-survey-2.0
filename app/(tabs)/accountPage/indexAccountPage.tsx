@@ -14,7 +14,7 @@ export default function indexAccountPage() {
         radius={"md"}
         type="solid"
         onPress={() => {
-          router.navigate("/projectsPage/joinProjectsPage/enterPassword");
+          router.replace("/accountPage/profileSetupScreen");
         }}
       >
         Tuỳ chỉnh thông tin cá nhân
