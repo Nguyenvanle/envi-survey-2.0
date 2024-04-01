@@ -1,16 +1,16 @@
+import Colors from "@/constants/Colors";
+import { Link } from "expo-router";
+import React from "react";
 import {
-  View,
-  Text,
   Image,
+  ScrollView,
   StyleSheet,
-  Touchable,
-  TouchableOpacity, 
-  ScrollView} from 'react-native'
-import React from 'react'
-import { container } from '../../../constants/Styles';
-import { styles } from '../../../constants/TienDatStyles';
-import Colors from '@/constants/Colors';
-import { Link } from 'expo-router';
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
+import { container } from "../../../../constants/Styles";
+import { styles } from "../../../../constants/TienDatStyles";
 
 export default function samplingPeriod() {
   return (
@@ -50,7 +50,10 @@ export default function samplingPeriod() {
           <View style={StyleSheet.compose(styles.subFrame, { gap: 20 })}>
             <Text style={styles.subTittle}>Chi tiết mẫu</Text>
 
-            <Link href={"/projectsPage/destinationForm"} asChild>
+            <Link
+              href={"/projectsPage/projectsInfoPage/destinationForm"}
+              asChild
+            >
               <TouchableOpacity>
                 <View
                   style={StyleSheet.compose(
@@ -291,6 +294,4 @@ export default function samplingPeriod() {
       </View>
     </ScrollView>
   );
-} 
-
-
+}

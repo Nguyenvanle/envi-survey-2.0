@@ -96,7 +96,7 @@ export default function indexHome() {
           </View>
           {/* Search Button Link Box */}
           <View style={styles.searchBox}>
-            <Link href={"/searchPage"} replace asChild>
+            <Link href={"/searchPage/indexSearchPage"} replace asChild>
               <TouchableOpacity
                 style={{ ...button.light, alignContent: "flex-start" }}
               >

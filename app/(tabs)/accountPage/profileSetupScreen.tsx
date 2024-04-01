@@ -56,31 +56,6 @@ export default function profileSetupScreen() {
           console.error("Lỗi khi thêm người dùng mới: ", error);
         }
       }
-
-      // try {
-      //   const docRef = await addDoc(collection(FIREBASE_DB, "users"), {
-      //     first: "Ada",
-      //     last: "Lovelace",
-      //     born: 1815,
-      //   });
-      //   console.log("Document written with ID: ", docRef.id);
-      //   console.log("Truy vấn thành công, uid: " + uid);
-      // } catch (error) {
-      //   console.error("Lỗi khi truy vấn Firestore: ", error);
-      // }
-
-      // Lưu thông tin vào cơ sở dữ liệu
-      // FIREBASE_APP.database().ref('users/' + uid).set(userData)
-      //   .then(() => {
-      //     // Dữ liệu đã được lưu thành công, chúng ta có thể làm gì đó sau đó, ví dụ chuyển hướng người dùng
-      //     alert('Thông tin đã được lưu thành công!');
-      //     // Navigation to another screen if needed
-      //     // navigation.navigate('AnotherScreen');
-      //   })
-      //   .catch((error) => {
-      //     // Xử lý lỗi nếu có
-      //     alert('Đã có lỗi xảy ra: ' + error.message);
-      //   });
     } else {
       // Thông báo lỗi nếu không tìm thấy người dùng
       alert("Không tìm thấy người dùng. Vui lòng đăng nhập lại.");

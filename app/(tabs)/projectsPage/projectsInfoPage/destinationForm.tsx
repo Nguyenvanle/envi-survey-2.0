@@ -1,16 +1,9 @@
-import {
-    View,
-    Text,
-    Image,
-    StyleSheet,
-    Touchable,
-    TouchableOpacity, 
-    ScrollView} from 'react-native'
-  import React from 'react'
-  import { container } from './../../../constants/Styles';
-  import { styles } from '../../../constants/TienDatStyles';
-  import Colors from '@/constants/Colors';
+import Colors from "@/constants/Colors";
+import { container } from "@/constants/Styles";
+import { styles } from "@/constants/TienDatStyles";
 import { Feather } from "@expo/vector-icons";
+import React from "react";
+import { Image, ScrollView, StyleSheet, Text, View } from "react-native";
 
 export default function samplingPeriod() {
   return (
@@ -333,7 +326,4 @@ export default function samplingPeriod() {
       </View>
     </ScrollView>
   );
-} 
-  
-  
-  
+}

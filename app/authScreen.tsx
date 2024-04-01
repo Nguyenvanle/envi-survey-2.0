@@ -26,7 +26,7 @@ export default function authScreen() {
       alert("Đăng nhập thành công");
       router.replace("/(tabs)/homePage/indexHome");
     } catch (error: any) {
-      alert("Sign in failed: " + error.message);
+      alert("Đăng nhập thất bại: " + error.message);
     } finally {
       setLoading(false);
     }

@@ -1,33 +1,18 @@
-import {
-  View,
-  Text,
-  Image,
-  StyleSheet,
-  Touchable,
-  TouchableOpacity, 
-  ScrollView} from 'react-native'//press world "rnf" to create form quickly
-import React from 'react'
-import Colors from '@/constants/Colors';
-import {
-  button,
-  container,
-  defaultStyles,
-  description,
-} from "@/constants/Styles";
+import Colors from "@/constants/Colors";
+import { button, container } from "@/constants/Styles";
+import { AntDesign, MaterialIcons } from "@expo/vector-icons";
 import { Link } from "expo-router";
-import { FlipInEasyX } from "react-native-reanimated";
-import { Tabs } from "expo-router";
-import samplingPeriod from "./samplingPeriod";
-import { styles } from "../../../constants/TienDatStyles";
+import React from "react";
 import {
-  AntDesign,
-  FontAwesome6,
-  Ionicons,
-  MaterialCommunityIcons,
-  MaterialIcons,
-} from "@expo/vector-icons";
+  Image,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native"; //press world "rnf" to create form quickly
+import { styles } from "../../../../constants/TienDatStyles";
 // @ts-ignore
-import { UserAvatar } from "react-native-user-avatar";
 import { Avatar } from "@rneui/base";
 
 export default function IndexProjectInformation() {
@@ -238,7 +223,10 @@ export default function IndexProjectInformation() {
                     backgroundColor: Colors.primary,
                   })}
                 >
-                  <Link href={"/(tabs)/projectsPage/samplingPeriod"} asChild>
+                  <Link
+                    href={"/projectsPage/projectsInfoPage/samplingPeriod"}
+                    asChild
+                  >
                     <TouchableOpacity style={button.primary}>
                       <View style={styles.itemComponnent}>
                         <Text
@@ -389,7 +377,10 @@ export default function IndexProjectInformation() {
                     backgroundColor: Colors.primary,
                   })}
                 >
-                  <Link href={"/(tabs)/projectsPage/samplingPeriod"} asChild>
+                  <Link
+                    href={"/projectsPage/projectsInfoPage/samplingPeriod"}
+                    asChild
+                  >
                     <TouchableOpacity style={button.primary}>
                       <View style={styles.itemComponnent}>
                         <Text
