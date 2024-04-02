@@ -238,7 +238,7 @@ export default function filterPage() {
         </View>
         <View style={container.selectsContainerButton}>
           <View>
-            <Link href={"/searchPage/filterPage"} asChild>
+            <Link href={"/searchPage/indexSearchPage"} asChild>
               <TouchableOpacity style={container.selectedApply}>
                 <Text style={text.select}>Áp dụng</Text>
               </TouchableOpacity>

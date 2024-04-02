@@ -1,28 +1,26 @@
-import {
-  View,
-  Text,
-  StyleSheet,
-  ScrollView,
-  TouchableOpacity,
-} from "react-native";
-import React from "react";
-import { container, text, defaultStyles, button } from "@/constants/Styles";
+import Colors from "@/constants/Colors";
+import { button, container, defaultStyles, text } from "@/constants/Styles";
 import {
   AntDesign,
   Feather,
-  FontAwesome6,
   MaterialCommunityIcons,
   MaterialIcons,
   Octicons,
   SimpleLineIcons,
 } from "@expo/vector-icons";
-import Colors from "@/constants/Colors";
+import React from "react";
+import {
+  ScrollView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
 // Cái này để xóa cái cảnh báo xaml của vscode :D
 // @ts-ignore
-import UserAvatar from "react-native-user-avatar";
-import { SafeAreaProvider } from "react-native-safe-area-context";
-import { SearchBar } from "@rneui/themed";
 import { Link } from "expo-router";
+import { SafeAreaProvider } from "react-native-safe-area-context";
+import UserAvatar from "react-native-user-avatar";
 
 export default function indexHome() {
   return (
@@ -98,11 +96,20 @@ export default function indexHome() {
           {/* Search Button Link Box */}
           <View style={styles.searchBox}>
             <View style={container.button}>
-              <Link href={"/(tabs)/searchPage/searchPage"} asChild>
-                <TouchableOpacity style={{ ...button.light, alignContent: "flex-start" }}>
+              <Link href={"/(tabs)/searchPage/indexSearchPage"} asChild>
+                <TouchableOpacity
+                  style={{ ...button.light, alignContent: "flex-start" }}
+                >
                   <Octicons name="search" size={24} color={Colors.gray} />
-                    <Text style={{...button.textLight, fontWeight: "700", color: Colors.lightGray,}}
-                    >Tìm Kiếm dự án</Text>
+                  <Text
+                    style={{
+                      ...button.textLight,
+                      fontWeight: "700",
+                      color: Colors.lightGray,
+                    }}
+                  >
+                    Tìm Kiếm dự án
+                  </Text>
                 </TouchableOpacity>
               </Link>
             </View>
