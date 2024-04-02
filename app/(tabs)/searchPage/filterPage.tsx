@@ -1,9 +1,8 @@
-import { View, Text, TouchableOpacity } from "react-native";
-import React, { useState } from "react";
-import { button, container, defaultStyles, text } from "@/constants/Styles";
-import { Link } from "expo-router";
 import Colors from "@/constants/Colors";
-import { color } from "@rneui/base";
+import { container, text } from "@/constants/Styles";
+import { Link } from "expo-router";
+import React, { useState } from "react";
+import { Text, TouchableOpacity, View } from "react-native";
 
 export default function filterPage() {
   const [ischoose1, setIschoose1] = useState(true);
@@ -239,7 +238,7 @@ export default function filterPage() {
         </View>
         <View style={container.selectsContainerButton}>
           <View>
-            <Link href={"/(tabs)/searchPage/searchPage"} asChild>
+            <Link href={"/searchPage/filterPage"} asChild>
               <TouchableOpacity style={container.selectedApply}>
                 <Text style={text.select}>Áp dụng</Text>
               </TouchableOpacity>
