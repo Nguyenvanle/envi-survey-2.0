@@ -1,25 +1,26 @@
-import {
-  View,
-  Text,
-  StyleSheet,
-  ScrollView,
-  TouchableOpacity,
-} from "react-native";
-import React from "react";
-import { container, text, defaultStyles, button } from "@/constants/Styles";
+import Colors from "@/constants/Colors";
+import { button, container, defaultStyles, text } from "@/constants/Styles";
 import {
   AntDesign,
+  Feather,
   MaterialCommunityIcons,
   MaterialIcons,
   Octicons,
+  SimpleLineIcons,
 } from "@expo/vector-icons";
-import Colors from "@/constants/Colors";
+import React from "react";
+import {
+  ScrollView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
 // Cái này để xóa cái cảnh báo xaml của vscode :D
 // @ts-ignore
-import UserAvatar from "react-native-user-avatar";
-import { SafeAreaProvider } from "react-native-safe-area-context";
-import { SearchBar } from "@rneui/themed";
 import { Link } from "expo-router";
+import { SafeAreaProvider } from "react-native-safe-area-context";
+import UserAvatar from "react-native-user-avatar";
 
 export default function indexHome() {
   return (
@@ -94,80 +95,262 @@ export default function indexHome() {
           </View>
           {/* Search Button Link Box */}
           <View style={styles.searchBox}>
-            <Link href={"/searchPage"} replace asChild>
-              <TouchableOpacity
-                style={{ ...button.light, alignContent: "flex-start" }}
-              >
-                {/* <SearchBar
-                  placeholder="Tìm kiếm dự án"
-                  platform="android"
-                  containerStyle={styles.searchContainer}
-                ></SearchBar> */}
-                <Octicons name="search" size={24} color={Colors.gray} />
-                <Text
-                  style={{
-                    ...button.textLight,
-                    fontWeight: "400",
-                    color: Colors.lightGray,
-                  }}
+            <View style={container.button}>
+              <Link href={"/(tabs)/searchPage/indexSearchPage"} asChild>
+                <TouchableOpacity
+                  style={{ ...button.light, alignContent: "flex-start" }}
                 >
-                  Tìm dự án
-                </Text>
-              </TouchableOpacity>
-            </Link>
-          </View>
-          {/* My Projects List */}
-          <View style={{ ...styles.hello, paddingVertical: 0 }}>
-            <View style={styles.textContainer}>
-              <Text style={styles.textPrimary}>James</Text>
+                  <Octicons name="search" size={24} color={Colors.gray} />
+                  <Text
+                    style={{
+                      ...button.textLight,
+                      fontWeight: "700",
+                      color: Colors.lightGray,
+                    }}
+                  >
+                    Tìm Kiếm dự án
+                  </Text>
+                </TouchableOpacity>
+              </Link>
             </View>
           </View>
-          <View style={styles.userInfoContainer}>
+          {/* My Projects List Title */}
+          <View style={{ ...styles.hello, padding: 0 }}>
+            <View style={styles.textContainer}>
+              <Text style={styles.textPrimary}>Dự án của tôi</Text>
+            </View>
+          </View>
+          {/* My Projects List Items */}
+          <View
+            style={{
+              ...styles.userInfoContainer,
+              backgroundColor: Colors.blueWhite,
+            }}
+          >
             <View style={styles.infoContainer}>
               <UserAvatar
                 size={48}
-                name="Avishay Bar"
+                name="James Cameron"
                 bgColors={[Colors.lightGray]}
                 style={styles.avatar}
               />
 
               <View style={styles.namePosition}>
-                <Text style={{ ...styles.textPrimary, color: Colors.gray }}>
+                <Text
+                  style={{
+                    ...styles.textPrimary,
+                    color: Colors.gray,
+                    fontSize: 14,
+                    lineHeight: 18,
+                  }}
+                >
+                  Khảo sát đất Ninh Kiều
+                </Text>
+
+                <Text
+                  style={{
+                    ...styles.text,
+                    color: Colors.muted,
+                    fontSize: 12,
+                  }}
+                >
                   James Cameron
                 </Text>
-                <Text style={{ ...styles.text, color: Colors.gray }}>
-                  Quản Lý
+              </View>
+
+              <View
+                style={{
+                  ...styles.icon,
+                  flexDirection: "row",
+                  gap: 4,
+                }}
+              >
+                <SimpleLineIcons name="chart" size={20} color={Colors.muted} />
+                <Text
+                  style={{
+                    ...styles.text,
+                    color: Colors.muted,
+                    fontSize: 12,
+                  }}
+                >
+                  80.5%
+                </Text>
+              </View>
+            </View>
+
+            <View style={{ ...defaultStyles.separator }}></View>
+
+            <View style={styles.projectContainer}>
+              <View style={styles.divideContainer}>
+                <Feather name="clock" size={16} color={Colors.success} />
+
+                <Text style={{ ...styles.miniText, color: Colors.success }}>
+                  19/03/2024
                 </Text>
               </View>
 
-              <View style={styles.icon}>
-                <MaterialIcons
-                  name="navigate-next"
-                  size={24}
-                  color={Colors.white}
-                />
+              <View style={styles.divideContainer}>
+                <Feather name="clock" size={16} color={Colors.red} />
+
+                <Text style={{ ...styles.miniText, color: Colors.red }}>
+                  19/03/2024
+                </Text>
               </View>
             </View>
-            <View style={defaultStyles.separator}></View>
+          </View>
+
+          <View
+            style={{
+              ...styles.userInfoContainer,
+              backgroundColor: Colors.blueWhite,
+            }}
+          >
+            <View style={styles.infoContainer}>
+              <UserAvatar
+                size={48}
+                name="James Cameron"
+                bgColors={[Colors.lightGray]}
+                style={styles.avatar}
+              />
+
+              <View style={styles.namePosition}>
+                <Text
+                  style={{
+                    ...styles.textPrimary,
+                    color: Colors.gray,
+                    fontSize: 14,
+                    lineHeight: 18,
+                  }}
+                >
+                  Khảo sát đất Ninh Kiều
+                </Text>
+
+                <Text
+                  style={{
+                    ...styles.text,
+                    color: Colors.muted,
+                    fontSize: 12,
+                  }}
+                >
+                  James Cameron
+                </Text>
+              </View>
+
+              <View
+                style={{
+                  ...styles.icon,
+                  flexDirection: "row",
+                  gap: 4,
+                }}
+              >
+                <SimpleLineIcons name="chart" size={20} color={Colors.muted} />
+                <Text
+                  style={{
+                    ...styles.text,
+                    color: Colors.muted,
+                    fontSize: 12,
+                  }}
+                >
+                  80.5%
+                </Text>
+              </View>
+            </View>
+
+            <View style={{ ...defaultStyles.separator }}></View>
+
             <View style={styles.projectContainer}>
               <View style={styles.divideContainer}>
-                <MaterialCommunityIcons
-                  name="folder-check-outline"
-                  size={16}
-                  color={Colors.gray}
-                />
+                <Feather name="clock" size={16} color={Colors.success} />
 
-                <Text style={styles.miniText}>12 dự án</Text>
+                <Text style={{ ...styles.miniText, color: Colors.success }}>
+                  19/03/2024
+                </Text>
               </View>
 
               <View style={styles.divideContainer}>
-                <MaterialCommunityIcons
-                  name="folder-check-outline"
-                  size={16}
-                  color={Colors.gray}
-                />
+                <Feather name="clock" size={16} color={Colors.red} />
 
-                <Text style={styles.miniText}>6 dự án</Text>
+                <Text style={{ ...styles.miniText, color: Colors.red }}>
+                  19/03/2024
+                </Text>
+              </View>
+            </View>
+          </View>
+
+          <View
+            style={{
+              ...styles.userInfoContainer,
+              backgroundColor: Colors.blueWhite,
+            }}
+          >
+            <View style={styles.infoContainer}>
+              <UserAvatar
+                size={48}
+                name="James Cameron"
+                bgColors={[Colors.lightGray]}
+                style={styles.avatar}
+              />
+
+              <View style={styles.namePosition}>
+                <Text
+                  style={{
+                    ...styles.textPrimary,
+                    color: Colors.gray,
+                    fontSize: 14,
+                    lineHeight: 18,
+                  }}
+                >
+                  Khảo sát đất Ninh Kiều
+                </Text>
+
+                <Text
+                  style={{
+                    ...styles.text,
+                    color: Colors.muted,
+                    fontSize: 12,
+                  }}
+                >
+                  James Cameron
+                </Text>
+              </View>
+
+              <View
+                style={{
+                  ...styles.icon,
+                  flexDirection: "row",
+                  gap: 4,
+                }}
+              >
+                <SimpleLineIcons name="chart" size={20} color={Colors.muted} />
+                <Text
+                  style={{
+                    ...styles.text,
+                    color: Colors.muted,
+                    fontSize: 12,
+                  }}
+                >
+                  80.5%
+                </Text>
+              </View>
+            </View>
+
+            <View style={{ ...defaultStyles.separator }}></View>
+
+            <View style={styles.projectContainer}>
+              <View style={styles.divideContainer}>
+                <Feather name="clock" size={16} color={Colors.success} />
+
+                <Text style={{ ...styles.miniText, color: Colors.success }}>
+                  19/03/2024
+                </Text>
+              </View>
+
+              <View style={styles.divideContainer}>
+                <Feather name="clock" size={16} color={Colors.red} />
+
+                <Text style={{ ...styles.miniText, color: Colors.red }}>
+                  19/03/2024
+                </Text>
               </View>
             </View>
           </View>
@@ -230,7 +413,9 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     gap: 12,
   },
-  avatar: {},
+  avatar: {
+    flexShrink: 0,
+  },
   namePosition: {
     flex: 0,
     alignItems: "flex-start",

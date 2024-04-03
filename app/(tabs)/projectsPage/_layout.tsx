@@ -1,12 +1,5 @@
 import Colors from "@/constants/Colors";
-import FontAwesome from "@expo/vector-icons/FontAwesome";
-import { useFonts } from "expo-font";
-import { Link, Stack } from "expo-router";
-import * as SplashScreen from "expo-splash-screen";
-import { useEffect } from "react";
-import { TouchableOpacity, View } from "react-native";
-import { AntDesign } from "@expo/vector-icons";
-import { container } from "@/constants/Styles";
+import { Stack } from "expo-router";
 //============ Là tệp định nghĩa layout chung cho các màn hình trong ứng dụng ===============
 
 export default function Layout() {
@@ -22,13 +15,32 @@ export default function Layout() {
           fontWeight: "600",
           fontSize: 30,
         },
-        headerShown: true,
+        headerShown: false,
       }}
     >
       <Stack.Screen
-        name="indexHome"
+        name="indexProjectsPage"
         options={{
-          headerTitle: "Trang Chủ",
+          headerTitle: "indexProjectsPage",
+          headerTitleAlign: "center",
+          headerShadowVisible: false,
+          headerShown: true,
+        }}
+      />
+
+      <Stack.Screen
+        name="projectsInfoPage"
+        options={{
+          headerTitle: "projectsInfoPage",
+          headerTitleAlign: "center",
+          headerShadowVisible: false,
+          headerShown: true,
+        }}
+      />
+      <Stack.Screen
+        name="joinProjectsPage"
+        options={{
+          headerTitle: "joinProjectPage",
           headerTitleAlign: "center",
           headerShadowVisible: false,
         }}

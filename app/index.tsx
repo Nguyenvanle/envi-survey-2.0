@@ -1,32 +1,21 @@
-import {
-  Image,
-  StyleSheet,
-  Text,
-  Touchable,
-  TouchableOpacity,
-  View,
-} from "react-native";
 import Colors from "@/constants/Colors";
-import { button, container, description } from "@/constants/Styles";
-import { Link } from "expo-router";
+import { container } from "@/constants/Styles";
+import { Button } from "@rneui/base";
+import React from "react";
+import { StyleSheet } from "react-native";
+import { SafeAreaProvider } from "react-native-safe-area-context";
 
 export default function index() {
   return (
-    <View style={container.root}>
-      <View style={container.box}>
-        <View style={container.text}>
-          <Text style={description.headline}>Dang nhap thanh cong</Text>
-          <Text>Ma quan li cua ban la</Text>
-          <Text>QL2110082</Text>
-        </View>
-        <View style={container.button}>
-          <Link href={"/(tabs)/homePage/indexHome"} replace asChild>
-            <TouchableOpacity style={button.primary}>
-              <Text style={button.textPrimary}>Xong</Text>
-            </TouchableOpacity>
-          </Link>
-        </View>
-      </View>
-    </View>
+    <SafeAreaProvider style={container.root}>
+      <Button
+        title="loading"
+        type="clear"
+        loading
+        loadingProps={{ size: 70, color: Colors.muted }}
+      />
+    </SafeAreaProvider>
   );
 }
+
+const styles = StyleSheet.create({});

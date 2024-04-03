@@ -1,12 +1,5 @@
 import Colors from "@/constants/Colors";
-import FontAwesome from "@expo/vector-icons/FontAwesome";
-import { useFonts } from "expo-font";
-import { Link, Stack } from "expo-router";
-import * as SplashScreen from "expo-splash-screen";
-import { useEffect } from "react";
-import { TouchableOpacity, View } from "react-native";
-import { AntDesign } from "@expo/vector-icons";
-import { container } from "@/constants/Styles";
+import { Stack } from "expo-router";
 //============ Là tệp định nghĩa layout chung cho các màn hình trong ứng dụng ===============
 
 export default function Layout() {
@@ -26,9 +19,18 @@ export default function Layout() {
       }}
     >
       <Stack.Screen
-        name="indexHome"
+        name="indexAccountPage"
         options={{
-          headerTitle: "Trang Chủ",
+          headerTitle: "Tài khoản",
+          headerTitleAlign: "center",
+          headerShadowVisible: false,
+        }}
+      />
+
+      <Stack.Screen
+        name="profileSetupScreen"
+        options={{
+          headerTitle: "Tài khoản",
           headerTitleAlign: "center",
           headerShadowVisible: false,
         }}
