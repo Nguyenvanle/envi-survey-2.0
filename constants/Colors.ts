@@ -1,7 +1,7 @@
 export default {
   primary: "#00ADB5",
   teal: "#71C9CE",
-  muted: "#8696BB",
+  muted: "#3A5A92",
   background: "#393E46",
   gray: "#222831",
   lightGray: "#393E46",
@@ -10,9 +10,6 @@ export default {
   orange: "#FFCF96",
   white: "#EEEEEE",
   blueWhite: "#E3FDFD",
-  deepBlue: "#0048B5",
   mint: "#CDFADB",
   success: "#00B57F",
-  filterback: "#6A6B6B",
-  selector: "#858597"
 };

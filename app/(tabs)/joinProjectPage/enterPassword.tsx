@@ -30,7 +30,7 @@ export default function enterPassword() {
           </View>
         </View>
         <View style={container.button}>
-          <Link href={"./successJoinProject"} asChild>
+          <Link href={"/(tabs)/joinProjectPage/successJoinProject"} asChild>
             <TouchableOpacity style={button.primary}>
               <Text style={button.textPrimary}>Tham gia</Text>
             </TouchableOpacity>

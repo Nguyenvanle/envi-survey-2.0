@@ -1,7 +1,7 @@
-import { button, container, description } from "@/constants/Styles";
-import { Link } from "expo-router";
 import React from "react";
 import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { container, description, button } from "@/constants/Styles";
+import { Link } from "expo-router";
 
 export default function successCreateProject() {
   const openLink = () => {};
@@ -26,7 +26,7 @@ export default function successCreateProject() {
       </View>
       {/* Create a button container */}
       <View style={container.button}>
-        <Link href={"/projectsPage/indexProjectsPage"} asChild>
+        <Link href={"/projectsPage"} asChild>
           {/* 'replace' to remove back button */}
           <TouchableOpacity style={button.primary}>
             <Text style={button.textPrimary}>Cấu hình dự án</Text>

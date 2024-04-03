@@ -1,6 +1,7 @@
 import Colors from "@/constants/Colors";
-import { Ionicons, MaterialCommunityIcons, Octicons } from "@expo/vector-icons";
+import { Octicons, Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
 import { Tabs } from "expo-router";
+import createPage from "./createPage/indexCreateProject";
 
 export default function Layout() {
   return (
@@ -92,7 +93,7 @@ export default function Layout() {
         }}
       />
       <Tabs.Screen
-        name="accountPage"
+        name="joinProjectPage" //mượn tạm chỗ để hiển thị
         options={{
           tabBarIcon: ({ color }) => (
             <MaterialCommunityIcons

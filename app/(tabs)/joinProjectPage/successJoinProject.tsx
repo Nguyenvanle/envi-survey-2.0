@@ -17,7 +17,7 @@ export default function successJoinProject() {
               <Text>"Khảo sát đất khu 91b"</Text>
             </View>
             <View style={container.button}>
-              <Link href={"./performProject"} asChild>
+              <Link href={"/(tabs)/joinProjectPage/performProject"} asChild>
                 <TouchableOpacity style={button.success}>
                   <Text style={button.textPrimary}>Tham gia</Text>
                 </TouchableOpacity>
