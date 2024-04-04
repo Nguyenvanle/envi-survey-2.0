@@ -52,20 +52,6 @@ export default function authScreen() {
 
   return (
     <View style={container.root}>
-      {/* <View style={container.box}>
-            <View style={container.text}>
-              <Text style={description.headline}>Dang nhap thanh cong</Text>
-              <Text>Ma quan li cua ban la</Text>
-              <Text>QL2110082</Text>
-            </View>
-            <View style={container.button}>
-              <Link href={"/(tabs)/homePage/indexHome"} replace asChild>
-                <TouchableOpacity style={button.primary}>
-                  <Text style={button.textPrimary}>Xong</Text>
-                </TouchableOpacity>
-              </Link>
-            </View>
-          </View> */}
       <View style={container.input}>
         <Text style={text.label}>Tài khoản</Text>
         <View style={container.button}>
