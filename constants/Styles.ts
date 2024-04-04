@@ -1,5 +1,4 @@
 import Colors from "@/constants/Colors";
-import { Stack } from "expo-router";
 import { StyleSheet } from "react-native";
 
 export const defaultStyles = StyleSheet.create({
