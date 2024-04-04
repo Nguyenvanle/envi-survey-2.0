@@ -2,11 +2,18 @@ import Colors from "@/constants/Colors";
 import { container } from "@/constants/Styles";
 import { AntDesign } from "@expo/vector-icons";
 import { Link, Stack } from "expo-router";
-import { TouchableOpacity, View } from "react-native";
+import { useLayoutEffect } from "react";
+import { Platform, TouchableOpacity, View } from "react-native";
 //============ Là tệp định nghĩa layout chung cho các màn hình trong ứng dụng ===============
 
 export default function Layout() {
   // https://docs.expo.dev/router/advanced/stack/ to Custom Header
+
+  useLayoutEffect(() => {
+    if (Platform.OS === "ios") {
+    }
+  }, []);
+
   return (
     <Stack
       screenOptions={{
@@ -30,8 +37,12 @@ export default function Layout() {
           headerShown: true,
           headerSearchBarOptions: {
             placeholder: "Tìm kiếm dự án",
+            textColor: Colors.white,
+            hintTextColor: Colors.white,
+            headerIconColor: Colors.white,
+            shouldShowHintSearchIcon: false,
           },
-          headerRight: () => {
+          headerLeft: () => {
             return (
               <View style={container.button}>
                 <Link href={"/(tabs)/searchPage/filterPage"} asChild>
@@ -45,6 +56,9 @@ export default function Layout() {
                 </Link>
               </View>
             );
+          },
+          headerRight: () => {
+            return <View style={container.button}></View>;
           },
         }}
       />

@@ -1,5 +1,4 @@
 import Colors from "@/constants/Colors";
-import { Stack } from "expo-router";
 import { StyleSheet } from "react-native";
 
 export const defaultStyles = StyleSheet.create({
@@ -62,12 +61,13 @@ export const description = StyleSheet.create({
 export const container = StyleSheet.create({
   root: {
     flex: 1,
-    padding: 20,
-    paddingBottom: 100,
+    padding: 10,
+    paddingBottom: 60,
     backgroundColor: Colors.background,
     alignItems: "center",
     justifyContent: "center",
     gap: 20,
+    marginBottom: 10,
   },
   scrollView: {
     flex: 1,
@@ -154,10 +154,10 @@ export const container = StyleSheet.create({
     gap: 20,
   },
   boxFilter: {
-    flex: 0,
-    padding: 10,
     backgroundColor: Colors.filterback,
-    gap: 20,
+    gap: 10,
+    padding: 5,
+    marginBottom: 0,
     shadowOffset: {
       width: 0,
       height: 4,
@@ -183,7 +183,7 @@ export const container = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     backgroundColor: Colors.selector,
-    gap: 20,
+    gap: 10,
     padding: 10,
     borderRadius: 10,
   },

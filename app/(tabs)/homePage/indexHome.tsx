@@ -16,10 +16,11 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-// Cái này để xóa cái cảnh báo xaml của vscode :D
-// @ts-ignore
+
 import { Link } from "expo-router";
 import { SafeAreaProvider } from "react-native-safe-area-context";
+// Cái này để xóa cái cảnh báo xaml của vscode :D
+// @ts-ignore
 import UserAvatar from "react-native-user-avatar";
 
 export default function indexHome() {
@@ -96,7 +97,7 @@ export default function indexHome() {
           {/* Search Button Link Box */}
           <View style={styles.searchBox}>
             <View style={container.button}>
-              <Link href={"/(tabs)/searchPage/indexSearchPage"} asChild>
+              <Link href={"/(tabs)/searchPage/indexSearchPage "} asChild>
                 <TouchableOpacity
                   style={{ ...button.light, alignContent: "flex-start" }}
                 >
