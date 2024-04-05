@@ -9,6 +9,7 @@ import {
 } from "firebase/auth";
 import { useState } from "react";
 import { ActivityIndicator, Text, TextInput, View } from "react-native";
+import { SafeAreaProvider } from "react-native-safe-area-context";
 
 export default function authScreen() {
   const [email, setEmail] = useState("");
@@ -51,7 +52,7 @@ export default function authScreen() {
   };
 
   return (
-    <View style={container.root}>
+    <SafeAreaProvider style={{ ...container.root, marginBottom: 0 }}>
       <View style={container.input}>
         <Text style={text.label}>Tài khoản</Text>
         <View style={container.button}>
@@ -88,6 +89,6 @@ export default function authScreen() {
           <Button title="SignUp" onPress={() => signUp()} />
         </>
       )}
-    </View>
+    </SafeAreaProvider>
   );
 }

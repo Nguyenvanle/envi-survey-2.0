@@ -41,23 +41,19 @@ export default function RootLayout() {
 function RootLayoutNav() {
   // https://docs.expo.dev/router/advanced/stack/ to Custom Header
 
-  // const [user, setUser] = useState<User | null>(null);
+  const [user, setUser] = useState<User | null>(null);
 
-  // useEffect(() => {
-  //   onAuthStateChanged(FIREBASE_AUTH, (user) => {
-  //     if (user !== null) {
-  //       router.replace("/homePage/indexHome");
-  //       setUser(user);
-  //     } else {
-  //       router.replace("/authScreen");
-  //       setUser(user);
-  //     }
-  //     // open comment này ra khi code xong trang
-
-  //     // router.replace("/(tabs)/accountPage/profileSetupScreen");
-  //     // truy cập nhanh vào trang đỡ phải bấm, close comment lúc code xong trang
-  //   });
-  // }, []);
+  useEffect(() => {
+    onAuthStateChanged(FIREBASE_AUTH, (user) => {
+      if (user !== null) {
+        router.replace("/homePage/indexHome");
+        setUser(user);
+      } else {
+        router.replace("/authScreen");
+        setUser(user);
+      }
+    });
+  }, []);
 
   return (
     <Stack

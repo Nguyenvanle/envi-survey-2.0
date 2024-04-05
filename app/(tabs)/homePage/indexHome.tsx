@@ -43,7 +43,7 @@ export default function indexHome(userId: any) {
   }
 
   return (
-    <SafeAreaProvider>
+    <SafeAreaProvider style={{ backgroundColor: Colors.gray }}>
       <ScrollView style={container.scrollView}>
         <View style={container.root}>
           {/* Hello Frame */}

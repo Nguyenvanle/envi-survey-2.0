@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 // Đảm bảo firebase đã được khởi tạo ở đâu đó trong ứng dụng của bạn
 
 const useFirebaseUser = (userId: any) => {
+  const [user, setUser] = useState(null);
   const [username, setUsername] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const uid = FIREBASE_AUTH.currentUser?.uid;
