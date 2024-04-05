@@ -1,8 +1,7 @@
-import { FIREBASE_AUTH } from "@/FirebaseConfig";
 import Colors from "@/constants/Colors";
 import { button, container } from "@/constants/Styles";
-import { Link, router } from "expo-router";
-import { signOut } from "firebase/auth";
+import { useSignOut } from "@/constants/logic/useFirebaseUser";
+import { Link } from "expo-router";
 import React from "react";
 import { Text, TouchableOpacity, View } from "react-native";
 
@@ -21,10 +20,7 @@ export default function createPage() {
         {/* <Link href={"/"} replace asChild> */}
         <TouchableOpacity
           style={{ ...button.primary, backgroundColor: Colors.red }}
-          onPress={() => {
-            signOut(FIREBASE_AUTH);
-            router.replace("/");
-          }}
+          onPress={useSignOut}
         >
           <Text style={button.textPrimary}>Đăng Xuất</Text>
         </TouchableOpacity>

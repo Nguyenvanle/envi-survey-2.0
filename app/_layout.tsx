@@ -41,23 +41,8 @@ export default function RootLayout() {
 function RootLayoutNav() {
   // https://docs.expo.dev/router/advanced/stack/ to Custom Header
 
-  const [user, setUser] = useState<User | null>(null);
-
-  useEffect(() => {
-    onAuthStateChanged(FIREBASE_AUTH, (user) => {
-      if (user !== null) {
-        router.replace("/homePage/indexHome");
-        setUser(user);
-      } else {
-        router.replace("/authScreen");
-        setUser(user);
-      }
-    });
-  }, []);
-
   return (
     <Stack
-      initialRouteName="Login"
       screenOptions={{
         headerStyle: {
           backgroundColor: Colors.background,

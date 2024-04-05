@@ -1,5 +1,5 @@
 import { button, container, input, text } from "@/constants/Styles";
-import useFirebaseUser from "@/constants/logic/useFirebaseUser";
+import { useFirebaseUser } from "@/constants/logic/useFirebaseUser";
 import { Link } from "expo-router";
 import React from "react";
 import { Text, TextInput, TouchableOpacity, View } from "react-native";
@@ -12,7 +12,7 @@ export default function enterPassword(userId: any) {
       <View style={container.body}>
         <View style={container.header}>
           <Text style={text.header}>Bạn đang tham gia dự án</Text>
-          <Text style={text.headerPrimary}>{username}</Text>
+          <Text style={text.headerPrimary}>"Khảo sát khu đất 91B"</Text>
         </View>
         <View style={container.input}>
           <Text

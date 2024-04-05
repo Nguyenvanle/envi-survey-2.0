@@ -1,8 +1,10 @@
 import Colors from "@/constants/Colors";
 import { container } from "@/constants/Styles";
-import useFirebaseUser from "@/constants/logic/useFirebaseUser";
+import {
+  useAuthListener,
+  useFirebaseUser,
+} from "@/constants/logic/useFirebaseUser";
 import { Button, Text } from "@rneui/base";
-import { Redirect } from "expo-router";
 import React from "react";
 import { StyleSheet } from "react-native";
 import { SafeAreaProvider } from "react-native-safe-area-context";
@@ -10,8 +12,7 @@ import { SafeAreaProvider } from "react-native-safe-area-context";
 const index = (userId: any) => {
   const { username, isLoading } = useFirebaseUser(userId);
 
-  return <Redirect href={"/authScreen"} />;
-  return <Redirect href={"/homePage/indexHome"} />;
+  const userListener = useAuthListener();
 
   if (isLoading) {
     return (
