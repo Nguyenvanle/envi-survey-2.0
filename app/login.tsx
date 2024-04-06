@@ -1,5 +1,7 @@
+import Colors from "@/constants/Colors";
 import { container } from "@/constants/Styles";
-import { Image, ImageBackground, View } from "react-native";
+import ButtonFillContainer from "@/constants/components/create/ButtonFillContainer";
+import { Image, ImageBackground, Text, View } from "react-native";
 
 export default function login() {
   const backgroundImage = require("../assets/images/background.jpg");
@@ -14,6 +16,12 @@ export default function login() {
             style={{ maxWidth: 300, maxHeight: 125 }}
           ></Image>
           <Image source={image} style={container.image} />
+          <ButtonFillContainer
+            link={"/authScreen"}
+            onpress={null}
+            color={Colors.background}
+            title={<Text style={{ padding: 5 }}>Đăng Nhập</Text>}
+          ></ButtonFillContainer>
         </View>
       </View>
     </ImageBackground>

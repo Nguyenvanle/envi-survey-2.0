@@ -28,7 +28,6 @@ const index = (userId: any) => {
     );
   }
 
-
   return (
     <SafeAreaProvider style={container.root}>
       <Button

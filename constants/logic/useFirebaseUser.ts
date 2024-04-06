@@ -9,6 +9,7 @@ import {
 } from "firebase/auth";
 import { doc, getDoc } from "firebase/firestore";
 import { useEffect, useState } from "react";
+import { Alert } from "react-native";
 
 // Đảm bảo firebase đã được khởi tạo ở đâu đó trong ứng dụng của bạn
 
@@ -98,7 +99,9 @@ const useSignOut = () => {
   signOut(FIREBASE_AUTH)
     .then(() => {
       // Đăng xuất thành công, chuyển hướng người dùng đến màn hình đăng nhập.
-      alert("Đăng xuất thành công 🥰");
+      Alert.alert("Thông báo", "Đăng xuất thành công", [
+        { text: "Ok", onPress: () => console.log("Đăng xuất") },
+      ]);
       router.push("/");
     })
     .catch((error) => {
@@ -114,4 +117,3 @@ export {
   useFirebaseUser,
   useSignOut,
 };
-
