@@ -1,14 +1,19 @@
 import { FIREBASE_AUTH } from "@/FirebaseConfig";
 import Colors from "@/constants/Colors";
-import { container, input, text } from "@/constants/Styles";
-import { Button } from "@rneui/base";
+import { button, container, input, text } from "@/constants/Styles";
 import { router } from "expo-router";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
 } from "firebase/auth";
 import React, { useState } from "react";
-import { ActivityIndicator, Text, TextInput, View } from "react-native";
+import {
+  ActivityIndicator,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View,
+} from "react-native";
 
 class Person {
   fullName: string;
@@ -62,59 +67,61 @@ export default function authScreen() {
       setLoading(false);
     }
   };
+  const backgroundImage = require("../assets/images/background.jpg");
 
   return (
-    <View style={container.root}>
-      {/* <View style={container.box}>
-            <View style={container.text}>
-              <Text style={description.headline}>Dang nhap thanh cong</Text>
-              <Text>Ma quan li cua ban la</Text>
-              <Text>QL2110082</Text>
-            </View>
-            <View style={container.button}>
-              <Link href={"/(tabs)/homePage/indexHome"} replace asChild>
-                <TouchableOpacity style={button.primary}>
-                  <Text style={button.textPrimary}>Xong</Text>
-                </TouchableOpacity>
-              </Link>
-            </View>
-          </View> */}
-      <View style={container.input}>
-        <Text style={text.label}>Tài khoản</Text>
-        <View style={container.button}>
-          <TextInput
-            style={input.normal}
-            textContentType="emailAddress"
-            value={email}
-            placeholder="Nhập tài khoản"
-            autoCapitalize="none"
-            onChangeText={(text) => setEmail(text)}
-          />
-        </View>
-      </View>
-      <View style={container.input}>
-        <Text style={text.label}>Mật khẩu</Text>
-        <View style={container.button}>
-          <TextInput
-            style={input.normal}
-            secureTextEntry={true}
-            value={password}
-            textContentType="password"
-            placeholder="Nhập mật khẩu"
-            autoCapitalize="none"
-            onChangeText={(text) => setPassword(text)}
-          />
-        </View>
-      </View>
+    <View style={{ ...container.root, paddingBottom: 0 }}>
+      <View style={{ ...container.rootNoColor }}>
+        <Text style={{ ...text.headerPrimary, fontSize: 36 }}>Đăng nhập</Text>
 
-      {loading ? (
-        <ActivityIndicator size="large" color={Colors.white} />
-      ) : (
-        <>
-          <Button title="SignIn" onPress={() => signIn()} />
-          <Button title="SignUp" onPress={() => signUp()} />
-        </>
-      )}
+        <View style={container.Center}>
+          <View style={{ ...container.input }}>
+            <Text style={{ ...text.label }}>Tài khoản</Text>
+            <View style={container.button}>
+              <TextInput
+                style={input.normal}
+                textContentType="emailAddress"
+                value={email}
+                placeholder="Nhập tài khoản"
+                autoCapitalize="none"
+                onChangeText={(text) => setEmail(text)}
+              />
+            </View>
+          </View>
+          <View style={{ ...container.input, marginBottom: 60 }}>
+            <Text style={text.label}>Mật khẩu</Text>
+            <View style={container.button}>
+              <TextInput
+                style={input.normal}
+                secureTextEntry={true}
+                value={password}
+                textContentType="password"
+                placeholder="Nhập mật khẩu"
+                autoCapitalize="none"
+                onChangeText={(text) => setPassword(text)}
+              />
+            </View>
+          </View>
+        </View>
+
+        {loading ? (
+          <ActivityIndicator size="large" color={Colors.white} />
+        ) : (
+          <>
+            <View style={container.button}>
+              {/* 'replace' to remove back button */}
+              <TouchableOpacity style={button.light} onPress={() => signUp()}>
+                <Text style={button.textLight}>Đăng Ký</Text>
+              </TouchableOpacity>
+
+              {/* 'replace' to remove back button */}
+              <TouchableOpacity style={button.primary} onPress={() => signIn()}>
+                <Text style={button.textPrimary}>Đăng Nhập</Text>
+              </TouchableOpacity>
+            </View>
+          </>
+        )}
+      </View>
     </View>
   );
 }

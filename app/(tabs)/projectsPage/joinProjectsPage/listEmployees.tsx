@@ -1,13 +1,23 @@
 import Colors from "@/constants/Colors";
 import { container } from "@/constants/Styles";
 import { styles } from "@/constants/TienDatStyles";
+import { CustomAvatar } from "@/constants/components/home/CustomAvatar";
+
+import { getInitials } from "@/constants/logic/getInitials";
 import FontAwesome5 from "@expo/vector-icons/build/FontAwesome5";
 import Octicons from "@expo/vector-icons/build/Octicons";
 import React from "react";
 import { ScrollView, Text, View } from "react-native";
 import { SafeAreaProvider } from "react-native-safe-area-context";
-import UserAvatar from "react-native-user-avatar";
-export default function listEmployees() {
+
+export default function listEmployees(props: {
+  user: {
+    name: string;
+    position: string;
+    projectsTaken: number;
+    projectsCompleted: number;
+  };
+}) {
   return (
     <SafeAreaProvider>
       <ScrollView>
@@ -21,12 +31,15 @@ export default function listEmployees() {
             }}
           >
             <View style={styles.infoContainer}>
-              <UserAvatar
-                size={48}
-                name="James Cameron"
-                bgColors={[Colors.lightGray]}
-                style={{ ...styles.avatar, width: 40, height: 40 }}
-              />
+              <View
+                style={{
+                  maxHeight: 47,
+                  minHeight: 17,
+                  height: "auto",
+                }}
+              >
+                {CustomAvatar(getInitials, props.user)}
+              </View>
 
               <View style={styles.namePosition}>
                 <Text
@@ -85,12 +98,15 @@ export default function listEmployees() {
             }}
           >
             <View style={styles.infoContainer}>
-              <UserAvatar
-                size={48}
-                name="James Cameron"
-                bgColors={[Colors.lightGray]}
-                style={{ ...styles.avatar, width: 40, height: 40 }}
-              />
+              <View
+                style={{
+                  maxHeight: 47,
+                  minHeight: 17,
+                  height: "auto",
+                }}
+              >
+                {CustomAvatar(getInitials, props.user)}
+              </View>
 
               <View style={styles.namePosition}>
                 <Text
@@ -145,12 +161,15 @@ export default function listEmployees() {
             }}
           >
             <View style={styles.infoContainer}>
-              <UserAvatar
-                size={48}
-                name="James Cameron"
-                bgColors={[Colors.lightGray]}
-                style={{ ...styles.avatar, width: 40, height: 40 }}
-              />
+              <View
+                style={{
+                  maxHeight: 47,
+                  minHeight: 17,
+                  height: "auto",
+                }}
+              >
+                {CustomAvatar(getInitials, props.user)}
+              </View>
 
               <View style={styles.namePosition}>
                 <Text
@@ -205,12 +224,15 @@ export default function listEmployees() {
             }}
           >
             <View style={styles.infoContainer}>
-              <UserAvatar
-                size={48}
-                name="James Cameron"
-                bgColors={[Colors.lightGray]}
-                style={{ ...styles.avatar, width: 40, height: 40 }}
-              />
+              <View
+                style={{
+                  maxHeight: 47,
+                  minHeight: 17,
+                  height: "auto",
+                }}
+              >
+                {CustomAvatar(getInitials, props.user)}
+              </View>
 
               <View style={styles.namePosition}>
                 <Text
@@ -265,12 +287,15 @@ export default function listEmployees() {
             }}
           >
             <View style={styles.infoContainer}>
-              <UserAvatar
-                size={48}
-                name="James Cameron"
-                bgColors={[Colors.lightGray]}
-                style={{ ...styles.avatar, width: 40, height: 40 }}
-              />
+              <View
+                style={{
+                  maxHeight: 47,
+                  minHeight: 17,
+                  height: "auto",
+                }}
+              >
+                {CustomAvatar(getInitials, props.user)}
+              </View>
 
               <View style={styles.namePosition}>
                 <Text
@@ -325,12 +350,15 @@ export default function listEmployees() {
             }}
           >
             <View style={styles.infoContainer}>
-              <UserAvatar
-                size={48}
-                name="James Cameron"
-                bgColors={[Colors.lightGray]}
-                style={{ ...styles.avatar, width: 40, height: 40 }}
-              />
+              <View
+                style={{
+                  maxHeight: 47,
+                  minHeight: 17,
+                  height: "auto",
+                }}
+              >
+                {CustomAvatar(getInitials, props.user)}
+              </View>
 
               <View style={styles.namePosition}>
                 <Text

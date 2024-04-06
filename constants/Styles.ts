@@ -75,7 +75,7 @@ export const container = StyleSheet.create({
   rootNoColor: {
     flex: 1,
     padding: 10,
-    paddingBottom: 100,
+    paddingBottom: 50,
     alignItems: "center",
     justifyContent: "center",
     gap: 20,
@@ -149,6 +149,22 @@ export const container = StyleSheet.create({
     },
     shadowRadius: 4,
     height: 300,
+    borderRadius: 26,
+  },
+  boxLogin: {
+    flex: 0,
+    padding: 30,
+    paddingTop: 10,
+
+    backgroundColor: Colors.opacity,
+    alignItems: "center",
+    justifyContent: "center",
+    shadowOffset: {
+      width: 0,
+      height: 4,
+    },
+    shadowRadius: 4,
+
     borderRadius: 26,
   },
   Center: {
@@ -240,6 +256,7 @@ export const container = StyleSheet.create({
   image: {
     maxWidth: 350,
     maxHeight: 350,
+    marginBottom: 30,
   },
 });
 
@@ -345,5 +362,7 @@ export const input = StyleSheet.create({
     width: "100%",
     borderRadius: 10,
     gap: 10,
+    borderWidth: 1,
+    borderColor: Colors.primary,
   },
 });

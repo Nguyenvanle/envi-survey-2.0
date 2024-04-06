@@ -17,4 +17,6 @@ export default {
   filterback: "#6A6B6B",
   selector: "#858597",
   blueMember: "#0047B0",
+  black: "#222831",
+  opacity: "rgba(57, 62, 70, 0.5)",
 };
