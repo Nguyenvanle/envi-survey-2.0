@@ -2,6 +2,7 @@ import { FIREBASE_AUTH, FIREBASE_DB } from "@/FirebaseConfig";
 import Colors from "@/constants/Colors";
 import { button, container, input, text } from "@/constants/Styles";
 import { Button } from "@rneui/base";
+import { router } from "expo-router";
 import { doc, getDoc, setDoc, updateDoc } from "firebase/firestore";
 import React, { useState } from "react";
 import {
@@ -56,7 +57,7 @@ export default function profileSetupScreen() {
             { text: "Hủy", onPress: () => console.log("Hủy") },
             { text: "Đồng ý", onPress: () => console.log("Đồng ý") },
           ]);
-          // router.replace("/");
+          router.replace("/");
         } catch (error: any) {
           console.error(
             `Lỗi khi cập nhật thông tin người dùng với uid: ${uid}: `,
