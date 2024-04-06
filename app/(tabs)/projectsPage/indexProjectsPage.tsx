@@ -40,6 +40,22 @@ export default function indexProjectsPage() {
           style={{ paddingLeft: 10 }}
         />
       </Button>
+
+      <Button
+        radius={"md"}
+        type="solid"
+        onPress={() => {
+          router.navigate("/projectsPage/joinProjectsPage/listEmployees"); //khong can duoi .tsx
+        }}
+      >
+        Danh sach nhan vien
+        <AntDesign
+          name="addfolder"
+          size={16}
+          color="white"
+          style={{ paddingLeft: 10 }}
+        />
+      </Button>
     </SafeAreaProvider>
   );
 }
