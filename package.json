@@ -38,7 +38,8 @@
     "react-native-screens": "~3.29.0",
     "react-native-user-avatar": "^1.0.8",
     "react-native-web": "~0.19.6",
-    "react-native-webview": "13.6.4"
+    "react-native-webview": "13.6.4",
+    "@react-native-community/datetimepicker": "7.6.1"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",

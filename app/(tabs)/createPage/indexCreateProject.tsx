@@ -1,14 +1,16 @@
 import Colors from "@/constants/Colors";
-import { container, text } from "@/constants/Styles";
+import { container, input, text } from "@/constants/Styles";
 import ButtonFillContainer from "@/constants/components/create/ButtonFillContainer";
+import MyTimePicker from "@/constants/components/create/MyTimePickerModal";
 import { useFirebaseUser } from "@/constants/logic/useFirebaseUser";
 import { Button } from "@rneui/themed";
-import React from "react";
-import { ScrollView, Text } from "react-native";
+import React, { useState } from "react";
+import { ScrollView, Text, TextInput, View } from "react-native";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 
 export default function createPage(userId: any) {
   const { username, isLoading, userPosition } = useFirebaseUser(userId);
+  const [time, setTime] = useState(new Date());
 
   if (isLoading) {
     return (
@@ -22,11 +24,63 @@ export default function createPage(userId: any) {
       </SafeAreaProvider>
     );
   }
-
   if (userPosition === "Quản Lý")
     return (
-      <ScrollView style={container.scrollView}>
-        <SafeAreaProvider style={container.root}></SafeAreaProvider>
+      <ScrollView style={{ ...container.scrollView, paddingHorizontal: 10 }}>
+        <SafeAreaProvider style={container.root}>
+          {/* Title */}
+          <Text style={{ ...text.headerPrimary }}>Nhập thông tin dự án</Text>
+
+          {/* Project Name Input */}
+          <View style={container.input}>
+            <Text style={text.label}>Họ và Tên:</Text>
+            <View style={container.button}>
+              <TextInput
+                style={{ ...input.normal }}
+                placeholder="Nhập tên dự án"
+                onChangeText={() => {}}
+              />
+            </View>
+          </View>
+
+          {/* Project Description Input */}
+          <View style={container.input}>
+            <Text style={text.label}>Mô tả:</Text>
+            <View style={container.button}>
+              <TextInput
+                style={{
+                  ...input.normal,
+                  height: "auto",
+                }}
+                placeholder="Nhập mô tả dự án"
+                onChangeText={() => {}}
+                multiline={true}
+                numberOfLines={4}
+                textAlignVertical="top"
+              />
+            </View>
+          </View>
+
+          {/* Project Name Input */}
+          <View style={container.input}>
+            <Text style={text.label}>Họ và Tên:</Text>
+            <View style={container.button}>
+              <TextInput
+                style={{ ...input.normal }}
+                placeholder="Nhập tên dự án"
+                onChangeText={() => {}}
+              />
+            </View>
+          </View>
+
+          {/* Project Time Input */}
+          <View style={container.input}>
+            <Text style={text.label}>Thời gian bắt đầu:</Text>
+            <View style={container.button}>
+              <MyTimePicker />
+            </View>
+          </View>
+        </SafeAreaProvider>
       </ScrollView>
     );
   else
