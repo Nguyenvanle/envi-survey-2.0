@@ -1,10 +1,5 @@
 import Colors from "@/constants/Colors";
-import FontAwesome from "@expo/vector-icons/FontAwesome";
-import { useFonts } from "expo-font";
 import { Stack } from "expo-router";
-import * as SplashScreen from "expo-splash-screen";
-import { useEffect } from "react";
-import successCreateProject from "./successCreateProject";
 //============ Là tệp định nghĩa layout chung cho các màn hình trong ứng dụng ===============
 
 export default function Layout() {
@@ -31,6 +26,16 @@ export default function Layout() {
           headerShadowVisible: false,
         }}
       />
+
+      <Stack.Screen
+        name="StepOne"
+        options={{
+          headerTitle: "Tạo Dự Án",
+          headerTitleAlign: "center",
+          headerShadowVisible: false,
+        }}
+      />
+
       <Stack.Screen
         name="createProjectScreen"
         options={{

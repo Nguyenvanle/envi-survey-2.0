@@ -13,8 +13,8 @@ import { useEffect, useState } from "react";
 // Đảm bảo firebase đã được khởi tạo ở đâu đó trong ứng dụng của bạn
 
 const useFirebaseUser = (userId: any) => {
-  const [username, setUsername] = useState(null);
-  const [userPositon, setUserPositon] = useState(null);
+  const [username, setUsername] = useState("");
+  const [userPositon, setUserPositon] = useState("");
   const [isLoading, setIsLoading] = useState(true);
   const uid = FIREBASE_AUTH.currentUser?.uid;
 
@@ -54,10 +54,12 @@ const useAuthListener = () => {
         router.replace("/homePage/indexHome");
         setUser(user);
         console.log("uid: ", user.uid, " đã đăng nhập, chuyển tới trang chủ");
+        return;
       } else {
         router.replace("/authScreen");
         setUser(user);
         console.log("uid: null chưa đăng nhập, chuyển tới trang đăng nhập");
+        return;
       }
     });
   }, []);
@@ -70,7 +72,7 @@ const signIn = async (email: string, password: string) => {
       email,
       password
     );
-    console.log(response);
+    response;
     // Việc xử lý chuyển hướng sẽ nằm ở AuthScreen sau khi promise được giải quyết
     return { success: true };
   } catch (error: any) {
@@ -84,7 +86,7 @@ const signUp = async (email: string, password: string) => {
       email,
       password
     );
-    console.log(response);
+    response;
     // Căng cố gắng đảm bảo phản hồi tích cực tới người dùng
     return { success: true };
   } catch (error: any) {
