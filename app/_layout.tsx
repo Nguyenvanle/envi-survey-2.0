@@ -1,9 +1,11 @@
+import { FIREBASE_AUTH } from "@/FirebaseConfig";
 import Colors from "@/constants/Colors";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 import { useFonts } from "expo-font";
-import { Stack } from "expo-router";
+import { Stack, router } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
-import { useEffect } from "react";
+import { User, onAuthStateChanged } from "firebase/auth";
+import React, { useEffect, useState } from "react";
 //============ Là tệp định nghĩa layout chung cho các màn hình trong ứng dụng ===============
 
 export {
@@ -41,8 +43,27 @@ export default function RootLayout() {
 function RootLayoutNav() {
   // https://docs.expo.dev/router/advanced/stack/ to Custom Header
 
+  const [user, setUser] = useState<User | null>(null);
+
+  useEffect(() => {
+    onAuthStateChanged(FIREBASE_AUTH, (user) => {
+      if (user !== null) {
+        router.replace("/homePage/indexHome");
+        setUser(user);
+      } else {
+        router.replace("/authScreen");
+        setUser(user);
+      }
+      // open comment này ra khi code xong trang
+
+      // router.replace("/(tabs)/accountPage/profileSetupScreen");
+      // truy cập nhanh vào trang đỡ phải bấm, close comment lúc code xong trang
+    });
+  }, []);
+
   return (
     <Stack
+      initialRouteName="Login"
       screenOptions={{
         headerStyle: {
           backgroundColor: Colors.background,
