@@ -44,7 +44,7 @@ export default function authScreen() {
             style={input.normal}
             textContentType="emailAddress"
             value={email}
-            placeholder="Nhận tài khoản"
+            placeholder="Nhập tài khoản"
             autoCapitalize="none"
             onChangeText={(text) => setEmail(text)}
           />
@@ -58,7 +58,7 @@ export default function authScreen() {
             secureTextEntry={true}
             value={password}
             textContentType="password"
-            placeholder="Nhận mật khẩu"
+            placeholder="Nhập mật khẩu"
             autoCapitalize="none"
             onChangeText={(text) => setPassword(text)}
           />

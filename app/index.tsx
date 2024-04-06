@@ -12,9 +12,9 @@ import { SafeAreaProvider } from "react-native-safe-area-context";
 const index = (userId: any) => {
   const { username, isLoading } = useFirebaseUser(userId);
 
-  const userListener = useAuthListener();
-
   if (isLoading) {
+    useAuthListener();
+
     return (
       <SafeAreaProvider style={container.root}>
         <Button
@@ -27,6 +27,7 @@ const index = (userId: any) => {
       </SafeAreaProvider>
     );
   }
+
 
   return (
     <SafeAreaProvider style={container.root}>

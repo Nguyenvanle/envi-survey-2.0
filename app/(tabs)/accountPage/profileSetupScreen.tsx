@@ -4,14 +4,25 @@ import { button, container, input, text } from "@/constants/Styles";
 import { Button } from "@rneui/base";
 import { doc, getDoc, setDoc, updateDoc } from "firebase/firestore";
 import React, { useState } from "react";
-import { StyleSheet, Text, TextInput, View } from "react-native";
+import {
+  ActivityIndicator,
+  Alert,
+  Keyboard,
+  StyleSheet,
+  Text,
+  TextInput,
+  View,
+} from "react-native";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 
 export default function profileSetupScreen() {
   const [fullName, setFullName] = useState("");
   const [position, setPosition] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const handleSaveProfile = async () => {
+    setLoading(true);
+    Keyboard.dismiss();
     // Validate data and then save to Firebase
     // Navigate to next screen or pop to previous screen if needed
     if (fullName.length === 0 || position.length === 0) {
@@ -39,11 +50,15 @@ export default function profileSetupScreen() {
       if (docSnap.exists()) {
         try {
           await updateDoc(userRef, userData);
-          alert(`Thông tin người dùng với uid: ${uid} đã được cập nhật.`);
-        } catch (error) {
+          Alert.alert("Thông Báo", "Cập nhật thông tin thành công 🥰", [
+            { text: "Hủy", onPress: () => console.log("Hủy") },
+            { text: "Đồng ý", onPress: () => console.log("Đồng ý") },
+          ]);
+          // router.replace("/");
+        } catch (error: any) {
           console.error(
             `Lỗi khi cập nhật thông tin người dùng với uid: ${uid}: `,
-            error
+            error.message
           );
         }
       } else {
@@ -61,6 +76,8 @@ export default function profileSetupScreen() {
       alert("Không tìm thấy người dùng. Vui lòng đăng nhập lại.");
     }
     console.log(fullName, position);
+
+    setLoading(false);
   };
 
   return (
@@ -93,7 +110,13 @@ export default function profileSetupScreen() {
         </View>
       </View>
 
-      <Button title="Lưu" onPress={handleSaveProfile} />
+      {loading ? (
+        <ActivityIndicator size="large" color={Colors.white} />
+      ) : (
+        <>
+          <Button title="Cập nhật" onPress={() => handleSaveProfile()} />
+        </>
+      )}
     </SafeAreaProvider>
   );
 }
