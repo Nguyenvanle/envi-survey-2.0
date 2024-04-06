@@ -1,37 +1,75 @@
 import Colors from "@/constants/Colors";
-import { button, container, defaultStyles, text } from "@/constants/Styles";
-import {
-  AntDesign,
-  Feather,
-  MaterialCommunityIcons,
-  MaterialIcons,
-  Octicons,
-  SimpleLineIcons,
-} from "@expo/vector-icons";
+import { container } from "@/constants/Styles";
 import React from "react";
-import {
-  ScrollView,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-} from "react-native";
-// Cái này để xóa cái cảnh báo xaml của vscode :D
-// @ts-ignore
-import { Link } from "expo-router";
-import { SafeAreaProvider } from "react-native-safe-area-context";
-import UserAvatar from "react-native-user-avatar";
+import { ScrollView, View } from "react-native";
 
-export default function indexHome() {
+import { HelloBar } from "@/constants/components/home/HelloBar";
+import { HomeStyles } from "@/constants/components/home/HomeStyles";
+import { InfoCard } from "@/constants/components/home/InfoCard";
+import { PrimaryTitle } from "@/constants/components/home/PrimaryTitle";
+import { ProjectsList } from "@/constants/components/home/ProjectsList";
+import SearchLinkButton from "@/constants/components/home/SearchLinkButton";
+import { useFirebaseUser } from "@/constants/logic/useFirebaseUser";
+import { SimpleLineIcons } from "@expo/vector-icons";
+import { Button } from "@rneui/base";
+import { Text } from "react-native";
+import { SafeAreaProvider } from "react-native-safe-area-context";
+
+export default function indexHome(userId: any) {
+  const {
+    username,
+    isLoading,
+    userPosition: userPosition,
+  } = useFirebaseUser(userId);
+
+  if (isLoading) {
+    return (
+      <SafeAreaProvider style={container.root}>
+        <Button
+          title="loading"
+          type="clear"
+          loading
+          loadingProps={{ size: 70, color: Colors.muted }}
+        />
+      </SafeAreaProvider>
+    );
+  }
+
+  const user = {
+    name: username || "undefine",
+    position: userPosition || "undefine",
+    projectsTaken: 10,
+    projectsCompleted: 8,
+  };
+
   return (
-    <SafeAreaProvider>
+    <ScrollView style={container.scrollView}>
+      <SafeAreaProvider style={container.root}>
+        <HelloBar name={user.name.toString()}></HelloBar>
+
+        <InfoCard user={user}></InfoCard>
+
+        <SearchLinkButton
+          link={"/(tabs)/searchPage/indexSearchPage"}
+          replace={true}
+        ></SearchLinkButton>
+
+        <PrimaryTitle></PrimaryTitle>
+
+        <ProjectsList user={user}></ProjectsList>
+      </SafeAreaProvider>
+    </ScrollView>
+  );
+
+  return (
+    <SafeAreaProvider style={{ backgroundColor: Colors.gray }}>
       <ScrollView style={container.scrollView}>
         <View style={container.root}>
           {/* Hello Frame */}
-          <View style={styles.hello}>
+          {/* <View style={styles.hello}>
             <View style={styles.textContainer}>
               <Text style={styles.text}>Hello</Text>
-              <Text style={styles.textPrimary}>James</Text>
+              <Text style={styles.textPrimary}>{username}</Text>
             </View>
             <View style={styles.iconContainer}>
               <AntDesign
@@ -40,9 +78,9 @@ export default function indexHome() {
                 color={Colors.teal}
               ></AntDesign>
             </View>
-          </View>
+          </View> */}
           {/* User Info Frame */}
-          <View style={styles.userInfoContainer}>
+          {/* <View style={styles.userInfoContainer}>
             <View style={styles.infoContainer}>
               <UserAvatar
                 size={48}
@@ -92,9 +130,9 @@ export default function indexHome() {
                 <Text style={styles.miniText}>6 dự án</Text>
               </View>
             </View>
-          </View>
+          </View> */}
           {/* Search Button Link Box */}
-          <View style={styles.searchBox}>
+          {/* <View style={styles.searchBox}>
             <View style={container.button}>
               <Link href={"/(tabs)/searchPage/indexSearchPage"} asChild>
                 <TouchableOpacity
@@ -113,32 +151,32 @@ export default function indexHome() {
                 </TouchableOpacity>
               </Link>
             </View>
-          </View>
+          </View> */}
           {/* My Projects List Title */}
-          <View style={{ ...styles.hello, padding: 0 }}>
+          {/* <View style={{ ...styles.hello, padding: 0 }}>
             <View style={styles.textContainer}>
               <Text style={styles.textPrimary}>Dự án của tôi</Text>
             </View>
-          </View>
+          </View> */}
           {/* My Projects List Items */}
           <View
             style={{
-              ...styles.userInfoContainer,
+              ...HomeStyles.userInfoContainer,
               backgroundColor: Colors.blueWhite,
             }}
           >
-            <View style={styles.infoContainer}>
-              <UserAvatar
+            <View style={HomeStyles.infoContainer}>
+              {/* <UserAvatar
                 size={48}
                 name="James Cameron"
                 bgColors={[Colors.lightGray]}
-                style={styles.avatar}
-              />
+                style={HomeStyles.avatar}
+              /> */}
 
-              <View style={styles.namePosition}>
+              <View style={HomeStyles.namePosition}>
                 <Text
                   style={{
-                    ...styles.textPrimary,
+                    ...HomeStyles.textPrimary,
                     color: Colors.gray,
                     fontSize: 14,
                     lineHeight: 18,
@@ -149,7 +187,7 @@ export default function indexHome() {
 
                 <Text
                   style={{
-                    ...styles.text,
+                    ...HomeStyles.text,
                     color: Colors.muted,
                     fontSize: 12,
                   }}
@@ -160,7 +198,7 @@ export default function indexHome() {
 
               <View
                 style={{
-                  ...styles.icon,
+                  ...HomeStyles.icon,
                   flexDirection: "row",
                   gap: 4,
                 }}
@@ -168,7 +206,7 @@ export default function indexHome() {
                 <SimpleLineIcons name="chart" size={20} color={Colors.muted} />
                 <Text
                   style={{
-                    ...styles.text,
+                    ...HomeStyles.text,
                     color: Colors.muted,
                     fontSize: 12,
                   }}
@@ -178,181 +216,25 @@ export default function indexHome() {
               </View>
             </View>
 
-            <View style={{ ...defaultStyles.separator }}></View>
+            {/* <View style={{ ...defaultStyles.separator }}></View> */}
 
-            <View style={styles.projectContainer}>
-              <View style={styles.divideContainer}>
+            {/* <View style={HomeStyles.projectContainer}>
+              <View style={HomeStyles.divideContainer}>
                 <Feather name="clock" size={16} color={Colors.success} />
 
-                <Text style={{ ...styles.miniText, color: Colors.success }}>
+                <Text style={{ ...HomeStyles.miniText, color: Colors.success }}>
                   19/03/2024
                 </Text>
               </View>
 
-              <View style={styles.divideContainer}>
+              <View style={HomeStyles.divideContainer}>
                 <Feather name="clock" size={16} color={Colors.red} />
 
-                <Text style={{ ...styles.miniText, color: Colors.red }}>
+                <Text style={{ ...HomeStyles.miniText, color: Colors.red }}>
                   19/03/2024
                 </Text>
               </View>
-            </View>
-          </View>
-
-          <View
-            style={{
-              ...styles.userInfoContainer,
-              backgroundColor: Colors.blueWhite,
-            }}
-          >
-            <View style={styles.infoContainer}>
-              <UserAvatar
-                size={48}
-                name="James Cameron"
-                bgColors={[Colors.lightGray]}
-                style={styles.avatar}
-              />
-
-              <View style={styles.namePosition}>
-                <Text
-                  style={{
-                    ...styles.textPrimary,
-                    color: Colors.gray,
-                    fontSize: 14,
-                    lineHeight: 18,
-                  }}
-                >
-                  Khảo sát đất Ninh Kiều
-                </Text>
-
-                <Text
-                  style={{
-                    ...styles.text,
-                    color: Colors.muted,
-                    fontSize: 12,
-                  }}
-                >
-                  James Cameron
-                </Text>
-              </View>
-
-              <View
-                style={{
-                  ...styles.icon,
-                  flexDirection: "row",
-                  gap: 4,
-                }}
-              >
-                <SimpleLineIcons name="chart" size={20} color={Colors.muted} />
-                <Text
-                  style={{
-                    ...styles.text,
-                    color: Colors.muted,
-                    fontSize: 12,
-                  }}
-                >
-                  80.5%
-                </Text>
-              </View>
-            </View>
-
-            <View style={{ ...defaultStyles.separator }}></View>
-
-            <View style={styles.projectContainer}>
-              <View style={styles.divideContainer}>
-                <Feather name="clock" size={16} color={Colors.success} />
-
-                <Text style={{ ...styles.miniText, color: Colors.success }}>
-                  19/03/2024
-                </Text>
-              </View>
-
-              <View style={styles.divideContainer}>
-                <Feather name="clock" size={16} color={Colors.red} />
-
-                <Text style={{ ...styles.miniText, color: Colors.red }}>
-                  19/03/2024
-                </Text>
-              </View>
-            </View>
-          </View>
-
-          <View
-            style={{
-              ...styles.userInfoContainer,
-              backgroundColor: Colors.blueWhite,
-            }}
-          >
-            <View style={styles.infoContainer}>
-              <UserAvatar
-                size={48}
-                name="James Cameron"
-                bgColors={[Colors.lightGray]}
-                style={styles.avatar}
-              />
-
-              <View style={styles.namePosition}>
-                <Text
-                  style={{
-                    ...styles.textPrimary,
-                    color: Colors.gray,
-                    fontSize: 14,
-                    lineHeight: 18,
-                  }}
-                >
-                  Khảo sát đất Ninh Kiều
-                </Text>
-
-                <Text
-                  style={{
-                    ...styles.text,
-                    color: Colors.muted,
-                    fontSize: 12,
-                  }}
-                >
-                  James Cameron
-                </Text>
-              </View>
-
-              <View
-                style={{
-                  ...styles.icon,
-                  flexDirection: "row",
-                  gap: 4,
-                }}
-              >
-                <SimpleLineIcons name="chart" size={20} color={Colors.muted} />
-                <Text
-                  style={{
-                    ...styles.text,
-                    color: Colors.muted,
-                    fontSize: 12,
-                  }}
-                >
-                  80.5%
-                </Text>
-              </View>
-            </View>
-
-            <View style={{ ...defaultStyles.separator }}></View>
-
-            <View style={styles.projectContainer}>
-              <View style={styles.divideContainer}>
-                <Feather name="clock" size={16} color={Colors.success} />
-
-                <Text style={{ ...styles.miniText, color: Colors.success }}>
-                  19/03/2024
-                </Text>
-              </View>
-
-              <View style={styles.divideContainer}>
-                <Feather name="clock" size={16} color={Colors.red} />
-
-                <Text style={{ ...styles.miniText, color: Colors.red }}>
-                  19/03/2024
-                </Text>
-              </View>
-            </View>
+            </View> */}
           </View>
         </View>
       </ScrollView>
@@ -360,97 +242,3 @@ export default function indexHome() {
   );
 }
 
-const styles = StyleSheet.create({
-  hello: {
-    flex: 0,
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignSelf: "stretch",
-    alignItems: "center",
-    padding: 10,
-  },
-  textContainer: {
-    flex: 0,
-    flexDirection: "column",
-    padding: 0,
-    gap: 6,
-    alignItems: "flex-start",
-  },
-  iconContainer: {
-    flex: 0,
-  },
-  text: {
-    ...text.normalNoPadding,
-    fontWeight: "400",
-    lineHeight: 19,
-  },
-  miniText: {
-    color: Colors.gray,
-    fontSize: 14,
-    fontWeight: "400",
-  },
-  textPrimary: {
-    ...text.normalNoPadding,
-    fontSize: 20,
-    fontWeight: "700",
-    lineHeight: 22,
-    color: Colors.primary,
-  },
-  userInfoContainer: {
-    flex: 0,
-    padding: 20,
-    flexDirection: "column",
-    backgroundColor: Colors.primary,
-    gap: 16,
-    borderRadius: 12,
-    alignSelf: "stretch", // fill-container
-  },
-  infoContainer: {
-    flex: 0,
-    justifyContent: "space-between",
-    alignItems: "center",
-    alignSelf: "center",
-    flexDirection: "row",
-    gap: 12,
-  },
-  avatar: {
-    flexShrink: 0,
-  },
-  namePosition: {
-    flex: 0,
-    alignItems: "flex-start",
-    gap: 8,
-  },
-  icon: {
-    flex: 1,
-    alignItems: "flex-end",
-  },
-  projectContainer: {
-    flex: 0,
-    alignItems: "flex-start",
-    gap: 12,
-    alignSelf: "stretch",
-    flexDirection: "row",
-  },
-  divideContainer: {
-    flex: 1,
-    alignItems: "center",
-    gap: 8,
-    flexDirection: "row",
-  },
-  searchBox: {
-    flex: 0,
-    alignItems: "flex-start",
-    gap: 12,
-    alignSelf: "stretch",
-    flexDirection: "row",
-  },
-  searchContainer: {
-    flex: 0,
-    alignItems: "flex-start",
-    gap: 12,
-    alignSelf: "stretch",
-    flexDirection: "row",
-    borderRadius: 16,
-  },
-});

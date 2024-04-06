@@ -1,5 +1,5 @@
 import Colors from "@/constants/Colors";
-import { container, text } from "@/constants/Styles";
+import { button, container, text } from "@/constants/Styles";
 import { Link } from "expo-router";
 import React, { useState } from "react";
 import { Text, TouchableOpacity, View } from "react-native";
@@ -236,11 +236,11 @@ export default function filterPage() {
           </View>
           <View></View>
         </View>
-        <View style={container.selectsContainerButton}>
-          <View>
-            <Link href={"/searchPage/indexSearchPage"} asChild>
-              <TouchableOpacity style={container.selectedApply}>
-                <Text style={text.select}>Áp dụng</Text>
+        <View style={{ ...container.root, backgroundColor: Colors.filterback }}>
+          <View style={container.button}>
+            <Link href={"/(tabs)/searchPage/indexSearchPage"} asChild>
+              <TouchableOpacity style={button.primary}>
+                <Text style={button.textPrimary}>Áp Dụng</Text>
               </TouchableOpacity>
             </Link>
           </View>

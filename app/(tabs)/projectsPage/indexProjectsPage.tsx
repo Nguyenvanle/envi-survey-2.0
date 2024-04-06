@@ -13,7 +13,7 @@ export default function indexProjectsPage() {
         radius={"md"}
         type="solid"
         onPress={() => {
-          router.navigate("/projectInfoPage/IndexProjectInformation");
+          router.push("/projectsPage/projectsInfoPage/indexProjectInformation");
         }}
       >
         Dự án của tôi
@@ -29,7 +29,7 @@ export default function indexProjectsPage() {
         radius={"md"}
         type="solid"
         onPress={() => {
-          router.navigate("/projectsPage/joinProjectsPage/enterPassword");
+          router.push("/projectsPage/joinProjectsPage/enterPassword");
         }}
       >
         Tham gia dự án

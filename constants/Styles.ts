@@ -16,9 +16,9 @@ export const defaultStyles = StyleSheet.create({
   },
   // == Dai phan cach == //
   separator: {
-    height: StyleSheet.hairlineWidth,
+    height: 2,
     backgroundColor: Colors.lightGray,
-    marginLeft: 50,
+    paddingTop: 0,
   },
   button: {
     padding: 10,
@@ -61,7 +61,7 @@ export const description = StyleSheet.create({
 export const container = StyleSheet.create({
   root: {
     flex: 1,
-    padding: 20,
+    padding: 10,
     paddingBottom: 100,
     backgroundColor: Colors.background,
     alignItems: "center",
@@ -153,10 +153,10 @@ export const container = StyleSheet.create({
     gap: 20,
   },
   boxFilter: {
-    flex: 0,
-    padding: 10,
     backgroundColor: Colors.filterback,
-    gap: 20,
+    gap: 10,
+    padding: 5,
+    marginBottom: 0,
     shadowOffset: {
       width: 0,
       height: 4,
@@ -182,7 +182,7 @@ export const container = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     backgroundColor: Colors.selector,
-    gap: 20,
+    gap: 10,
     padding: 10,
     borderRadius: 10,
   },
@@ -319,6 +319,7 @@ export const button = StyleSheet.create({
   },
   ChooseFilter: {},
 });
+
 export const input = StyleSheet.create({
   normal: {
     height: 50,
