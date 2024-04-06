@@ -1,22 +1,56 @@
+import Colors from "@/constants/Colors";
+import { button, container } from "@/constants/Styles";
 import DateTimePicker from "@react-native-community/datetimepicker";
 import { useState } from "react";
+import { Text, TouchableOpacity, View } from "react-native";
 
 const MyTimePicker = () => {
-  // State để quản lý giá trị ngày/giờ được chọn
-  const [time, setTime] = useState(new Date());
+  const [date, setDate] = useState(new Date());
+  const [show, setShow] = useState(false);
 
-  // Hàm được gọi khi có sự thay đổi giá trị
-  const onChange = (event: any, selectedTime: any) => {
-    const currentTime = selectedTime || time;
-    setTime(currentTime);
+  const onChange = (event: any, selectedDate: any) => {
+    const currentDate = selectedDate || date;
+    setShow(false);
+    setDate(currentDate);
+  };
+
+  const showDatepicker = () => {
+    setShow(true);
   };
 
   return (
-    <DateTimePicker
-      value={time}
-      display="calendar" // Có thể chọn 'spinner', 'default', 'clock', 'calendar' tùy vào platform
-      onChange={onChange}
-    />
+    <>
+      <View style={container.button}>
+        <TouchableOpacity
+          style={{
+            ...button.light,
+            justifyContent: "flex-start",
+          }}
+          onPress={showDatepicker}
+        >
+          <Text
+            style={{
+              ...button.textLight,
+              paddingLeft: 10,
+              color: Colors.selector,
+              fontWeight: "400",
+              fontSize: 14,
+            }}
+          >
+            {date.toLocaleDateString()}
+          </Text>
+        </TouchableOpacity>
+      </View>
+      {show && (
+        <DateTimePicker
+          testID="dateTimePicker"
+          value={date}
+          mode="date"
+          display="default"
+          onChange={onChange}
+        />
+      )}
+    </>
   );
 };
 

@@ -46,19 +46,19 @@ const useFirebaseUser = (userId: any) => {
   return { username, isLoading, userPosition: userPositon };
 };
 
-const useAuthListener = () => {
+const useAuthListener = async () => {
   const [user, setUser] = useState<User | null>(null);
 
-  useEffect(() => {
-    onAuthStateChanged(FIREBASE_AUTH, (user) => {
+  await useEffect(() => {
+    onAuthStateChanged(FIREBASE_AUTH, async (user) => {
       if (user !== null) {
         router.replace("/homePage/indexHome");
-        setUser(user);
+        await setUser(user);
         console.log("uid: ", user.uid, " đã đăng nhập, chuyển tới trang chủ");
         return;
       } else {
         router.replace("/authScreen");
-        setUser(user);
+        await setUser(user);
         console.log("uid: null chưa đăng nhập, chuyển tới trang đăng nhập");
         return;
       }
@@ -95,8 +95,8 @@ const signUp = async (email: string, password: string) => {
   }
 };
 
-const useSignOut = () => {
-  signOut(FIREBASE_AUTH)
+const useSignOut = async () => {
+  await signOut(FIREBASE_AUTH)
     .then(() => {
       // Đăng xuất thành công, chuyển hướng người dùng đến màn hình đăng nhập.
       Alert.alert("Thông báo", "Đăng xuất thành công", [

@@ -27,6 +27,9 @@ Một số lệnh thông dụng:
 1. npx kill-port 8081 : xóa cổng
 2. npm update : cài đặt lại những thư viện cần thiết (chạy khi pull code về máy)
 3. npm start: chạy dự án (ngắn hơn lệnh expo một chút)
+4. justifyContent: canh theo chiều ngang
+5. alignItems: canh theo chiều dọc
+6. alignSelf: áp dụng thuộc tính căn chỉnh cho một phần tử con đơn lẻ, bất chấp thuộc tính alignItems của flex container. 
 
 
 Cách lấy thông tin user bằng firebase:
@@ -55,3 +58,4 @@ export default function indexHome(userId: any) {
     ...
   )
 }
+

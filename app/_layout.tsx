@@ -48,16 +48,14 @@ function RootLayoutNav() {
   useEffect(() => {
     onAuthStateChanged(FIREBASE_AUTH, (user) => {
       if (user !== null) {
-        router.replace("/homePage/indexHome");
+        // router.replace("/homePage/indexHome");
+
+        router.replace("/createPage/indexCreateProject");
         setUser(user);
       } else {
         router.replace("/authScreen");
         setUser(user);
       }
-      // open comment này ra khi code xong trang
-
-      // router.replace("/(tabs)/accountPage/profileSetupScreen");
-      // truy cập nhanh vào trang đỡ phải bấm, close comment lúc code xong trang
     });
   }, []);
 

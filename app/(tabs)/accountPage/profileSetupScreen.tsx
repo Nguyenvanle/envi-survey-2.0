@@ -23,11 +23,13 @@ export default function profileSetupScreen() {
   const handleSaveProfile = async () => {
     setLoading(true);
     Keyboard.dismiss();
+
     // Validate data and then save to Firebase
     // Navigate to next screen or pop to previous screen if needed
     if (fullName.length === 0 || position.length === 0) {
       // Thông báo lỗi nếu người dùng không nhập đầy đủ thông tin
       alert("Vui lòng nhập đầy đủ thông tin.");
+      setLoading(false);
       return;
     }
 

@@ -1,16 +1,26 @@
 import Colors from "@/constants/Colors";
-import { container, input, text } from "@/constants/Styles";
+import { button, container, input, text } from "@/constants/Styles";
 import ButtonFillContainer from "@/constants/components/create/ButtonFillContainer";
+import { ButtonSignOut } from "@/constants/components/create/ButtonSignOut";
+import CustomDropdown from "@/constants/components/create/DropdownBox";
 import MyTimePicker from "@/constants/components/create/MyTimePickerModal";
 import { useFirebaseUser } from "@/constants/logic/useFirebaseUser";
 import { Button } from "@rneui/themed";
-import React, { useState } from "react";
-import { ScrollView, Text, TextInput, View } from "react-native";
+import { Link } from "expo-router";
+import { useState } from "react";
+import {
+  ScrollView,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 
 export default function createPage(userId: any) {
-  const { username, isLoading, userPosition } = useFirebaseUser(userId);
-  const [time, setTime] = useState(new Date());
+  const { isLoading, userPosition } = useFirebaseUser(userId);
+
+  const [password, setPassword] = useState("");
 
   if (isLoading) {
     return (
@@ -33,11 +43,11 @@ export default function createPage(userId: any) {
 
           {/* Project Name Input */}
           <View style={container.input}>
-            <Text style={text.label}>Họ và Tên:</Text>
+            <Text style={text.label}>Tên dự án:</Text>
             <View style={container.button}>
               <TextInput
                 style={{ ...input.normal }}
-                placeholder="Nhập tên dự án"
+                placeholder="Nhập tên cho dự án"
                 onChangeText={() => {}}
               />
             </View>
@@ -52,7 +62,7 @@ export default function createPage(userId: any) {
                   ...input.normal,
                   height: "auto",
                 }}
-                placeholder="Nhập mô tả dự án"
+                placeholder="Nhập mô tả cho dự án"
                 onChangeText={() => {}}
                 multiline={true}
                 numberOfLines={4}
@@ -61,25 +71,66 @@ export default function createPage(userId: any) {
             </View>
           </View>
 
-          {/* Project Name Input */}
+          {/* Project Time Start Input */}
           <View style={container.input}>
-            <Text style={text.label}>Họ và Tên:</Text>
-            <View style={container.button}>
-              <TextInput
-                style={{ ...input.normal }}
-                placeholder="Nhập tên dự án"
-                onChangeText={() => {}}
-              />
-            </View>
-          </View>
-
-          {/* Project Time Input */}
-          <View style={container.input}>
-            <Text style={text.label}>Thời gian bắt đầu:</Text>
+            <Text style={text.label}>Chọn thời gian bắt đầu:</Text>
             <View style={container.button}>
               <MyTimePicker />
             </View>
           </View>
+
+          {/* Project Time End Input */}
+          <View style={container.input}>
+            <Text style={text.label}>Chọn thời gian kết thúc:</Text>
+            <View style={container.button}>
+              <MyTimePicker />
+            </View>
+          </View>
+
+          {/* Project Password Input */}
+          <View style={container.input}>
+            <Text style={text.label}>Mật khẩu:</Text>
+            <View style={container.button}>
+              <TextInput
+                style={{ ...input.normal }}
+                placeholder="Nhập mật khẩu cho dự án"
+                secureTextEntry={true}
+                textContentType="password"
+                autoCapitalize="none"
+                value={password}
+                onChangeText={(text) => setPassword(text)}
+              />
+            </View>
+          </View>
+
+          {/* Project Destination Chose Input */}
+          <View style={{ ...container.input, paddingBottom: 10 }}>
+            <Text style={text.label}>Chọn địa điểm:</Text>
+            <View style={{ ...container.button }}>
+              <CustomDropdown />
+            </View>
+          </View>
+
+          {/* Project Submit Info */}
+          {/* Create a button container */}
+          <View style={container.button}>
+            <Link href={"/homePage/indexHome"} asChild>
+              {/* 'replace' to remove back button */}
+              <TouchableOpacity
+                style={{ ...button.primary, backgroundColor: Colors.red }}
+              >
+                <Text style={button.textLight}>Hủy</Text>
+              </TouchableOpacity>
+            </Link>
+            <Link href={"/createPage/successCreateProject"} asChild>
+              {/* 'replace' to remove back button */}
+              <TouchableOpacity style={button.primary}>
+                <Text style={button.textPrimary}>Xác Nhận</Text>
+              </TouchableOpacity>
+            </Link>
+          </View>
+
+          <ButtonSignOut color={"red"}></ButtonSignOut>
         </SafeAreaProvider>
       </ScrollView>
     );
@@ -125,7 +176,8 @@ export default function createPage(userId: any) {
         <ButtonFillContainer
           link={"../projectsPage/joinProjectsPage/enterPassword"}
           color={Colors.primary}
-          replace={false}
+          onpress={null}
+          title={"Tham Gia Dự Án"}
         ></ButtonFillContainer>
       </SafeAreaProvider>
     );
