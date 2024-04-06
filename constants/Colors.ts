@@ -14,5 +14,7 @@ export default {
   mint: "#CDFADB",
   success: "#00B57F",
   filterback: "#6A6B6B",
-  selector: "#858597"
+  selector: "#858597",
+  yellowManager: "#F4A102",
+  blueMember: "#0047B0",
 };
