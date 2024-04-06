@@ -72,6 +72,14 @@ export const container = StyleSheet.create({
     flex: 1,
     backgroundColor: Colors.background,
   },
+  rootNoColor: {
+    flex: 1,
+    padding: 10,
+    paddingBottom: 100,
+    alignItems: "center",
+    justifyContent: "center",
+    gap: 20,
+  },
   text: {
     flex: 0,
     alignItems: "center",
@@ -223,6 +231,15 @@ export const container = StyleSheet.create({
     borderRadius: 10,
     paddingLeft: 140,
     paddingRight: 140,
+  },
+  background: {
+    flex: 1,
+    width: "100%",
+    height: "100%",
+  },
+  image: {
+    maxWidth: 350,
+    maxHeight: 350,
   },
 });
 

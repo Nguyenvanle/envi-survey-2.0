@@ -56,6 +56,22 @@ export default function indexProjectsPage() {
           style={{ paddingLeft: 10 }}
         />
       </Button>
+
+      <Button
+        radius={"md"}
+        type="solid"
+        onPress={() => {
+          router.replace("/login"); //khong can duoi .tsx
+        }}
+      >
+        giao dien login
+        <AntDesign
+          name="addfolder"
+          size={16}
+          color="white"
+          style={{ paddingLeft: 10 }}
+        />
+      </Button>
     </SafeAreaProvider>
   );
 }
