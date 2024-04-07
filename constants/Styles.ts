@@ -78,7 +78,7 @@ export const container = StyleSheet.create({
   root: {
     flex: 1,
     padding: 10,
-    paddingBottom: 100,
+    paddingBottom: 60,
     backgroundColor: Colors.background,
     alignItems: "center",
     justifyContent: "center",
@@ -108,7 +108,7 @@ export const container = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
-    gap: 14,
+    marginVertical: 10,
   },
   webview: {
     flex: 1,
