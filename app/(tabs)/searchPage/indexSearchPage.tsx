@@ -1,7 +1,8 @@
-import { container } from "@/constants/Styles";
+import SearchItemList from "@/constants/components/search/SearchItemList";
+import React from "react";
 
-import { View } from "react-native";
+const indexSearchPage = () => {
+  return <SearchItemList></SearchItemList>;
+};
 
-export default function indexSearchPage() {
-  return <View style={container.root}></View>;
-}
+export default indexSearchPage;

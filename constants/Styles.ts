@@ -24,6 +24,22 @@ export const defaultStyles = StyleSheet.create({
     padding: 10,
     borderRadius: 5,
   },
+  avatar: {
+    flexShrink: 0,
+    width: 30,
+    height: 30,
+  },
+  namePosition: {
+    flex: 0,
+    alignItems: "flex-start",
+    gap: 8,
+  },
+  textPrimary: {
+    fontSize: 20,
+    fontWeight: "700",
+    lineHeight: 22,
+    color: Colors.primary,
+  },
 });
 
 export const description = StyleSheet.create({
