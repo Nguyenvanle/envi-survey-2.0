@@ -84,6 +84,14 @@ export const container = StyleSheet.create({
     justifyContent: "center",
     gap: 20,
   },
+  rootFilter: {
+    flex: 0,
+    paddingBottom: 60,
+    backgroundColor: Colors.background,
+    alignItems: "center",
+    justifyContent: "center",
+    gap: 10,
+  },
   scrollView: {
     flex: 1,
     backgroundColor: Colors.background,
@@ -109,6 +117,12 @@ export const container = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     marginVertical: 10,
+  },
+  buttonApply: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    marginVertical: 20,
   },
   webview: {
     flex: 1,
@@ -194,15 +208,13 @@ export const container = StyleSheet.create({
   },
   boxFilter: {
     backgroundColor: Colors.filterback,
-    gap: 10,
-    padding: 5,
-    marginBottom: 0,
+    marginTop: 150,
     shadowOffset: {
       width: 0,
       height: 4,
     },
     shadowRadius: 4,
-    height: 601,
+    height: 720,
     borderRadius: 26,
     width: "100%",
   },
@@ -211,12 +223,14 @@ export const container = StyleSheet.create({
     flex: 0,
     padding: 1,
     gap: 10,
+    marginHorizontal: 20,
   },
   selectsContainer: {
     marginTop: 20,
     flexDirection: "row",
     flexWrap: "wrap",
     gap: 10,
+    marginHorizontal: 20,
   },
   select: {
     alignItems: "center",
@@ -340,6 +354,16 @@ export const button = StyleSheet.create({
     borderRadius: 12,
     backgroundColor: Colors.primary,
     flexDirection: "row",
+  },
+  primaryApply: {
+    flex: 1,
+    height: 50,
+    alignItems: "center",
+    justifyContent: "center",
+    borderRadius: 12,
+    backgroundColor: Colors.primary,
+    flexDirection: "row",
+    marginHorizontal: 20,
   },
   success: {
     flex: 1,

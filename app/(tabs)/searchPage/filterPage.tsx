@@ -51,7 +51,7 @@ export default function filterPage() {
   };
 
   return (
-    <View style={container.root}>
+    <View style={container.rootFilter}>
       <View style={container.boxFilter}>
         <View style={container.headerFilter}>
           <Text style={text.headerFilter}>Filter Selection</Text>
@@ -236,10 +236,15 @@ export default function filterPage() {
           </View>
           <View></View>
         </View>
-        <View style={{ ...container.root, backgroundColor: Colors.filterback }}>
-          <View style={container.button}>
+        <View
+          style={{
+            ...container.rootFilter,
+            backgroundColor: Colors.filterback,
+          }}
+        >
+          <View style={container.buttonApply}>
             <Link href={"/(tabs)/searchPage/indexSearchPage"} asChild>
-              <TouchableOpacity style={button.primary}>
+              <TouchableOpacity style={button.primaryApply}>
                 <Text style={button.textPrimary}>Áp Dụng</Text>
               </TouchableOpacity>
             </Link>
