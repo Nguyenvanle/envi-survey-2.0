@@ -50,7 +50,7 @@ export default function indexHome(userId: any) {
         <InfoCard user={user}></InfoCard>
 
         <SearchLinkButton
-          link={"/(tabs)/searchPage/indexSearchPage"}
+          link={"/(tabs)/searchPage/SearchPage"}
           replace={true}
         ></SearchLinkButton>
 
@@ -241,4 +241,3 @@ export default function indexHome(userId: any) {
     </SafeAreaProvider>
   );
 }
-

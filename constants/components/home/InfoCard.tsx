@@ -1,5 +1,5 @@
 import Colors from "@/constants/Colors";
-import { defaultStyles } from "@/constants/Styles";
+import { defaultStyles } from "@/constants/defaultStyles";
 import { getInitials } from "@/constants/logic/getInitials";
 import { MaterialCommunityIcons, MaterialIcons } from "@expo/vector-icons";
 import React from "react";

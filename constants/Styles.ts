@@ -24,6 +24,22 @@ export const defaultStyles = StyleSheet.create({
     padding: 10,
     borderRadius: 5,
   },
+  avatar: {
+    flexShrink: 0,
+    width: 30,
+    height: 30,
+  },
+  namePosition: {
+    flex: 0,
+    alignItems: "flex-start",
+    gap: 8,
+  },
+  textPrimary: {
+    fontSize: 20,
+    fontWeight: "700",
+    lineHeight: 22,
+    color: Colors.primary,
+  },
 });
 
 export const description = StyleSheet.create({
@@ -62,11 +78,19 @@ export const container = StyleSheet.create({
   root: {
     flex: 1,
     padding: 10,
-    paddingBottom: 100,
+    paddingBottom: 60,
     backgroundColor: Colors.background,
     alignItems: "center",
     justifyContent: "center",
     gap: 20,
+  },
+  rootFilter: {
+    flex: 0,
+    paddingBottom: 60,
+    backgroundColor: Colors.background,
+    alignItems: "center",
+    justifyContent: "center",
+    gap: 10,
   },
   scrollView: {
     flex: 1,
@@ -92,7 +116,22 @@ export const container = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
-    gap: 14,
+    marginVertical: 10,
+    gap: 10,
+  },
+  buttonsearch: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    marginVertical: 10,
+    gap: 10,
+    padding: 10,
+  },
+  buttonApply: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    marginVertical: 15,
   },
   webview: {
     flex: 1,
@@ -127,6 +166,9 @@ export const container = StyleSheet.create({
     gap: 20,
   },
   input: {
+    justifyContent: "center",
+  },
+  inputsearch: {
     justifyContent: "center",
   },
   bodyCenter: {
@@ -178,15 +220,13 @@ export const container = StyleSheet.create({
   },
   boxFilter: {
     backgroundColor: Colors.filterback,
-    gap: 10,
-    padding: 5,
-    marginBottom: 0,
+    marginTop: 150,
     shadowOffset: {
       width: 0,
       height: 4,
     },
     shadowRadius: 4,
-    height: 601,
+    height: 720,
     borderRadius: 26,
     width: "100%",
   },
@@ -195,12 +235,14 @@ export const container = StyleSheet.create({
     flex: 0,
     padding: 1,
     gap: 10,
+    marginHorizontal: 20,
   },
   selectsContainer: {
     marginTop: 20,
     flexDirection: "row",
     flexWrap: "wrap",
     gap: 10,
+    marginHorizontal: 20,
   },
   select: {
     alignItems: "center",
@@ -324,6 +366,16 @@ export const button = StyleSheet.create({
     borderRadius: 12,
     backgroundColor: Colors.primary,
     flexDirection: "row",
+  },
+  primaryApply: {
+    flex: 1,
+    height: 50,
+    alignItems: "center",
+    justifyContent: "center",
+    borderRadius: 12,
+    backgroundColor: Colors.primary,
+    flexDirection: "row",
+    marginHorizontal: 20,
   },
   success: {
     flex: 1,

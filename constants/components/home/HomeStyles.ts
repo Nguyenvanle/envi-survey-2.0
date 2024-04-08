@@ -99,4 +99,10 @@ export const HomeStyles = StyleSheet.create({
     flexDirection: "row",
     borderRadius: 16,
   },
+  namePositionSearch: {
+    flex: 1,
+    alignItems: "flex-start",
+    alignSelf: "stretch",
+    gap: 8,
+  },
 });

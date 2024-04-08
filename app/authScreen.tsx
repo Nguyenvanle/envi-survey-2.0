@@ -9,6 +9,8 @@ import {
 import React, { useState } from "react";
 import {
   ActivityIndicator,
+  Alert,
+  Keyboard,
   Text,
   TextInput,
   TouchableOpacity,
@@ -37,14 +39,18 @@ export default function authScreen() {
 
   const signIn = async () => {
     setLoading(true);
+    Keyboard.dismiss();
 
     try {
       const response = await signInWithEmailAndPassword(auth, email, password);
-      console.log(response);
       alert("Đăng nhập thành công");
-      router.replace("/(tabs)/homePage/indexHome");
     } catch (error: any) {
-      alert("Đăng nhập thất bại: " + error.message);
+      Alert.alert("Thông Báo", "Đăng nhập thành công 🥰", [
+        { text: "Hủy", onPress: () => console.log("Hủy") },
+        { text: "Đồng ý", onPress: () => console.log("Đồng ý") },
+      ]);
+
+      router.replace("/(tabs)/homePage/indexHome");
     } finally {
       setLoading(false);
     }
@@ -52,6 +58,7 @@ export default function authScreen() {
 
   const signUp = async () => {
     setLoading(true);
+    Keyboard.dismiss();
 
     try {
       const response = await createUserWithEmailAndPassword(
@@ -59,8 +66,11 @@ export default function authScreen() {
         email,
         password
       );
-      console.log(response);
-      alert("Check your emails!");
+      Alert.alert("Thông Báo", "Đăng ký thành công 🥰", [
+        { text: "Hủy", onPress: () => console.log("Hủy") },
+        { text: "Đồng ý", onPress: () => console.log("Đồng ý") },
+      ]);
+      router.replace("/(tabs)/accountPage/profileSetupScreen");
     } catch (error: any) {
       alert("Sign up failed: " + error.message);
     } finally {

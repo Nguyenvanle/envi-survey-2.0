@@ -48,12 +48,10 @@ function RootLayoutNav() {
   useEffect(() => {
     onAuthStateChanged(FIREBASE_AUTH, (user) => {
       if (user !== null) {
-        // router.replace("/homePage/indexHome");
-
-        router.replace("/createPage/indexCreateProject");
+        router.replace("/homePage/indexHome");
         setUser(user);
       } else {
-        router.replace("/authScreen");
+        router.replace("/login");
         setUser(user);
       }
     });
@@ -75,16 +73,9 @@ function RootLayoutNav() {
       }}
     >
       <Stack.Screen name="index" options={{ headerShown: false }} />
+      <Stack.Screen name="login" options={{ headerShown: false }} />
       <Stack.Screen name="authScreen" options={{ headerShown: false }} />
       <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-      <Stack.Screen
-        name="login"
-        options={
-          {
-            /*headerShown: false */
-          }
-        }
-      />
     </Stack>
   );
 }

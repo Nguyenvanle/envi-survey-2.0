@@ -29,9 +29,18 @@ export default function Layout() {
       }}
     >
       <Stack.Screen
-        name="indexSearchPage"
+        name="SearchPage"
         options={{
           headerTitle: "Tìm Kiếm",
+          headerTitleAlign: "center",
+          headerShadowVisible: false,
+          headerShown: true,
+        }}
+      />
+      <Stack.Screen
+        name="ResultPage"
+        options={{
+          headerTitle: "Kết quả",
           headerTitleAlign: "center",
           headerShadowVisible: false,
           headerShown: true,
@@ -65,7 +74,7 @@ export default function Layout() {
       <Stack.Screen
         name="filterPage"
         options={{
-          headerTitle: "Filter",
+          headerTitle: "Bộ Lọc",
           headerTitleAlign: "center",
           headerShadowVisible: false,
           headerShown: true,
