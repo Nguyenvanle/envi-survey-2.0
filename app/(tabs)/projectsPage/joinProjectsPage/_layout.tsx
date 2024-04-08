@@ -46,7 +46,7 @@ export default function Layout() {
       <Stack.Screen
         name="listEmployees"
         options={{
-          headerTitle: "Danh sách nhân viên",
+          headerTitle: "Nhân Viên",
           headerTitleAlign: "center",
           headerShadowVisible: false,
         }}

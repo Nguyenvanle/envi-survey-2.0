@@ -9,8 +9,6 @@ import {
 import React, { useState } from "react";
 import {
   ActivityIndicator,
-  Alert,
-  Keyboard,
   Text,
   TextInput,
   TouchableOpacity,
@@ -39,18 +37,14 @@ export default function authScreen() {
 
   const signIn = async () => {
     setLoading(true);
-    Keyboard.dismiss();
 
     try {
       const response = await signInWithEmailAndPassword(auth, email, password);
+      console.log(response);
       alert("Đăng nhập thành công");
-    } catch (error: any) {
-      Alert.alert("Thông Báo", "Đăng nhập thành công 🥰", [
-        { text: "Hủy", onPress: () => console.log("Hủy") },
-        { text: "Đồng ý", onPress: () => console.log("Đồng ý") },
-      ]);
-
       router.replace("/(tabs)/homePage/indexHome");
+    } catch (error: any) {
+      alert("Đăng nhập thất bại: " + error.message);
     } finally {
       setLoading(false);
     }
@@ -58,7 +52,6 @@ export default function authScreen() {
 
   const signUp = async () => {
     setLoading(true);
-    Keyboard.dismiss();
 
     try {
       const response = await createUserWithEmailAndPassword(
@@ -66,11 +59,8 @@ export default function authScreen() {
         email,
         password
       );
-      Alert.alert("Thông Báo", "Đăng ký thành công 🥰", [
-        { text: "Hủy", onPress: () => console.log("Hủy") },
-        { text: "Đồng ý", onPress: () => console.log("Đồng ý") },
-      ]);
-      router.replace("/(tabs)/accountPage/profileSetupScreen");
+      console.log(response);
+      alert("Check your emails!");
     } catch (error: any) {
       alert("Sign up failed: " + error.message);
     } finally {
@@ -86,13 +76,13 @@ export default function authScreen() {
 
         <View style={container.Center}>
           <View style={{ ...container.input }}>
-            <Text style={{ ...text.label }}>Tài khoản</Text>
+            <Text style={{ ...text.label }}>Email</Text>
             <View style={container.button}>
               <TextInput
                 style={input.normal}
                 textContentType="emailAddress"
                 value={email}
-                placeholder="Nhập tài khoản"
+                placeholder="Nhập email"
                 autoCapitalize="none"
                 onChangeText={(text) => setEmail(text)}
               />
@@ -120,7 +110,7 @@ export default function authScreen() {
           <>
             <View style={container.button}>
               {/* 'replace' to remove back button */}
-              <Link href={"/signUp"} asChild>
+              <Link href={"/signingUp"} asChild>
                 <TouchableOpacity style={button.light}>
                   <Text style={button.textLight}>Đăng Ký</Text>
                 </TouchableOpacity>

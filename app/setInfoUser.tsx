@@ -1,6 +1,8 @@
 import { FIREBASE_AUTH, FIREBASE_DB } from "@/FirebaseConfig";
 import Colors from "@/constants/Colors";
 import { button, container, input, text } from "@/constants/Styles";
+import PositionDropdown from "@/constants/components/create/DropdownPosition";
+import MyTimePicker from "@/constants/components/create/MyTimePickerModal";
 import { router } from "expo-router";
 import { doc, getDoc, setDoc, updateDoc } from "firebase/firestore";
 import React, { useState } from "react";
@@ -8,6 +10,7 @@ import {
   ActivityIndicator,
   Alert,
   Keyboard,
+  ScrollView,
   StyleSheet,
   Text,
   TextInput,
@@ -16,7 +19,7 @@ import {
 } from "react-native";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 
-export default function profileSetupScreen() {
+export default function setInfoUser() {
   const [fullName, setFullName] = useState("");
   const [position, setPosition] = useState("");
   const [loading, setLoading] = useState(false);
@@ -84,50 +87,77 @@ export default function profileSetupScreen() {
   };
 
   return (
-    <SafeAreaProvider style={container.root}>
-      <Text style={{ ...text.headerPrimary, fontSize: 24 }}>
-        Cập nhật thông tin
-      </Text>
+    <ScrollView style={{ ...container.scrollView, paddingHorizontal: 10 }}>
+      <SafeAreaProvider style={container.root}>
+        <Text style={{ ...text.headerPrimary, fontSize: 24, paddingTop: 30 }}>
+          Cập nhật thông tin
+        </Text>
 
-      <View style={container.input}>
-        <Text style={text.label}>Họ và Tên:</Text>
-        <View style={container.button}>
-          <TextInput
-            style={input.normal}
-            placeholder="Nhập họ và tên của bạn"
-            onChangeText={setFullName}
-            value={fullName}
-          />
-        </View>
-      </View>
-
-      <View style={container.input}>
-        <Text style={text.label}>Chức vụ:</Text>
-        <View style={container.button}>
-          <TextInput
-            style={input.normal}
-            placeholder="Chọn chức vụ của bạn"
-            onChangeText={setPosition}
-            value={position}
-          />
-        </View>
-      </View>
-
-      {loading ? (
-        <ActivityIndicator size="large" color={Colors.white} />
-      ) : (
-        <>
+        <View style={container.input}>
+          <Text style={text.label}>Họ và Tên:</Text>
           <View style={container.button}>
-            <TouchableOpacity
-              style={button.primary}
-              onPress={() => handleSaveProfile()}
-            >
-              <Text style={button.textPrimary}>Cập Nhật</Text>
-            </TouchableOpacity>
+            <TextInput
+              style={input.normal}
+              placeholder="Nhập họ và tên của bạn"
+              onChangeText={setFullName}
+              value={fullName}
+            />
           </View>
-        </>
-      )}
-    </SafeAreaProvider>
+        </View>
+
+        <View style={container.input}>
+          <Text style={text.label}>Chức vụ:</Text>
+          <View style={container.button}>
+            <TextInput
+              style={input.normal}
+              placeholder="Chọn chức vụ của bạn"
+              onChangeText={setPosition}
+              value={position}
+            />
+          </View>
+        </View>
+        <View style={{ ...container.input }}>
+          <Text style={text.label}>Chọn chức vụ:</Text>
+          <View style={{ ...container.button }}>
+            <PositionDropdown />
+          </View>
+        </View>
+
+        {/* Birth Day Input */}
+        <View style={container.input}>
+          <Text style={text.label}>Ngày sinh:</Text>
+          <View style={container.button}>
+            <MyTimePicker />
+          </View>
+        </View>
+        {/* Phone Input */}
+        <View style={container.input}>
+          <Text style={text.label}>Số điện thoại:</Text>
+          <View style={container.button}>
+            <TextInput
+              style={input.normal}
+              placeholder="Nhập họ và tên của bạn"
+              onChangeText={setFullName}
+              value={fullName}
+            />
+          </View>
+        </View>
+        {loading ? (
+          <ActivityIndicator size="large" color={Colors.white} />
+        ) : (
+          <>
+            <View style={container.button}>
+              <TouchableOpacity
+                style={button.primary}
+                onPress={() => handleSaveProfile()}
+              >
+                <Text style={button.textPrimary}>Cập Nhật</Text>
+              </TouchableOpacity>
+            </View>
+          </>
+        )}
+      </SafeAreaProvider>
+    </ScrollView>
   );
 }
 

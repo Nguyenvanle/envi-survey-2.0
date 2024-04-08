@@ -29,7 +29,7 @@ export default function indexProjectsPage() {
         radius={"md"}
         type="solid"
         onPress={() => {
-          router.push("/projectsPage/joinProjectsPage/enterPassword");
+          router.push("/(tabs)/projectsPage/joinProjectsPage/enterLink");
         }}
       >
         Tham gia dự án

@@ -1,11 +1,36 @@
+import Colors from "@/constants/Colors";
 import { button, container, input, text } from "@/constants/Styles";
 import { useFirebaseUser } from "@/constants/logic/useFirebaseUser";
-import { Link } from "expo-router";
-import React from "react";
-import { Text, TextInput, TouchableOpacity, View } from "react-native";
+
+import { router } from "expo-router";
+import React, { useState } from "react";
+import {
+  ActivityIndicator,
+  Alert,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View,
+} from "react-native";
 
 export default function enterPassword(userId: any) {
   const { username, isLoading } = useFirebaseUser(userId);
+  const [loading, setLoading] = useState(false);
+  const submit = async () => {
+    setLoading(true);
+
+    try {
+      Alert.alert("Thông báo", "Tham gia dự án thành công", [
+        { text: "Hủy", onPress: () => console.log("Hủy") },
+        { text: "OK", onPress: () => console.log("Đồng ý") },
+      ]);
+      router.replace("/(tabs)/projectsPage/joinProjectsPage/performProject");
+    } catch (error: any) {
+      alert("Đăng nhập thất bại: " + error.message);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <View style={container.root}>
@@ -31,13 +56,17 @@ export default function enterPassword(userId: any) {
             />
           </View>
         </View>
-        <View style={container.button}>
-          <Link href={"./successJoinProject"} asChild>
-            <TouchableOpacity style={button.primary}>
-              <Text style={button.textPrimary}>Tham gia</Text>
-            </TouchableOpacity>
-          </Link>
-        </View>
+        {loading ? (
+          <ActivityIndicator size="large" color={Colors.white} />
+        ) : (
+          <>
+            <View style={container.button}>
+              <TouchableOpacity style={button.primary} onPress={submit}>
+                <Text style={button.textPrimary}>Xác nhận</Text>
+              </TouchableOpacity>
+            </View>
+          </>
+        )}
       </View>
     </View>
   );
