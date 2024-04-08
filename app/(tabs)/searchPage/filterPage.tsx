@@ -54,7 +54,7 @@ export default function filterPage() {
     <View style={container.rootFilter}>
       <View style={container.boxFilter}>
         <View style={container.headerFilter}>
-          <Text style={text.headerFilter}>Filter Selection</Text>
+          <Text style={text.headerFilter}>Bộ Lọc Tìm Kiếm</Text>
         </View>
         <View>
           <View>
@@ -243,7 +243,7 @@ export default function filterPage() {
           }}
         >
           <View style={container.buttonApply}>
-            <Link href={"/(tabs)/searchPage/indexSearchPage"} asChild>
+            <Link href={"/(tabs)/searchPage/ResultPage"} asChild>
               <TouchableOpacity style={button.primaryApply}>
                 <Text style={button.textPrimary}>Áp Dụng</Text>
               </TouchableOpacity>

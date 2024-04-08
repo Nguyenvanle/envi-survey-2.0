@@ -51,7 +51,7 @@ export default function Layout() {
           tabBarIcon: ({ color }) => (
             <Octicons name="search" size={24} color={color} />
           ),
-          title: "Tìm kiếm",
+          title: "Tìm Kiếm",
           tabBarLabelStyle: {
             fontWeight: "500",
           },

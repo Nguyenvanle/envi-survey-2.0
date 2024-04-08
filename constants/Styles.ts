@@ -117,12 +117,21 @@ export const container = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     marginVertical: 10,
+    gap: 10,
+  },
+  buttonsearch: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    marginVertical: 10,
+    gap: 10,
+    padding: 10,
   },
   buttonApply: {
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
-    marginVertical: 20,
+    marginVertical: 15,
   },
   webview: {
     flex: 1,
@@ -157,6 +166,9 @@ export const container = StyleSheet.create({
     gap: 20,
   },
   input: {
+    justifyContent: "center",
+  },
+  inputsearch: {
     justifyContent: "center",
   },
   bodyCenter: {
