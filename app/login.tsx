@@ -20,7 +20,7 @@ export default function login() {
             link={"/authScreen"}
             onpress={null}
             color={Colors.background}
-            title={<Text style={{ padding: 5 }}>Đăng Nhập</Text>}
+            title={<Text style={{ padding: 5 }}>Tham gia</Text>}
           ></ButtonFillContainer>
         </View>
       </View>

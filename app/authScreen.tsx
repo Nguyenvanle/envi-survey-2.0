@@ -1,7 +1,7 @@
 import { FIREBASE_AUTH } from "@/FirebaseConfig";
 import Colors from "@/constants/Colors";
 import { button, container, input, text } from "@/constants/Styles";
-import { router } from "expo-router";
+import { Link, router } from "expo-router";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
@@ -110,11 +110,13 @@ export default function authScreen() {
           <>
             <View style={container.button}>
               {/* 'replace' to remove back button */}
-              <TouchableOpacity style={button.light} onPress={() => signUp()}>
-                <Text style={button.textLight}>Đăng Ký</Text>
-              </TouchableOpacity>
-
+              <Link href={"/signUp"} asChild>
+                <TouchableOpacity style={button.light}>
+                  <Text style={button.textLight}>Đăng Ký</Text>
+                </TouchableOpacity>
+              </Link>
               {/* 'replace' to remove back button */}
+
               <TouchableOpacity style={button.primary} onPress={() => signIn()}>
                 <Text style={button.textPrimary}>Đăng Nhập</Text>
               </TouchableOpacity>
