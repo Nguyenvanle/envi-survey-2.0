@@ -1,7 +1,7 @@
 import { FIREBASE_AUTH } from "@/FirebaseConfig";
 import Colors from "@/constants/Colors";
 import { button, container, input, text } from "@/constants/Styles";
-import { Link, router } from "expo-router";
+import { router } from "expo-router";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import React, { useState } from "react";
 import {
@@ -42,7 +42,6 @@ export default function signingUp() {
         password
       );
       console.log(response);
-      alert("Check your emails!");
     } catch (error: any) {
       alert("Sign up failed: " + error.message);
       router.replace("/login");
@@ -108,12 +107,10 @@ export default function signingUp() {
           <>
             <View style={container.button}>
               {/* 'replace' to remove back button */}
-              <Link href={"/setInfoUser"} asChild>
-                <TouchableOpacity style={button.light} onPress={signUp}>
-                  <Text style={button.textLight}>Đăng Ký</Text>
-                  {/* opPress={signUp}*/}
-                </TouchableOpacity>
-              </Link>
+              <TouchableOpacity style={button.light} onPress={signUp}>
+                <Text style={button.textLight}>Đăng Ký</Text>
+                {/* opPress={signUp}*/}
+              </TouchableOpacity>
               {/* 'replace' to remove back button */}
             </View>
           </>

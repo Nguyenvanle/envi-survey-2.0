@@ -73,6 +73,7 @@ export default function setInfoUser() {
         try {
           await setDoc(doc(FIREBASE_DB, "users", uid), userData);
           alert(`Đã thêm người dùng mới với ID: ` + uid);
+          router.replace("/homePage/indexHome");
         } catch (error) {
           console.error("Lỗi khi thêm người dùng mới: ", error);
         }

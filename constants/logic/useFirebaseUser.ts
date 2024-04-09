@@ -29,6 +29,7 @@ const useFirebaseUser = (userId: any) => {
             setUsername(docSnapshot.data().fullName); // Thay 'username' bằng tên field chứa tên người dùng
             setUserPositon(docSnapshot.data().position); // Thay 'username' bằng tên field chứa tên người dùng
           } else {
+            if (uid !== null) router.replace("/setInfoUser");
             console.log("Cannot find user data!");
           }
         } catch (error) {
@@ -117,3 +118,4 @@ export {
   useFirebaseUser,
   useSignOut,
 };
+
