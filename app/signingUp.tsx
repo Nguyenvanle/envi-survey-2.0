@@ -1,7 +1,7 @@
 import { FIREBASE_AUTH } from "@/FirebaseConfig";
 import Colors from "@/constants/Colors";
 import { button, container, input, text } from "@/constants/Styles";
-import { router } from "expo-router";
+import { Link, router } from "expo-router";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import React, { useState } from "react";
 import {
@@ -53,9 +53,17 @@ export default function signingUp() {
   return (
     <View style={{ ...container.root, paddingBottom: 0 }}>
       <View style={{ ...container.rootNoColor }}>
-        <Text style={{ ...text.headerPrimary, fontSize: 24 }}>
-          Đăng Ký Tài Khoản
-        </Text>
+        <View
+          style={{
+            ...container.header,
+
+            flexDirection: "row",
+          }}
+        >
+          <Text style={{ ...text.headerPrimary, fontSize: 24 }}>
+            Đăng Ký Tài Khoản
+          </Text>
+        </View>
 
         <View style={container.Center}>
           <View style={{ ...container.input }}>
@@ -108,13 +116,30 @@ export default function signingUp() {
             <View style={container.button}>
               {/* 'replace' to remove back button */}
               <TouchableOpacity style={button.light} onPress={signUp}>
-                <Text style={button.textLight}>Đăng Ký</Text>
+                <Text style={{ ...button.textLight, color: Colors.primary }}>
+                  Đăng Ký
+                </Text>
                 {/* opPress={signUp}*/}
               </TouchableOpacity>
               {/* 'replace' to remove back button */}
             </View>
           </>
         )}
+        <View
+          style={{
+            flexDirection: "row",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <Text style={{ color: Colors.white }}>Bạn đã có tài khoản </Text>
+          <Link
+            href={"/authScreen"}
+            style={{ ...text.header, fontSize: 18, color: Colors.primary }}
+          >
+            "Đăng Nhập"
+          </Link>
+        </View>
       </View>
     </View>
   );

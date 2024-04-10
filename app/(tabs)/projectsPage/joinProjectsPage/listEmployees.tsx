@@ -55,7 +55,7 @@ export default function listEmployees(userId: any) {
                     lineHeight: 18,
                   }}
                 >
-                  Nguyen Hung Thinh
+                  Nguyễn Văn Lẹ
                 </Text>
 
                 <Text
@@ -65,7 +65,7 @@ export default function listEmployees(userId: any) {
                     fontSize: 12,
                   }}
                 >
-                  B2103518
+                  B2110129
                 </Text>
               </View>
 
@@ -122,7 +122,7 @@ export default function listEmployees(userId: any) {
                     lineHeight: 18,
                   }}
                 >
-                  Nguyen Hung Thinh
+                  Nguyễn Hưng Thịnh
                 </Text>
 
                 <Text
@@ -185,7 +185,7 @@ export default function listEmployees(userId: any) {
                     lineHeight: 18,
                   }}
                 >
-                  Nguyen Hung Thinh
+                  Nguyễn Lê Tiến Đạt
                 </Text>
 
                 <Text
@@ -195,7 +195,7 @@ export default function listEmployees(userId: any) {
                     fontSize: 12,
                   }}
                 >
-                  B2103518
+                  B2110074
                 </Text>
               </View>
 
@@ -248,7 +248,7 @@ export default function listEmployees(userId: any) {
                     lineHeight: 18,
                   }}
                 >
-                  Nguyen Hung Thinh
+                  Lê Dương Anh Tú
                 </Text>
 
                 <Text
@@ -258,7 +258,7 @@ export default function listEmployees(userId: any) {
                     fontSize: 12,
                   }}
                 >
-                  B2103518
+                  B2103572
                 </Text>
               </View>
 
@@ -311,7 +311,7 @@ export default function listEmployees(userId: any) {
                     lineHeight: 18,
                   }}
                 >
-                  Nguyen Hung Thinh
+                  Nguyễn Quang Khái
                 </Text>
 
                 <Text
@@ -321,7 +321,7 @@ export default function listEmployees(userId: any) {
                     fontSize: 12,
                   }}
                 >
-                  B2103518
+                  B2110082
                 </Text>
               </View>
 
@@ -374,7 +374,7 @@ export default function listEmployees(userId: any) {
                     lineHeight: 18,
                   }}
                 >
-                  Nguyen Hung Thinh
+                  Nguyen Van An
                 </Text>
 
                 <Text
@@ -384,7 +384,7 @@ export default function listEmployees(userId: any) {
                     fontSize: 12,
                   }}
                 >
-                  B2103518
+                  B2110011
                 </Text>
               </View>
 
@@ -437,7 +437,7 @@ export default function listEmployees(userId: any) {
                     lineHeight: 18,
                   }}
                 >
-                  Nguyen Hung Thinh
+                  Nguyen Van Binh
                 </Text>
 
                 <Text
@@ -447,7 +447,7 @@ export default function listEmployees(userId: any) {
                     fontSize: 12,
                   }}
                 >
-                  B2103518
+                  B2100001
                 </Text>
               </View>
 

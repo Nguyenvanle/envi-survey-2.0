@@ -36,6 +36,14 @@ export default function Layout() {
         }}
       />
       <Stack.Screen
+        name="enterLink"
+        options={{
+          headerTitle: "Link dự án",
+          headerTitleAlign: "center",
+          headerShadowVisible: false,
+        }}
+      />
+      <Stack.Screen
         name="performProject"
         options={{
           headerTitle: "Thực hiện dự án",
@@ -43,6 +51,7 @@ export default function Layout() {
           headerShadowVisible: false,
         }}
       />
+
       <Stack.Screen
         name="listEmployees"
         options={{
