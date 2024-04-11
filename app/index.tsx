@@ -1,14 +1,20 @@
 import Colors from "@/constants/Colors";
 import { container } from "@/constants/Styles";
-import { useFirebaseUser } from "@/constants/logic/useFirebaseUser";
-import { Button } from "@rneui/base";
-import { Redirect } from "expo-router";
+import {
+  useAuthListener,
+  useFirebaseUser,
+} from "@/constants/logic/useFirebaseUser";
+import { Button, Text } from "@rneui/base";
+import React from "react";
+import { StyleSheet } from "react-native";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 
 const index = (userId: any) => {
-  const { isLoading, uid, username } = useFirebaseUser(userId);
+  const { username, isLoading } = useFirebaseUser(userId);
 
   if (isLoading) {
+    useAuthListener();
+
     return (
       <SafeAreaProvider style={container.root}>
         <Button
@@ -17,20 +23,23 @@ const index = (userId: any) => {
           loading
           loadingProps={{ size: 70, color: Colors.muted }}
         />
+        {/* <Button title="Click Me" type="solid" /> */}
       </SafeAreaProvider>
     );
   }
 
-  if (uid === null) {
-    console.log("index -> welcome");
-    return <Redirect href={"/(auth)/welcome"} />;
-  } else if (username !== null) {
-    console.log("index -> home");
-    return <Redirect href={"/(tabs)/homePage/indexHome"} />;
-  } else {
-    console.log("index -> setInfoUser");
-    return <Redirect href={"/(auth)/setInfoUser"} />;
-  }
+  return (
+    <SafeAreaProvider style={container.root}>
+      <Button
+        title="Click Me"
+        type="solid"
+        onPress={() => console.log(username)}
+      />
+      <Text style={{ color: Colors.white }}>{username}</Text>
+    </SafeAreaProvider>
+  );
 };
+
+const styles = StyleSheet.create({});
 
 export default index;
