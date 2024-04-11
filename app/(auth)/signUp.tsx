@@ -1,7 +1,7 @@
 import Colors from "@/constants/Colors";
 import { button, container, input, text } from "@/constants/Styles";
 import { signUp } from "@/constants/logic/useFirebaseUser";
-import { Link } from "expo-router";
+import { Link, router } from "expo-router";
 import { useState } from "react";
 import {
   ActivityIndicator,
@@ -23,7 +23,15 @@ export default function signUpScreen() {
     const signInMethod = await signUp(email, password);
 
     if (signInMethod.success) {
-      Alert.alert("Thông Báo", "Đăng ký thành công 🥰");
+      Alert.alert("Thông Báo", "Đăng ký thành công 🥰", [
+        {
+          text: "Ok",
+          onPress: () => {
+            console.log("signUp -> setInfoUser");
+            router.replace("/(auth)/setInfoUser");
+          },
+        },
+      ]);
     } else {
       alert("Đăng ký thất bại \n\n" + signInMethod.message);
     }

@@ -9,7 +9,7 @@ import {
 } from "firebase/auth";
 import { doc, getDoc, setDoc, updateDoc } from "firebase/firestore";
 import { useEffect, useState } from "react";
-import { Alert, Keyboard } from "react-native";
+import { Alert } from "react-native";
 
 // Đảm bảo firebase đã được khởi tạo ở đâu đó trong ứng dụng của bạn
 
@@ -34,6 +34,9 @@ const useFirebaseUser = (userId: any) => {
         } catch (error) {
           console.error("Error getting user data:", error);
         }
+        setIsLoading(false);
+      } else {
+        console.log(uid);
         setIsLoading(false);
       }
     };
@@ -122,7 +125,6 @@ const useSignOut = async () => {
 };
 
 const setInfoUserMethod = async (fullName: any, position: any) => {
-  Keyboard.dismiss();
   // Validate data and then save to Firebase
   // Navigate to next screen or pop to previous screen if needed
   if (fullName.length === 0 || position.length === 0) {
@@ -167,7 +169,7 @@ const setInfoUserMethod = async (fullName: any, position: any) => {
         await setDoc(doc(FIREBASE_DB, "users", uid), userData);
         Alert.alert(
           "Thông báo",
-          "Người dùng" + fullName + "đã được thêm vào hệ thống",
+          "Người dùng " + fullName + " đã được thêm vào hệ thống",
           [
             {
               text: "Đồng ý",

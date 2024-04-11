@@ -1,7 +1,7 @@
 import Colors from "@/constants/Colors";
 import { button, container, input, text } from "@/constants/Styles";
 import { signIn } from "@/constants/logic/useFirebaseUser";
-import { Link } from "expo-router";
+import { Link, router } from "expo-router";
 import React, { useState } from "react";
 import {
   ActivityIndicator,
@@ -24,7 +24,15 @@ export default function SignInScreen() {
     const signInMethod = await signIn(email, password);
 
     if (signInMethod.success) {
-      Alert.alert("Thông Báo", "Đăng nhập thành công 🥰");
+      Alert.alert("Thông Báo", "Đăng nhập thành công 🥰", [
+        {
+          text: "Ok",
+          onPress: () => {
+            console.log("signIn -> home");
+            router.replace("/(tabs)/homePage/indexHome");
+          },
+        },
+      ]);
     } else {
       alert("Đăng nhập thất bại \n\n" + signInMethod.message);
     }

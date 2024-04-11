@@ -21,7 +21,7 @@ const index = (userId: any) => {
     );
   }
 
-  if (uid === null) {
+  if (uid === undefined) {
     console.log("index -> welcome");
     return <Redirect href={"/(auth)/welcome"} />;
   } else if (username !== null) {
