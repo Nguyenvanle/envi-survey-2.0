@@ -3,10 +3,10 @@ import { container } from "@/constants/Styles";
 import ButtonFillContainer from "@/constants/components/create/ButtonFillContainer";
 import { Image, ImageBackground, Text, View } from "react-native";
 
-export default function login() {
-  const backgroundImage = require("../assets/images/background.jpg");
-  const image = require("../assets/images/illustration.png");
-  const logoLogin = require("../assets/images/logoLogin.png");
+export default function WelcomeScreen() {
+  const backgroundImage = require("@/assets/images/background.jpg");
+  const image = require("@/assets/images/illustration.png");
+  const logoLogin = require("@/assets/images/logoLogin.png");
   return (
     <ImageBackground source={backgroundImage} style={container.background}>
       <View style={container.rootNoColor}>
@@ -17,8 +17,8 @@ export default function login() {
           ></Image>
           <Image source={image} style={container.image} />
           <ButtonFillContainer
-            link={"/authScreen"}
-            onpress={null}
+            link={"/signIn"}
+            onPress={null}
             color={Colors.background}
             title={<Text style={{ padding: 5 }}>Tham gia</Text>}
           ></ButtonFillContainer>

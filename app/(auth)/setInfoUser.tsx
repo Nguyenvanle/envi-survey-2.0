@@ -1,15 +1,11 @@
-import { FIREBASE_AUTH, FIREBASE_DB } from "@/FirebaseConfig";
 import Colors from "@/constants/Colors";
 import { button, container, input, text } from "@/constants/Styles";
 import PositionDropdown from "@/constants/components/create/DropdownPosition";
 import MyTimePicker from "@/constants/components/create/MyTimePickerModal";
-import { router } from "expo-router";
-import { doc, getDoc, setDoc, updateDoc } from "firebase/firestore";
+import { setInfoUserMethod } from "@/constants/logic/useFirebaseUser";
 import React, { useState } from "react";
 import {
   ActivityIndicator,
-  Alert,
-  Keyboard,
   ScrollView,
   StyleSheet,
   Text,
@@ -22,68 +18,11 @@ import { SafeAreaProvider } from "react-native-safe-area-context";
 export default function setInfoUser() {
   const [fullName, setFullName] = useState("");
   const [position, setPosition] = useState("");
-  const [loading, setLoading] = useState(false);
+  const [isLoading, setLoading] = useState(false);
 
-  const handleSaveProfile = async () => {
+  const setInfoUserHandler = async () => {
     setLoading(true);
-    Keyboard.dismiss();
-
-    // Validate data and then save to Firebase
-    // Navigate to next screen or pop to previous screen if needed
-    if (fullName.length === 0 || position.length === 0) {
-      // Thông báo lỗi nếu người dùng không nhập đầy đủ thông tin
-      alert("Vui lòng nhập đầy đủ thông tin.");
-      setLoading(false);
-      return;
-    }
-
-    // Lấy UID từ người dùng hiện tại
-    const user = FIREBASE_AUTH.currentUser;
-
-    if (user) {
-      const uid = user.uid;
-      const userData = {
-        fullName: fullName,
-        position: position,
-        // Đặt các trường thông tin khác mà bạn muốn lưu
-      };
-
-      const userRef = doc(FIREBASE_DB, "users", uid);
-
-      // Kiểm tra document có tồn tại không
-      const docSnap = await getDoc(userRef);
-
-      if (docSnap.exists()) {
-        try {
-          await updateDoc(userRef, userData);
-          Alert.alert("Thông Báo", "Cập nhật thông tin thành công 🥰", [
-            { text: "Hủy", onPress: () => console.log("Hủy") },
-            { text: "Đồng ý", onPress: () => console.log("Đồng ý") },
-          ]);
-          router.replace("/");
-        } catch (error: any) {
-          console.error(
-            `Lỗi khi cập nhật thông tin người dùng với uid: ${uid}: `,
-            error.message
-          );
-        }
-      } else {
-        // Nếu userid không tồn tại, thêm người dùng mới
-
-        try {
-          await setDoc(doc(FIREBASE_DB, "users", uid), userData);
-          alert(`Đã thêm người dùng mới với ID: ` + uid);
-          router.replace("/homePage/indexHome");
-        } catch (error) {
-          console.error("Lỗi khi thêm người dùng mới: ", error);
-        }
-      }
-    } else {
-      // Thông báo lỗi nếu không tìm thấy người dùng
-      alert("Không tìm thấy người dùng. Vui lòng đăng nhập lại.");
-    }
-    console.log(fullName, position);
-
+    await setInfoUserMethod(fullName, position);
     setLoading(false);
   };
 
@@ -91,7 +30,7 @@ export default function setInfoUser() {
     <ScrollView style={{ ...container.scrollView, paddingHorizontal: 10 }}>
       <SafeAreaProvider style={container.root}>
         <Text style={{ ...text.headerPrimary, fontSize: 24, paddingTop: 30 }}>
-          Cập nhật thông tin
+          Cung cấp thông tin
         </Text>
 
         <View style={container.input}>
@@ -143,14 +82,14 @@ export default function setInfoUser() {
             />
           </View>
         </View>
-        {loading ? (
+        {isLoading ? (
           <ActivityIndicator size="large" color={Colors.white} />
         ) : (
           <>
             <View style={container.button}>
               <TouchableOpacity
                 style={button.primary}
-                onPress={() => handleSaveProfile()}
+                onPress={() => setInfoUserHandler()}
               >
                 <Text style={button.textPrimary}>Cập Nhật</Text>
               </TouchableOpacity>

@@ -5,7 +5,7 @@ import { Text, TouchableOpacity, View } from "react-native";
 
 export default function ButtonFillContainer(props: {
   link: string | any;
-  onpress: string | any;
+  onPress: string | any;
   color: string | any;
   title: string | any;
 }) {
@@ -21,13 +21,13 @@ export default function ButtonFillContainer(props: {
         </Link>
       </View>
     );
-  else if (props.onpress !== null) {
+  else if (props.onPress !== null) {
     return (
       <View style={container.button}>
         <Link href={props.link} asChild>
           <TouchableOpacity
             style={{ ...button.primary }}
-            onPress={props.onpress}
+            onPress={props.onPress}
           >
             <Text style={button.textPrimary}>{props.title}</Text>
           </TouchableOpacity>
