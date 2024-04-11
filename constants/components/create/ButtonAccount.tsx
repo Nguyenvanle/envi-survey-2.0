@@ -10,13 +10,14 @@ export default function ButtonAccount(props: {
   onpress: string | any;
   icon: string | any;
   title: string | any;
+  isReplace: boolean | any;
 }) {
   if (props.link !== null) {
     return (
       <>
         <View style={{ ...HomeStyles.searchBox, paddingHorizontal: 10 }}>
           <View style={{ ...container.button, justifyContent: "flex-start" }}>
-            <Link href={props.link} asChild>
+            <Link href={props.link} asChild replace={props.isReplace}>
               <TouchableOpacity
                 style={{
                   ...button.light,

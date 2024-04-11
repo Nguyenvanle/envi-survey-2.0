@@ -43,6 +43,7 @@ export default function indexAccountPage(userId: any) {
           link={"/(tabs)/accountPage/profileSetupScreen"}
           icon={<AntDesign name="user" size={24} color="black" />}
           title={"Cập nhật thông tin cá nhân"}
+          isReplace={false}
           onpress={null}
         ></ButtonAccount>
         <ButtonAccount
@@ -50,6 +51,7 @@ export default function indexAccountPage(userId: any) {
           icon={<Feather name="info" size={24} color="black" />}
           title={"Phản hồi về ứng dụng"}
           onpress={null}
+          isReplace={false}
         ></ButtonAccount>
         {isLoading ? (
           <ActivityIndicator size="large" color={Colors.white} />
@@ -58,6 +60,7 @@ export default function indexAccountPage(userId: any) {
             link={null}
             icon={<Feather name="log-out" size={24} color="black" />}
             title={"Đăng Xuất"}
+            isReplace={true}
             onpress={useSignOut}
           ></ButtonAccount>
         )}
