@@ -1,7 +1,7 @@
 import Colors from "@/constants/Colors";
 import { defaultStyles } from "@/constants/Styles";
 import { getInitials } from "@/constants/logic/getInitials";
-import { Feather, SimpleLineIcons } from "@expo/vector-icons";
+import { Feather } from "@expo/vector-icons";
 import React from "react";
 import { Text, View } from "react-native";
 import { CustomAvatar } from "./CustomAvatar";
@@ -14,32 +14,40 @@ export function ProjectsList(props: {
     projectsTaken: number;
     projectsCompleted: number;
   };
-  projects: {
+  projects: Array<{
     name: string;
     manage: string;
     startDate: string;
     endDate: string;
-  };
+  }>;
 }) {
-  return (
+  return props.projects.map((project, index) => (
     <View
+      key={index} // Sử dụng index làm key, tuy nhiên trong thực tế nên sử dụng giá trị duy nhất từ dữ liệu (ví dụ: project.id)
       style={{
         ...HomeStyles.userInfoContainer,
         backgroundColor: Colors.blueWhite,
       }}
     >
-      <View style={HomeStyles.infoContainer}>
+      {/* Nội dung còn lại của component */}
+      <View
+        style={{
+          ...HomeStyles.infoContainer,
+          alignSelf: "stretch",
+        }}
+      >
         <View
           style={{
             maxHeight: 47,
             minHeight: 17,
             height: "auto",
+            flex: 0,
           }}
         >
           {CustomAvatar(getInitials, props.user)}
         </View>
 
-        <View style={{ ...HomeStyles.namePosition }}>
+        <View style={{ ...HomeStyles.namePosition, flex: 1 }}>
           <Text
             style={{
               ...HomeStyles.textPrimary,
@@ -48,7 +56,8 @@ export function ProjectsList(props: {
               lineHeight: 18,
             }}
           >
-            {props.projects.name}
+            {project.name}{" "}
+            {/* Update từ props.projects.name sang project.name */}
           </Text>
           <Text
             style={{
@@ -60,37 +69,29 @@ export function ProjectsList(props: {
             {props.user.name}
           </Text>
         </View>
-
-        <View
-          style={{
-            ...HomeStyles.icon,
-            flexDirection: "row-reverse",
-            gap: 4,
-          }}
-        >
-          <SimpleLineIcons name="chart" size={20} color={Colors.muted} />
-        </View>
+        {/* ... */}
       </View>
 
       <View style={defaultStyles.separator}></View>
 
       <View style={HomeStyles.projectContainer}>
+        {/* ... */}
         <View style={HomeStyles.divideContainer}>
           <Feather name="clock" size={16} color={Colors.deepBlue} />
-
           <Text style={{ ...HomeStyles.miniText, color: Colors.deepBlue }}>
-            {props.projects.startDate}
+            {project.startDate}{" "}
+            {/* Update từ props.projects.startDate sang project.startDate */}
           </Text>
         </View>
 
         <View style={HomeStyles.divideContainer}>
           <Feather name="clock" size={16} color={Colors.red} />
-
           <Text style={{ ...HomeStyles.miniText, color: Colors.red }}>
-            {props.projects.endDate}
+            {project.endDate}{" "}
+            {/* Update từ props.projects.endDate sang project.endDate */}
           </Text>
         </View>
       </View>
     </View>
-  );
+  ));
 }
