@@ -13,7 +13,7 @@ import { Alert } from "react-native";
 
 // Đảm bảo firebase đã được khởi tạo ở đâu đó trong ứng dụng của bạn
 
-const useFirebaseUser = (userId: any) => {
+const useFirebaseUser = (userId: any) => {  
   const [username, setUsername] = useState(null);
   const [userPosition, setUserPosition] = useState("");
   const [isLoading, setIsLoading] = useState(true);

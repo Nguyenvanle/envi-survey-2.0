@@ -8,6 +8,7 @@ import { InfoCard } from "@/constants/components/home/InfoCard";
 import { PrimaryTitle } from "@/constants/components/home/PrimaryTitle";
 import { ProjectsList } from "@/constants/components/home/ProjectsList";
 import SearchLinkButton from "@/constants/components/home/SearchLinkButton";
+import { projectFirebase } from "@/constants/logic/projectFirebase";
 import { useFirebaseUser } from "@/constants/logic/useFirebaseUser";
 import { Button } from "@rneui/base";
 import { SafeAreaProvider } from "react-native-safe-area-context";
@@ -18,6 +19,8 @@ export default function indexHome(userId: any) {
     isLoading,
     userPosition: userPosition,
   } = useFirebaseUser(userId);
+
+  const projectsMap = projectFirebase(userId);
 
   if (isLoading) {
     return (
@@ -39,20 +42,13 @@ export default function indexHome(userId: any) {
     projectsCompleted: 8,
   };
   // Giả sử bạn có một mảng projects như sau:
-  const projects = [
-    {
-      name: "Khảo sát đất Cờ Đỏ",
-      manage: "CurrentUser",
-      startDate: "19/03/2024",
-      endDate: "01/05/2024",
-    },
-    {
-      name: "Khảo sát đất Cờ Đỏ",
-      manage: "CurrentUser",
-      startDate: "19/03/2024",
-      endDate: "01/05/2024",
-    },
-  ];
+  const projects = Array.from(projectsMap.values()).map(projects =>({//projects la ten trong CSDL
+    name: projects.name,
+    manage: projects.uidManager,
+    startDate: projects.start,
+    endDate: projects.end,
+  }))
+
 
   return (
     <ScrollView style={container.scrollView}>
