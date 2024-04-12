@@ -13,13 +13,9 @@ import {
 } from "react-native"; //press world "rnf" to create form quickly
 import { styles } from "../../../../constants/TienDatStyles";
 // @ts-ignore
-import { inforProjectFirebase } from "@/constants/logic/projectFirebase";
-import { getUserName } from "@/constants/logic/useFirebaseUser";
 import { Avatar } from "@rneui/base";
 
-export default function IndexProjectInformation(projectUID: string) {
-  const {name, start, end, manager,sponsor, question, purpose } = inforProjectFirebase(projectUID);
-  const nameManager = getUserName(manager);
+export default function IndexProjectInformation() {
   return (
     <ScrollView style={container.scrollView}>
       <View style={styles.container}>
@@ -41,10 +37,10 @@ export default function IndexProjectInformation(projectUID: string) {
             >
               <View style={styles.aboveInfor}>
                 <Text style={styles.mainText}>
-                  {name}
+                  Khảo sát đất đô thị khu vực 91B
                 </Text>
                 <Text style={{ ...styles.text, color: Colors.white }}>
-                  Mã dự án: {projectUID}
+                  Mã dự án #456431
                 </Text>
               </View>
               <View
@@ -76,7 +72,7 @@ export default function IndexProjectInformation(projectUID: string) {
                         color: Colors.primary,
                       })}
                     >
-                      Start: {start}
+                      Start: 19/03/2024
                     </Text>
                   </View>
 
@@ -90,7 +86,7 @@ export default function IndexProjectInformation(projectUID: string) {
                         color: Colors.red,
                       })}
                     >
-                      End: {end}
+                      Start: 25/04/2024
                     </Text>
                   </View>
                 </View>
@@ -109,13 +105,13 @@ export default function IndexProjectInformation(projectUID: string) {
                     color: Colors.deepBlue,
                   })}
                 >
-                  Have a good day!
+                  Còn 1 tháng 7 ngày 24' 12' 45'
                 </Text>
               </View>
             </View>
           </View>
 
-          {/* <View style={styles.subFrame}>
+          <View style={styles.subFrame}>
             <Text style={styles.subTittle}>Tiến độ dự án</Text>
             <View
               style={StyleSheet.compose(
@@ -173,7 +169,7 @@ export default function IndexProjectInformation(projectUID: string) {
                 </Text>
               </View>
             </View>
-          </View> */}
+          </View>
 
           <View style={styles.subFrame}>
             <Text style={styles.subTittle}>Nhân sự đảm nhiệm</Text>
@@ -189,7 +185,7 @@ export default function IndexProjectInformation(projectUID: string) {
 
                 <View style={styles.namePosition}>
                   <Text style={{ ...styles.textPrimary, color: Colors.gray }}>
-                    {nameManager.username}
+                    James Cameron
                   </Text>
                   <Text style={{ ...styles.text, color: Colors.gray }}>
                     Quản Lý
