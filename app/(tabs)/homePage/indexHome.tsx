@@ -67,7 +67,10 @@ export default function indexHome(userId: any) {
 
         <PrimaryTitle></PrimaryTitle>
 
-        <ProjectsList user={user} projects={project} ></ProjectsList>
+        <ProjectsList
+          user={user}
+          projects={projects.map((project) => ({ ...project }))}
+        ></ProjectsList>
       </SafeAreaProvider>
     </ScrollView>
   );
