@@ -41,7 +41,13 @@ export default function indexHome(userId: any) {
     projectsTaken: 10,
     projectsCompleted: 8,
   };
-
+  const project = {
+    name: "Khảo sát đất Cờ Đỏ",
+    manage: "CurrentUser",
+    startDate: "19/03/2024",
+    endDate: "01/05/2024",
+  };
+  
   return (
     <ScrollView style={container.scrollView}>
       <SafeAreaProvider style={container.root}>
@@ -56,7 +62,7 @@ export default function indexHome(userId: any) {
 
         <PrimaryTitle></PrimaryTitle>
 
-        <ProjectsList user={user}></ProjectsList>
+        <ProjectsList user={user} projects={project} ></ProjectsList>
       </SafeAreaProvider>
     </ScrollView>
   );

@@ -7,19 +7,18 @@ import { Text, View } from "react-native";
 import { CustomAvatar } from "./CustomAvatar";
 import { HomeStyles } from "./HomeStyles";
 
-const project = {
-  name: "Khảo sát đất Cờ Đỏ",
-  manage: "CurrentUser",
-  startDate: "19/03/2024",
-  deadline: "2 days",
-};
-
 export function ProjectsList(props: {
   user: {
     name: string;
     position: string;
     projectsTaken: number;
     projectsCompleted: number;
+  },
+  projects: {
+    name: string;
+    manage: string,
+    startDate: string,
+    endDate: string,
   };
 }) {
   return (
@@ -49,7 +48,7 @@ export function ProjectsList(props: {
               lineHeight: 18,
             }}
           >
-            {project.name}
+            {props.projects.name}
           </Text>
           <Text
             style={{
@@ -93,7 +92,7 @@ export function ProjectsList(props: {
             color={Colors.gray}
           />
 
-          <Text style={HomeStyles.miniText}>12 dự án</Text>
+          <Text style={HomeStyles.miniText}>{props.projects.startDate}</Text>
         </View>
 
         <View style={HomeStyles.divideContainer}>
@@ -103,7 +102,7 @@ export function ProjectsList(props: {
             color={Colors.gray}
           />
 
-          <Text style={HomeStyles.miniText}>6 dự án</Text>
+          <Text style={HomeStyles.miniText}>{props.projects.endDate}</Text>
         </View>
       </View>
     </View>
@@ -135,7 +134,7 @@ export function ProjectsList(props: {
               lineHeight: 18,
             }}
           >
-            {project.name}
+            {props.projects.name}
           </Text>
           <Text
             style={{
@@ -179,7 +178,7 @@ export function ProjectsList(props: {
             color={Colors.gray}
           />
 
-          <Text style={HomeStyles.miniText}>12 dự án</Text>
+          <Text style={HomeStyles.miniText}>this.props.first</Text>
         </View>
 
         <View style={HomeStyles.divideContainer}>

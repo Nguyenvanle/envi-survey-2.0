@@ -200,6 +200,6 @@ export {
   signUp,
   useAuthListener,
   useFirebaseUser,
-  useSignOut,
+  useSignOut
 };
 
