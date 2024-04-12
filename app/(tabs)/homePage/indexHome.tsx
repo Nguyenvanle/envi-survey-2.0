@@ -44,13 +44,15 @@ export default function indexHome(userId: any) {
     projectsTaken: 10,
     projectsCompleted: 8,
   };
+
   // Giả sử bạn có một mảng projects như sau:
-  const projects = Array.from(projectsMap.values()).map(projects =>({//projects la ten trong CSDL
-    name: projects.name,
-    manage: projects.uidManager,
-    startDate: projects.start,
-    endDate: projects.end,
-  }))
+  const projects = Array.from(projectsMap.entries()).map(([projectUid, projectData]) => ({
+    uid: projectUid,
+    name: projectData.name,
+    manage: projectData.uidManager,
+    startDate: projectData.start,
+    endDate: projectData.end,
+  }));
 
 
   return (

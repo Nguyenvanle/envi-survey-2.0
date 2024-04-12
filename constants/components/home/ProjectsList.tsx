@@ -2,10 +2,13 @@ import Colors from "@/constants/Colors";
 import { defaultStyles } from "@/constants/Styles";
 import { getInitials } from "@/constants/logic/getInitials";
 import { Feather } from "@expo/vector-icons";
+import { useNavigation } from "expo-router";
 import React from "react";
-import { Text, View } from "react-native";
+import { Text, TouchableOpacity, View } from "react-native";
 import { CustomAvatar } from "./CustomAvatar";
 import { HomeStyles } from "./HomeStyles";
+
+let navigation = useNavigation();
 
 export function ProjectsList(props: {
   user: {
@@ -15,6 +18,7 @@ export function ProjectsList(props: {
     projectsCompleted: number;
   };
   projects: Array<{
+    uid: string;
     name: string;
     manage: string;
     startDate: string;
@@ -22,13 +26,15 @@ export function ProjectsList(props: {
   }>;
 }) {
   return props.projects.map((project, index) => (
-    <View
+    <TouchableOpacity 
+    // onPress={() => navigation.navigate('projectsPage/projectsInfoPage/indexProjectInformation', { paramKey: '' })}
       key={index} // Sử dụng index làm key, tuy nhiên trong thực tế nên sử dụng giá trị duy nhất từ dữ liệu (ví dụ: project.id)
       style={{
         ...HomeStyles.userInfoContainer,
         backgroundColor: Colors.blueWhite,
-      }}
-    >
+      }}>
+      {/* ///projectsPage/projectsInfoPage/indexProjectInformation' */}
+      {/* // onPress={() => navigation.navigate("projectsPage/projectsInfoPage/indexProjectInformation", { projectUid: project.uid})}> */}
       {/* Nội dung còn lại của component */}
       <View
         style={{
@@ -66,7 +72,8 @@ export function ProjectsList(props: {
               fontSize: 12,
             }}
           >
-            {props.user.name}
+            <Text>ID: </Text>
+            {project.uid}
           </Text>
         </View>
         {/* ... */}
@@ -92,6 +99,6 @@ export function ProjectsList(props: {
           </Text>
         </View>
       </View>
-    </View>
+    </TouchableOpacity>
   ));
 }
