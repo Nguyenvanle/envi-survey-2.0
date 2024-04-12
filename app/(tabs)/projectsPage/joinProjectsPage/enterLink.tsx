@@ -12,7 +12,6 @@ export default function enterPassword(userId: any) {
       <View style={container.body}>
         <View style={container.header}>
           <Text style={text.header}>Bạn đang tham gia dự án</Text>
-          <Text style={text.headerPrimary}>"Khảo sát khu đất Cờ Đỏ"</Text>
         </View>
         <View style={container.input}>
           <Text

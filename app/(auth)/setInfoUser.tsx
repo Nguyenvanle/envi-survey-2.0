@@ -1,6 +1,5 @@
 import Colors from "@/constants/Colors";
 import { button, container, input, text } from "@/constants/Styles";
-import PositionDropdown from "@/constants/components/create/DropdownPosition";
 import MyTimePicker from "@/constants/components/create/MyTimePickerModal";
 import { setInfoUserMethod } from "@/constants/logic/useFirebaseUser";
 import React, { useState } from "react";
@@ -56,12 +55,12 @@ export default function setInfoUser() {
             />
           </View>
         </View>
-        <View style={{ ...container.input }}>
+        {/* <View style={{ ...container.input }}>
           <Text style={text.label}>Chọn chức vụ:</Text>
           <View style={{ ...container.button }}>
             <PositionDropdown />
           </View>
-        </View>
+        </View> */}
 
         {/* Birth Day Input */}
         <View style={container.input}>
@@ -76,9 +75,7 @@ export default function setInfoUser() {
           <View style={container.button}>
             <TextInput
               style={input.normal}
-              placeholder="Nhập họ và tên của bạn"
-              onChangeText={setFullName}
-              value={fullName}
+              placeholder="Nhập số điện thoại của bạn"
             />
           </View>
         </View>
