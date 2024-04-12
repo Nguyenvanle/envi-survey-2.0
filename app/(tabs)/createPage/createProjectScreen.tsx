@@ -9,8 +9,6 @@ export default function createProjectScreen() {
       source={{
         // link tạo form mới bằng tk gg đã đăng nhập trên ứng dụng
         uri: "https://docs.google.com/forms",
-
-        //uri: "https://docs.google.com/forms/d/1MY38RVNT0qq_LLyq0DykBmYyV_6378HPaMPdAxntizI",
       }}
     />
   );

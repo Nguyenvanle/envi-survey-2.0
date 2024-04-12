@@ -1,6 +1,8 @@
 import Colors from "@/constants/Colors";
 import { button, container } from "@/constants/Styles";
+import { styles } from "@/constants/TienDatStyles";
 import { AntDesign, MaterialIcons } from "@expo/vector-icons";
+import { Avatar } from "@rneui/base";
 import { Link } from "expo-router";
 import React from "react";
 import {
@@ -11,9 +13,6 @@ import {
   TouchableOpacity,
   View,
 } from "react-native"; //press world "rnf" to create form quickly
-import { styles } from "../../../../constants/TienDatStyles";
-// @ts-ignore
-import { Avatar } from "@rneui/base";
 
 export default function IndexProjectInformation() {
   return (

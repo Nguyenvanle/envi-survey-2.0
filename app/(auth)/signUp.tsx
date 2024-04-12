@@ -45,7 +45,6 @@ export default function signUpScreen() {
         <View
           style={{
             ...container.header,
-
             flexDirection: "row",
           }}
         >

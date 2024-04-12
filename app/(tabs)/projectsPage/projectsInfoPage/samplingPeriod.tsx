@@ -1,4 +1,6 @@
 import Colors from "@/constants/Colors";
+import { container } from "@/constants/Styles";
+import { styles } from "@/constants/TienDatStyles";
 import { Link } from "expo-router";
 import React from "react";
 import {
@@ -9,8 +11,6 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import { container } from "../../../../constants/Styles";
-import { styles } from "../../../../constants/TienDatStyles";
 
 export default function samplingPeriod() {
   return (
