@@ -138,6 +138,7 @@ export const container = StyleSheet.create({
     backgroundColor: Colors.background,
     alignItems: "center",
     justifyContent: "center",
+    marginBottom: 70,
   },
   box: {
     flex: 0,

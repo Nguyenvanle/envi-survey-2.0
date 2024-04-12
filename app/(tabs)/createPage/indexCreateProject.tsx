@@ -1,7 +1,6 @@
 import Colors from "@/constants/Colors";
 import { button, container, input, text } from "@/constants/Styles";
 import ButtonFillContainer from "@/constants/components/create/ButtonFillContainer";
-import { ButtonSignOut } from "@/constants/components/create/ButtonSignOut";
 import CustomDropdown from "@/constants/components/create/DropdownBox";
 import MyTimePicker from "@/constants/components/create/MyTimePickerModal";
 import { useFirebaseUser } from "@/constants/logic/useFirebaseUser";
@@ -122,15 +121,13 @@ export default function createPage(userId: any) {
                 <Text style={button.textLight}>Hủy</Text>
               </TouchableOpacity>
             </Link>
-            <Link href={"/createPage/successCreateProject"} asChild>
+            <Link href={"/createPage/createProjectScreen"} asChild>
               {/* 'replace' to remove back button */}
               <TouchableOpacity style={button.primary}>
                 <Text style={button.textPrimary}>Xác Nhận</Text>
               </TouchableOpacity>
             </Link>
           </View>
-
-          <ButtonSignOut color={"red"}></ButtonSignOut>
         </SafeAreaProvider>
       </ScrollView>
     );
@@ -176,7 +173,7 @@ export default function createPage(userId: any) {
         <ButtonFillContainer
           link={"../projectsPage/joinProjectsPage/enterPassword"}
           color={Colors.primary}
-          onpress={null}
+          onPress={null}
           title={"Tham Gia Dự Án"}
         ></ButtonFillContainer>
       </SafeAreaProvider>
