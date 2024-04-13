@@ -11,7 +11,6 @@ import SearchLinkButton from "@/constants/components/home/SearchLinkButton";
 import { projectFirebase } from "@/constants/logic/projectFirebase";
 import { useFirebaseUser } from "@/constants/logic/useFirebaseUser";
 import { Button } from "@rneui/base";
-import { Link } from "expo-router";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 
 export default function indexHome(userId: any) {
@@ -71,8 +70,6 @@ export default function indexHome(userId: any) {
           user={user}
           projects={projects.map((project) => ({ ...project }))}
         ></ProjectsList>
-
-        <Link href={"/(tabs)/homePage/1"}>click mes</Link>
       </SafeAreaProvider>
     </ScrollView>
   );

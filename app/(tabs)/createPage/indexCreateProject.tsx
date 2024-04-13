@@ -3,11 +3,14 @@ import { button, container, input, text } from "@/constants/Styles";
 import ButtonFillContainer from "@/constants/components/create/ButtonFillContainer";
 import CustomDropdown from "@/constants/components/create/DropdownBox";
 import MyTimePicker from "@/constants/components/create/MyTimePickerModal";
+import { addNewProject } from "@/constants/logic/projectFirebase";
 import { useFirebaseUser } from "@/constants/logic/useFirebaseUser";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import { Button } from "@rneui/themed";
-import { Link } from "expo-router";
+import { Link, router } from "expo-router";
 import { useState } from "react";
 import {
+  Alert,
   ScrollView,
   Text,
   TextInput,
@@ -17,9 +20,62 @@ import {
 import { SafeAreaProvider } from "react-native-safe-area-context";
 
 export default function createPage(userId: any) {
-  const { isLoading, userPosition } = useFirebaseUser(userId);
+  const { isLoading, userPosition, uid } = useFirebaseUser(userId);
 
-  const [password, setPassword] = useState("");
+  const [projectInfo, setProjectInfo] = useState({
+    name: "",
+    descript: "",
+    start: null, // cần xác định cách lấy dữ liệu từ MyTimePicker
+    end: null, // cần xác định cách lấy dữ liệu từ MyTimePicker
+    password: "",
+    destination: "", // cần xác định cách lấy dữ liệu từ CustomDropdown
+    // Các thuộc tính khác nếu cần thiết
+    uidManager: uid,
+  });
+
+  const handleInputChange = (name: any, value: any) => {
+    setProjectInfo((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  // Hàm gọi khi click nút "Xác Nhận"
+  const handleAddProject = () => {
+    console.log(projectInfo);
+    addNewProject(projectInfo)
+      .then(async (projectId) => {
+        if (projectId) {
+          try {
+            await AsyncStorage.setItem("@projectID", projectId);
+            if (projectId !== null) {
+              console.log("Dữ liệu đã được lấy và có thể sử dụng ", projectId);
+            } else console.log("projectId === null");
+          } catch (error) {
+            // Xử lý lỗi
+            console.error("Lỗi khi lấy projectID:", error);
+          }
+          Alert.alert("Thông báo", "Thêm dự án mới ID: " + projectId, [
+            {},
+            {
+              text: "Ok",
+              onPress: () => {
+                console.log("indexCreate -> formScreen");
+                router.navigate({
+                  pathname: "/createPage/pasteLink", // Đây là tên của route mà bạn muốn điều hướng đến.
+                  params: { projectId: projectId }, // Đây là object chứa các tham số bạn muốn truyền.
+                });
+              },
+            },
+          ]);
+          // Tùy thuộc vào logic ứng dụng, bạn có thể chuyển hướng hoặc hiển thị thông báo thành công tại đây
+        }
+      })
+      .catch((error) => {
+        console.error("Lỗi khi thêm dự án mới:", error);
+        // Xử lý hiển thị thông báo lỗi tại đây
+      });
+  };
 
   if (isLoading) {
     return (
@@ -47,7 +103,7 @@ export default function createPage(userId: any) {
               <TextInput
                 style={{ ...input.normal }}
                 placeholder="Nhập tên cho dự án"
-                onChangeText={() => {}}
+                onChangeText={(text) => handleInputChange("name", text)}
               />
             </View>
           </View>
@@ -62,7 +118,7 @@ export default function createPage(userId: any) {
                   height: "auto",
                 }}
                 placeholder="Nhập mô tả cho dự án"
-                onChangeText={() => {}}
+                onChangeText={(text) => handleInputChange("descript", text)}
                 multiline={true}
                 numberOfLines={4}
                 textAlignVertical="top"
@@ -74,7 +130,11 @@ export default function createPage(userId: any) {
           <View style={container.input}>
             <Text style={text.label}>Chọn thời gian bắt đầu:</Text>
             <View style={container.button}>
-              <MyTimePicker />
+              <MyTimePicker
+                onDateChange={(newDate: any) => {
+                  handleInputChange("start", newDate);
+                }}
+              />
             </View>
           </View>
 
@@ -82,7 +142,11 @@ export default function createPage(userId: any) {
           <View style={container.input}>
             <Text style={text.label}>Chọn thời gian kết thúc:</Text>
             <View style={container.button}>
-              <MyTimePicker />
+              <MyTimePicker
+                onDateChange={(newDate: any) => {
+                  handleInputChange("end", newDate);
+                }}
+              />
             </View>
           </View>
 
@@ -96,8 +160,7 @@ export default function createPage(userId: any) {
                 secureTextEntry={true}
                 textContentType="password"
                 autoCapitalize="none"
-                value={password}
-                onChangeText={(text) => setPassword(text)}
+                onChangeText={(text) => handleInputChange("password", text)}
               />
             </View>
           </View>
@@ -106,27 +169,28 @@ export default function createPage(userId: any) {
           <View style={{ ...container.input, paddingBottom: 10 }}>
             <Text style={text.label}>Chọn địa điểm:</Text>
             <View style={{ ...container.button }}>
-              <CustomDropdown />
+              <CustomDropdown
+                onLocationChange={(newLocation: any) => {
+                  handleInputChange("destination", newLocation);
+                }}
+              />
             </View>
           </View>
 
           {/* Project Submit Info */}
-          {/* Create a button container */}
+
           <View style={container.button}>
             <Link href={"/homePage/indexHome"} asChild>
-              {/* 'replace' to remove back button */}
               <TouchableOpacity
                 style={{ ...button.primary, backgroundColor: Colors.red }}
               >
                 <Text style={button.textLight}>Hủy</Text>
               </TouchableOpacity>
             </Link>
-            <Link href={"/createPage/createProjectScreen"} asChild>
-              {/* 'replace' to remove back button */}
-              <TouchableOpacity style={button.primary}>
-                <Text style={button.textPrimary}>Xác Nhận</Text>
-              </TouchableOpacity>
-            </Link>
+
+            <TouchableOpacity style={button.primary} onPress={handleAddProject}>
+              <Text style={button.textPrimary}>Xác Nhận</Text>
+            </TouchableOpacity>
           </View>
         </SafeAreaProvider>
       </ScrollView>
