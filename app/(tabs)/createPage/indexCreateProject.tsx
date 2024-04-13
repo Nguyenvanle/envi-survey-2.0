@@ -171,7 +171,7 @@ export default function createPage(userId: any) {
         </Text>
 
         <ButtonFillContainer
-          link={"../projectsPage/joinProjectsPage/enterPassword"}
+          link={"../projectsPage/joinProjectsPage/enterLink.tsx"}
           color={Colors.primary}
           onPress={null}
           title={"Tham Gia Dự Án"}
