@@ -1,7 +1,7 @@
 import Colors from "@/constants/Colors";
 import { container } from "@/constants/Styles";
 import { styles } from "@/constants/TienDatStyles";
-import { Link } from "expo-router";
+import { Link, useGlobalSearchParams } from "expo-router";
 import React from "react";
 import {
   Image,
@@ -12,7 +12,9 @@ import {
   View,
 } from "react-native";
 
-export default function samplingPeriod() {
+export default function SamplingPeriod() {
+  const { projectID } = useGlobalSearchParams();
+  console.log(projectID);
   return (
     <ScrollView style={container.scrollView}>
       <View style={{ ...styles.container, paddingBottom: 60 }}>
@@ -51,7 +53,7 @@ export default function samplingPeriod() {
             <Text style={styles.subTittle}>Chi tiết mẫu</Text>
 
             <Link
-              href={"/projectsPage/projectsInfoPage/destinationForm"}
+              href={`/projectsPage/projectsInfoPage/sampList/desForm/${projectID}`}
               asChild
             >
               <TouchableOpacity>
