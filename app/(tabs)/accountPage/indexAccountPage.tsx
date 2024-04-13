@@ -7,7 +7,7 @@ import AntDesign from "@expo/vector-icons/build/AntDesign";
 import Feather from "@expo/vector-icons/build/Feather";
 import { Button } from "@rneui/themed";
 import React from "react";
-import { ActivityIndicator, ScrollView, StyleSheet } from "react-native";
+import { ActivityIndicator, Alert, ScrollView } from "react-native";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 
 export default function indexAccountPage(userId: any) {
@@ -35,6 +35,25 @@ export default function indexAccountPage(userId: any) {
     projectsTaken: 10,
     projectsCompleted: 8,
   };
+
+  const pressHandler = () => {
+    Alert.alert("Thông báo", "Bạn có muốn đăng xuất?🧐", [
+      {
+        text: "Cancel",
+        onPress: () => {
+          console.log("Cancel");
+        },
+      },
+      {
+        text: "Ok",
+        onPress: () => {
+          console.log("Account -> Sign In");
+          useSignOut();
+        },
+      },
+    ]);
+  };
+
   return (
     <ScrollView style={container.scrollView}>
       <SafeAreaProvider style={container.root}>
@@ -61,30 +80,10 @@ export default function indexAccountPage(userId: any) {
             icon={<Feather name="log-out" size={24} color="black" />}
             title={"Đăng Xuất"}
             isReplace={true}
-            onpress={useSignOut}
+            onpress={pressHandler}
           ></ButtonAccount>
         )}
       </SafeAreaProvider>
     </ScrollView>
   );
-}
-
-const styles = StyleSheet.create({});
-{
-  /* <Text style={button.textPrimary}>indexAccountPage</Text>
-      <Button
-        radius={"md"}
-        type="solid"
-        onPress={() => {
-          router.replace("/accountPage/profileSetupScreen");
-        }}
-      >
-        Tuỳ chỉnh thông tin cá nhân
-        <FontAwesome5
-          name="user-cog"
-          size={16}
-          color="white"
-          style={{ paddingLeft: 10 }}
-        />
-      </Button> */
 }

@@ -31,7 +31,7 @@ export default function Layout() {
       <Stack.Screen
         name="projectsInfoPage"
         options={{
-          headerTitle: "projectsInfoPage",
+          headerTitle: "Thông Tin Dự Án",
           headerTitleAlign: "center",
           headerShadowVisible: false,
           headerShown: true,

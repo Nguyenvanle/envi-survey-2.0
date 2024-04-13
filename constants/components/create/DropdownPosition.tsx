@@ -4,14 +4,22 @@ import React, { useState } from "react";
 import { Text, TouchableOpacity, View } from "react-native";
 import { button, container } from "../../Styles";
 
-const PositionDropdown = () => {
+const PositionDropdown = ({ onPositionChange }: any) => {
   const positions = ["Quản Lý", "Nhân Viên"]; // Mảng chứa tên địa điểm
   const [checked, setChecked] = useState(0);
-  const [destination, setDestination] = useState(positions[checked]); // Khởi tạo ban đầu với địa điểm đầu tiên trong mảng
+  const [position, setPosition] = useState(positions[checked]); // Khởi tạo ban đầu với địa điểm đầu tiên trong mảng
   const [visible, setVisible] = useState(false);
 
   const toggleDialog = () => {
     setVisible(!visible);
+  };
+
+  const onCheck = (index: any) => {
+    setChecked(index);
+    setPosition(positions[index]);
+    if (onPositionChange) {
+      onPositionChange(positions[index]);
+    }
   };
 
   return (
@@ -29,7 +37,7 @@ const PositionDropdown = () => {
             fontSize: 14,
           }}
         >
-          {destination}
+          {position}
         </Text>
       </TouchableOpacity>
       <Dialog
@@ -55,10 +63,7 @@ const PositionDropdown = () => {
             checkedColor={Colors.primary}
             uncheckedIcon="circle-o"
             checked={checked === i}
-            onPress={() => {
-              setChecked(i);
-              setDestination(positions[i]); // Cập nhật địa điểm đã chọn
-            }}
+            onPress={() => onCheck(i)}
           />
         ))}
         <Dialog.Actions>
@@ -66,7 +71,7 @@ const PositionDropdown = () => {
             titleStyle={{ color: Colors.primary }}
             title="Chọn"
             onPress={() => {
-              console.log(`Option ${destination} was selected!`); // Log giá trị theo tên địa điểm
+              console.log(`Option ${position} was selected!`); // Log giá trị theo tên địa điểm
               toggleDialog();
             }}
           />
