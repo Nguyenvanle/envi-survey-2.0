@@ -2,10 +2,23 @@ import Colors from "@/constants/Colors";
 import { container } from "@/constants/Styles";
 import { styles } from "@/constants/TienDatStyles";
 import { Feather } from "@expo/vector-icons";
+import { router } from "expo-router";
 import React from "react";
-import { Image, ScrollView, StyleSheet, Text, View } from "react-native";
+import {
+  Image,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
 
 export default function samplingPeriod() {
+  const pressHandler = () => {
+    console.log("ProjectInfo -> JoinProject");
+    router.replace("/projectsPage/joinProjectsPage/performProject");
+  };
+
   return (
     <ScrollView style={container.scrollView}>
       <View style={styles.container}>
@@ -305,7 +318,10 @@ export default function samplingPeriod() {
                     backgroundColor: Colors.primary,
                   })}
                 >
-                  <View style={styles.itemComponnent}>
+                  <TouchableOpacity
+                    style={styles.itemComponnent}
+                    onPress={pressHandler}
+                  >
                     <Feather name="upload" size={24} color={Colors.white} />
                     <Text
                       style={StyleSheet.compose(styles.text, {
@@ -317,7 +333,7 @@ export default function samplingPeriod() {
                     >
                       Upload
                     </Text>
-                  </View>
+                  </TouchableOpacity>
                 </View>
               </View>
             </View>

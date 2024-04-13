@@ -17,13 +17,8 @@ import { SafeAreaProvider } from "react-native-safe-area-context";
 export default function PasteLinkScreen() {
   const [link, setLink] = useState("");
 
-  const isValidUrl = (url: any) => {
-    // Đây là regex cơ bản để kiểm tra một URL
-    return link !== "";
-  };
-
   const pressHandler = () => {
-    if (!link || !isValidUrl(link)) {
+    if (!link) {
       Alert.alert("Lỗi", "Vui lòng nhập liên kết đầy đủ 😊", [{ text: "Ok" }]);
       return;
     }

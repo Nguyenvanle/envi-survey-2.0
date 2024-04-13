@@ -46,7 +46,7 @@ export default function Layout() {
       <Stack.Screen
         name="performProject"
         options={{
-          headerTitle: "Thực hiện dự án",
+          headerTitle: "Thực hiện khảo sát",
           headerTitleAlign: "center",
           headerShadowVisible: false,
         }}

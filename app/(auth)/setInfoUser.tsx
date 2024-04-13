@@ -1,5 +1,6 @@
 import Colors from "@/constants/Colors";
 import { button, container, input, text } from "@/constants/Styles";
+import PositionDropdown from "@/constants/components/create/DropdownPosition";
 import MyTimePicker from "@/constants/components/create/MyTimePickerModal";
 import { setInfoUserMethod } from "@/constants/logic/useFirebaseUser";
 import React, { useState } from "react";
@@ -16,8 +17,12 @@ import { SafeAreaProvider } from "react-native-safe-area-context";
 
 export default function setInfoUser() {
   const [fullName, setFullName] = useState("");
-  const [position, setPosition] = useState("");
+  const [position, setPosition] = useState("Chọn chức vụ");
   const [isLoading, setLoading] = useState(false);
+
+  const handlePositionChange = (selectedPosition: any) => {
+    setPosition(selectedPosition);
+  };
 
   const setInfoUserHandler = async () => {
     setLoading(true);
@@ -44,23 +49,12 @@ export default function setInfoUser() {
           </View>
         </View>
 
-        <View style={container.input}>
-          <Text style={text.label}>Chức vụ:</Text>
-          <View style={container.button}>
-            <TextInput
-              style={input.normal}
-              placeholder="Chọn chức vụ của bạn"
-              onChangeText={setPosition}
-              value={position}
-            />
-          </View>
-        </View>
-        {/* <View style={{ ...container.input }}>
+        <View style={{ ...container.input }}>
           <Text style={text.label}>Chọn chức vụ:</Text>
           <View style={{ ...container.button }}>
-            <PositionDropdown />
+            <PositionDropdown onPositionChange={handlePositionChange} />
           </View>
-        </View> */}
+        </View>
 
         {/* Birth Day Input */}
         <View style={container.input}>

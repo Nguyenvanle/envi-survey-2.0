@@ -28,6 +28,7 @@ export default function IndexProjectInformation() {
             >
               Thông tin chính
             </Text>
+
             <View
               style={StyleSheet.compose(
                 styles.RectangleShape,
@@ -38,6 +39,7 @@ export default function IndexProjectInformation() {
                 <Text style={styles.mainText}>
                   Khảo sát đất đô thị khu vực 91B
                 </Text>
+
                 <Text style={{ ...styles.text, color: Colors.white }}>
                   Mã dự án #456431
                 </Text>
