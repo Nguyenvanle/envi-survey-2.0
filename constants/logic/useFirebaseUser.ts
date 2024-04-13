@@ -13,6 +13,38 @@ import { Alert } from "react-native";
 
 // Đảm bảo firebase đã được khởi tạo ở đâu đó trong ứng dụng của bạn
 
+const nameUserFirebaseUser = (userId: any) => {  
+  const [username, setUsername] = useState("");
+  const [isLoading, setIsLoading] = useState(true);
+  useEffect(() => {
+    const getUserName = async () => {
+      if (userId) {
+        const userRef = doc(FIREBASE_DB, "users", userId);
+        try {
+          const docSnapshot = await getDoc(userRef);
+          if (docSnapshot.exists()) {
+            setUsername(docSnapshot.data().fullName); // Thay 'username' bằng tên field chứa tên người dùng
+          } else {
+            console.log("Cannot find user data!");
+          }
+        } catch (error) {
+          console.error("Error getting user data:", error);
+        }
+        setIsLoading(false); 
+      } else {
+        console.log(userId);
+        setIsLoading(false);
+      }
+    };
+
+    if (userId) {
+      getUserName();
+    }
+  }, [userId]);
+
+  return {username,isLoading};
+};
+
 const useFirebaseUser = (userId: any) => {  
   const [username, setUsername] = useState(null);
   const [userPosition, setUserPosition] = useState("");
@@ -194,7 +226,7 @@ const setInfoUserMethod = async (fullName: any, position: any) => {
 };
 
 export {
-  setInfoUserMethod,
+  nameUserFirebaseUser, setInfoUserMethod,
   signIn,
   signOut,
   signUp,
