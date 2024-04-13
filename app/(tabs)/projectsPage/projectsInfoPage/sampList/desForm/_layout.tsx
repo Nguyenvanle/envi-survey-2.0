@@ -1,10 +1,9 @@
 import Colors from "@/constants/Colors";
 import { Stack } from "expo-router";
-//============ Là tệp định nghĩa layout chung cho các màn hình trong ứng dụng ===============
+import React from "react";
+import { StyleSheet } from "react-native";
 
-export default function Layout() {
-  // https://docs.expo.dev/router/advanced/stack/ to Custom Header
-
+export default function SampLayout() {
   return (
     <Stack
       screenOptions={{
@@ -21,18 +20,9 @@ export default function Layout() {
       }}
     >
       <Stack.Screen
-        name="[projectID]"
+        name="[formID]"
         options={{
-          headerTitle: "indexProjectInformation",
-          headerTitleAlign: "center",
-          headerShadowVisible: false,
-          headerBackVisible: false,
-        }}
-      />
-      <Stack.Screen
-        name="sampList"
-        options={{
-          headerTitle: "samplingPeriod",
+          headerTitle: "destinationForm",
           headerTitleAlign: "center",
           headerShadowVisible: false,
           headerShown: false,
@@ -41,3 +31,5 @@ export default function Layout() {
     </Stack>
   );
 }
+
+const styles = StyleSheet.create({});

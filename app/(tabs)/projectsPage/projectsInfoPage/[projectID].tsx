@@ -381,7 +381,7 @@ export default function IndexProjectInformation() {
                   })}
                 >
                   <Link
-                    href={"/projectsPage/projectsInfoPage/samplingPeriod"}
+                    href={`/projectsPage/projectsInfoPage/sampList/${projectID}`}
                     asChild
                   >
                     <TouchableOpacity style={button.primary}>

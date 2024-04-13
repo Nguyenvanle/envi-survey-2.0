@@ -2,7 +2,7 @@ import Colors from "@/constants/Colors";
 import { container } from "@/constants/Styles";
 import { styles } from "@/constants/TienDatStyles";
 import { Feather } from "@expo/vector-icons";
-import { router } from "expo-router";
+import { router, useGlobalSearchParams } from "expo-router";
 import React from "react";
 import {
   Image,
@@ -14,6 +14,9 @@ import {
 } from "react-native";
 
 export default function samplingPeriod() {
+  const { sampID } = useGlobalSearchParams();
+  console.log(sampID);
+
   const pressHandler = () => {
     console.log("ProjectInfo -> JoinProject");
     router.replace("/projectsPage/joinProjectsPage/performProject");
