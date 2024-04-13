@@ -18,7 +18,7 @@ export default function Layout() {
         headerShown: false,
       }}
     >
-      {/* <Stack.Screen
+      <Stack.Screen
         name="indexProjectsPage"
         options={{
           headerTitle: "indexProjectsPage",
@@ -26,25 +26,25 @@ export default function Layout() {
           headerShadowVisible: false,
           headerShown: true,
         }}
-      /> */}
+      />
 
       <Stack.Screen
         name="projectsInfoPage"
         options={{
-          headerTitle: "Thông Tin Dự Án",
+          headerTitle: "projectsInfoPage",
           headerTitleAlign: "center",
           headerShadowVisible: false,
           headerShown: true,
         }}
       />
-      {/* <Stack.Screen
+      <Stack.Screen
         name="joinProjectsPage"
         options={{
           headerTitle: "joinProjectPage",
           headerTitleAlign: "center",
           headerShadowVisible: false,
         }}
-      /> */}
+      />
     </Stack>
   );
 }

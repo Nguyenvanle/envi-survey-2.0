@@ -12,7 +12,7 @@ export default function ButtonFillContainer(props: {
   if (props.color !== null)
     return (
       <View style={container.button}>
-        <Link href={props.link} replace asChild>
+        <Link href={props.link} asChild>
           <TouchableOpacity
             style={{ ...button.primary, backgroundColor: props.color }}
           >
