@@ -8,26 +8,22 @@ import { Alert, TouchableOpacity } from "react-native";
 export default function Layout() {
   // https://docs.expo.dev/router/advanced/stack/ to Custom Header
   const pressHandler = () => {
-    Alert.alert(
-      "Lưu ý",
-      "Hãy chắc chắn rằng bạn đã sao chép liên kết của Form này trước khi tiếp tục 🧐",
-      [
-        {
-          text: "Cancel",
-          onPress: () => {
-            console.log("Chưa sao chép");
-          },
+    Alert.alert("Lưu ý", "Hãy sao chép liên kết Form trước khi tiếp tục 🧐", [
+      {
+        text: "Cancel",
+        onPress: () => {
+          console.log("Chưa sao chép");
         },
-        {
-          text: "Ok",
-          onPress: () => {
-            console.log("Đã sao chép");
-            console.log("Form -> Success");
-            router.navigate("/(tabs)/createPage/pasteLink");
-          },
+      },
+      {
+        text: "Ok",
+        onPress: () => {
+          console.log("Đã sao chép");
+          console.log("Form -> Success");
+          router.navigate("/(tabs)/createPage/pasteLink");
         },
-      ]
-    );
+      },
+    ]);
   };
 
   return (

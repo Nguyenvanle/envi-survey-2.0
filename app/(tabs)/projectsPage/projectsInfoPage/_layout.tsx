@@ -19,7 +19,7 @@ export default function Layout() {
       }}
     >
       <Stack.Screen
-        name="indexProjectInformation"
+        name="[projectID]"
         options={{
           headerTitle: "indexProjectInformation",
           headerTitleAlign: "center",

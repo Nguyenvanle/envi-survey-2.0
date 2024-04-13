@@ -3,7 +3,7 @@ import { defaultStyles } from "@/constants/defaultStyles";
 import { getInitials } from "@/constants/logic/getInitials";
 import { MaterialCommunityIcons, MaterialIcons } from "@expo/vector-icons";
 import React from "react";
-import { Text, View } from "react-native";
+import { Text, TouchableOpacity, View } from "react-native";
 import { CustomAvatar } from "./CustomAvatar";
 import { HomeStyles } from "./HomeStyles";
 
@@ -16,7 +16,7 @@ export function InfoCard(props: {
   };
 }) {
   return (
-    <View style={HomeStyles.userInfoContainer}>
+    <TouchableOpacity style={HomeStyles.userInfoContainer}>
       <View style={HomeStyles.infoContainer}>
         <View
           style={{
@@ -65,6 +65,6 @@ export function InfoCard(props: {
           <Text style={HomeStyles.miniText}>6 dự án</Text>
         </View>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 }
