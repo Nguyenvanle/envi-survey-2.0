@@ -1,63 +1,64 @@
-import { container } from "@/constants/Styles";
-import { AntDesign } from "@expo/vector-icons";
-import { Button } from "@rneui/base";
-import { router } from "expo-router";
 import React from "react";
-import { StyleSheet } from "react-native";
+import { ScrollView } from "react-native";
+
+import Colors from "@/constants/Colors";
+import { container } from "@/constants/Styles";
+import { PrimaryTitle } from "@/constants/components/home/PrimaryTitle";
+import { ProjectsList } from "@/constants/components/home/ProjectsList";
+import { projectFirebase } from "@/constants/logic/projectFirebase";
+import { useFirebaseUser } from "@/constants/logic/useFirebaseUser";
+import { Button } from "@rneui/base";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 
-export default function indexProjectsPage() {
+export default function indexHome(userId: any) {
+  const {
+    username,
+    isLoading,
+    userPosition: userPosition,
+  } = useFirebaseUser(userId);
+
+  const projectsMap = projectFirebase(userId);
+
+  if (isLoading) {
+    return (
+      <SafeAreaProvider style={container.root}>
+        <Button
+          title="loading"
+          type="clear"
+          loading
+          loadingProps={{ size: 70, color: Colors.muted }}
+        />
+      </SafeAreaProvider>
+    );
+  }
+
+  const user = {
+    name: username || "undefine",
+    position: userPosition || "undefine",
+    projectsTaken: 10,
+    projectsCompleted: 8,
+  };
+  // Giả sử bạn có một mảng projects như sau:
+  const projects = Array.from(projectsMap.entries()).map(
+    ([projectUid, projectData]) => ({
+      uid: projectUid,
+      name: projectData.name,
+      manage: projectData.uidManager,
+      startDate: projectData.start,
+      endDate: projectData.end,
+    })
+  );
+
   return (
-    <SafeAreaProvider style={container.root}>
-      <Button
-        radius={"md"}
-        type="solid"
-        onPress={() => {
-          router.push("/projectsPage/projectsInfoPage/indexProjectInformation");
-        }}
-      >
-        Dự án của tôi
-        <AntDesign
-          name="addfolder"
-          size={16}
-          color="white"
-          style={{ paddingLeft: 10 }}
-        />
-      </Button>
+    <ScrollView style={container.scrollView}>
+      <SafeAreaProvider style={container.root}>
+        <PrimaryTitle></PrimaryTitle>
 
-      <Button
-        radius={"md"}
-        type="solid"
-        onPress={() => {
-          router.push("/(tabs)/projectsPage/joinProjectsPage/enterLink");
-        }}
-      >
-        Tham gia dự án
-        <AntDesign
-          name="addfolder"
-          size={16}
-          color="white"
-          style={{ paddingLeft: 10 }}
-        />
-      </Button>
-
-      <Button
-        radius={"md"}
-        type="solid"
-        onPress={() => {
-          router.navigate("/projectsPage/joinProjectsPage/listEmployees"); //khong can duoi .tsx
-        }}
-      >
-        Danh sach nhan vien
-        <AntDesign
-          name="addfolder"
-          size={16}
-          color="white"
-          style={{ paddingLeft: 10 }}
-        />
-      </Button>
-    </SafeAreaProvider>
+        <ProjectsList
+          user={user}
+          projects={projects.map((project) => ({ ...project }))}
+        ></ProjectsList>
+      </SafeAreaProvider>
+    </ScrollView>
   );
 }
-
-const styles = StyleSheet.create({});

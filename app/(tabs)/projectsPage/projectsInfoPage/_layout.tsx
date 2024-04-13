@@ -4,6 +4,7 @@ import { Stack } from "expo-router";
 
 export default function Layout() {
   // https://docs.expo.dev/router/advanced/stack/ to Custom Header
+
   return (
     <Stack
       screenOptions={{
@@ -16,6 +17,7 @@ export default function Layout() {
           fontSize: 30,
         },
         headerShown: false,
+        headerBackVisible: true,
       }}
     >
       <Stack.Screen
@@ -24,6 +26,7 @@ export default function Layout() {
           headerTitle: "indexProjectInformation",
           headerTitleAlign: "center",
           headerShadowVisible: false,
+          headerBackVisible: false,
         }}
       />
       <Stack.Screen

@@ -32,6 +32,7 @@ export function ProjectsList(props: {
       }}
       onPress={() => {
         router.replace(`/(tabs)/projectsPage/projectsInfoPage/${project.uid}`);
+        console.log(project.uid);
       }}
     >
       {/* Nội dung còn lại của component */}

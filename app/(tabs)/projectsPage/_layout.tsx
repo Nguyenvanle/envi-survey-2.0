@@ -1,9 +1,19 @@
 import Colors from "@/constants/Colors";
-import { Stack } from "expo-router";
+import { AntDesign } from "@expo/vector-icons";
+import { Stack, router } from "expo-router";
+import { TouchableOpacity } from "react-native";
+import { container } from "./../../../constants/Styles";
 //============ Là tệp định nghĩa layout chung cho các màn hình trong ứng dụng ===============
 
 export default function Layout() {
   // https://docs.expo.dev/router/advanced/stack/ to Custom Header
+
+  const pressHandler = () => {
+    console.log("Đã sao chép");
+    console.log("Form -> Success");
+    router.replace("/(tabs)/projectsPage/indexProjectsPage");
+  };
+
   return (
     <Stack
       screenOptions={{
@@ -16,6 +26,7 @@ export default function Layout() {
           fontSize: 30,
         },
         headerShown: false,
+        headerBackTitleVisible: false,
       }}
     >
       <Stack.Screen
@@ -25,6 +36,7 @@ export default function Layout() {
           headerTitleAlign: "center",
           headerShadowVisible: false,
           headerShown: true,
+          headerBackTitleVisible: false,
         }}
       />
 
@@ -35,6 +47,17 @@ export default function Layout() {
           headerTitleAlign: "center",
           headerShadowVisible: false,
           headerShown: true,
+          headerBackTitleVisible: false,
+          headerLeft: () => {
+            return (
+              <TouchableOpacity
+                style={{ ...container.button, flex: 0 }}
+                onPress={pressHandler}
+              >
+                <AntDesign name="arrowleft" size={24} color="white" />
+              </TouchableOpacity>
+            );
+          },
         }}
       />
       <Stack.Screen

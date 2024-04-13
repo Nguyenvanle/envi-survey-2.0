@@ -3,7 +3,7 @@ import { button, container } from "@/constants/Styles";
 import { styles } from "@/constants/TienDatStyles";
 import { AntDesign, MaterialIcons } from "@expo/vector-icons";
 import { Avatar } from "@rneui/base";
-import { Link } from "expo-router";
+import { Link, useLocalSearchParams } from "expo-router";
 import React from "react";
 import {
   Image,
@@ -15,6 +15,8 @@ import {
 } from "react-native"; //press world "rnf" to create form quickly
 
 export default function IndexProjectInformation() {
+  const { projectID } = useLocalSearchParams();
+  console.log(projectID);
   return (
     <ScrollView style={container.scrollView}>
       <View style={styles.container}>
@@ -41,7 +43,7 @@ export default function IndexProjectInformation() {
                 </Text>
 
                 <Text style={{ ...styles.text, color: Colors.white }}>
-                  Mã dự án #456431
+                  {projectID}
                 </Text>
               </View>
               <View
