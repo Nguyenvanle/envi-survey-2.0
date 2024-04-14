@@ -1,6 +1,7 @@
 import { FIREBASE_AUTH, FIREBASE_DB } from "@/FirebaseConfig";
 import { isLoading } from "expo-font";
 import {
+  addDoc,
   collection,
   doc,
   getDoc,
@@ -303,9 +304,44 @@ const addLinkForm = async (projectId: any, linkForm: any) => {
   }
 };
 
+const verifyProjectId = async (inputProjectId: string) => {
+  try {
+    // Tạo tham chiếu đến document của project dựa trên inputProjectId
+    const projectDocRef = doc(FIREBASE_DB, "projects", inputProjectId);
+    // Thực hiện truy vấn để lấy document
+    const docSnapshot = await getDoc(projectDocRef);
+    // Kiểm tra xem document có tồn tại không
+    if (docSnapshot.exists()) {
+      console.log("Mã dự án tồn tại: ", docSnapshot.id);
+      return true; // Mã dự án tồn tại
+    } else {
+      console.log("Không tìm thấy mã dự án: ", inputProjectId);
+      return false; // Mã dự án không tồn tại
+    }
+  } catch (error) {
+    console.error("Có lỗi xảy ra khi kiểm tra mã dự án:", error);
+    return false; // Có lỗi xảy ra trong quá trình kiểm tra
+  }
+};
+
+const addNewProject = async (newProjectData: any) => {
+  try {
+    // Lấy tham chiếu của bộ sưu tập 'projects' trong Firebase Firestore
+    const projectsRef = collection(FIREBASE_DB, "projects");
+    // Thêm dự án mới với dữ liệu được cung cấp vào Firestore
+    const documentRef = await addDoc(projectsRef, newProjectData);
+    console.log("Dự án mới đã được thêm với ID: ", documentRef.id);
+    return documentRef.id; // Trả về ID của dự án mới được tạo
+  } catch (error) {
+    console.error("Có lỗi xảy ra khi thêm dự án mới:", error);
+    return null; // Trong trường hợp lỗi, trả về null
+  }
+};
+
 export {
   LinkFormFirebaseUser,
   addLinkForm,
+  addNewProject,
   detailsProjectFirebase,
   getLinkFirebaseUser,
   getRemainingDays,
@@ -313,5 +349,5 @@ export {
   nameProjectFirebaseUser,
   projectFirebase,
   samplingFirebase,
+  verifyProjectId,
 };
-
