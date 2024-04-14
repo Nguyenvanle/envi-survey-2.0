@@ -51,8 +51,9 @@ export default function IndexProjectInformation() {
               <View style={styles.aboveInfor}>
                 <Text style={styles.mainText}>{name}</Text>
 
-                <Text style={{ ...styles.text, color: Colors.white }}>
-                  ID: {projectID}
+                <Text style={{ ...styles.text }}>
+                  <Text>Id: </Text>
+                  {projectID}
                 </Text>
               </View>
               <View
