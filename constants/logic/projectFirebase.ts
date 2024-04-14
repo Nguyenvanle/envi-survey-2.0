@@ -6,6 +6,7 @@ import {
   getDoc,
   getDocs,
   query,
+  setDoc,
   where,
 } from "firebase/firestore";
 import { useEffect, useState } from "react";
@@ -285,18 +286,6 @@ function getRemainingDays(end: any) {
   return { remaining, isLoading };
 }
 
-export {
-  LinkFormFirebaseUser,
-  detailsProjectFirebase,
-  getLinkFirebaseUser,
-  getRemainingDays,
-  namePeriodFirebaseUser,
-  nameProjectFirebaseUser,
-  projectFirebase,
-  samplingFirebase,
-};
-
-// Hàm này cập nhật hoặc thêm mới trường linkForm vào document của project dựa trên projectId
 const addLinkForm = async (projectId: any, linkForm: any) => {
   try {
     // Tạo tham chiếu đến document của project dựa trên projectId
@@ -314,24 +303,15 @@ const addLinkForm = async (projectId: any, linkForm: any) => {
   }
 };
 
-const verifyProjectId = async (inputProjectId: string) => {
-  try {
-    // Tạo tham chiếu đến document của project dựa trên inputProjectId
-    const projectDocRef = doc(FIREBASE_DB, "projects", inputProjectId);
-    // Thực hiện truy vấn để lấy document
-    const docSnapshot = await getDoc(projectDocRef);
-    // Kiểm tra xem document có tồn tại không
-    if (docSnapshot.exists()) {
-      console.log("Mã dự án tồn tại: ", docSnapshot.id);
-      return true; // Mã dự án tồn tại
-    } else {
-      console.log("Không tìm thấy mã dự án: ", inputProjectId);
-      return false; // Mã dự án không tồn tại
-    }
-  } catch (error) {
-    console.error("Có lỗi xảy ra khi kiểm tra mã dự án:", error);
-    return false; // Có lỗi xảy ra trong quá trình kiểm tra
-  }
+export {
+  LinkFormFirebaseUser,
+  addLinkForm,
+  detailsProjectFirebase,
+  getLinkFirebaseUser,
+  getRemainingDays,
+  namePeriodFirebaseUser,
+  nameProjectFirebaseUser,
+  projectFirebase,
+  samplingFirebase,
 };
 
-export { addLinkForm, addNewProject, projectFirebase, verifyProjectId };
