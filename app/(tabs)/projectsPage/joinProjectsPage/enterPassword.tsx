@@ -1,7 +1,7 @@
 import Colors from "@/constants/Colors";
 import { button, container, input, text } from "@/constants/Styles";
-import AsyncStorage from "@react-native-async-storage/async-storage";
-import { router } from "expo-router";
+import { addUser, initFirebase } from "@/constants/logic/joinProject";
+import { router, useGlobalSearchParams } from "expo-router";
 import React, { useState } from "react";
 import {
   ActivityIndicator,
@@ -9,43 +9,35 @@ import {
   Text,
   TextInput,
   TouchableOpacity,
-  View,
+  View
 } from "react-native";
 
 export default function enterPassword() {
   const [loading, setLoading] = useState(false);
-  const submit = async () => {
-    setLoading(true);
+  const [pass, setPass] = useState('');
 
-    try {
-      const pID = await AsyncStorage.getItem("@joinProjectID");
-      if (pID !== null) {
-        // Dữ liệu đã được lấy và có thể sử dụng
-        console.log("AsyncStorage getItem success ", pID);
-        try {
-          //Dat ham cua m zo
-
-          console.log("Truy xuất CSDL thành công");
-        } catch (e) {
-          console.error("Lỗi khi lấy truy xuất csdl:", e);
-        }
-      } else console.error("pId === null");
-    } catch (e) {
-      // error reading value
-      console.error("Lỗi khi lấy pID:", e);
+  const {pID} = useGlobalSearchParams();
+  const {
+    nameProject,
+    myPass,
+    isLoading} = initFirebase(pID);
+if(isLoading) return;
+  const submit =  () => {
+    if (pass==myPass) {
+      try {
+        Alert.alert("Thông báo", "Tham gia dự án thành công", [
+          { text: "Hủy", onPress: () => console.log("Hủy") },
+          { text: "OK", onPress: () => console.log("Đồng ý") },
+        ]);
+        addUser(pID);
+        router.replace("/");
+      } catch (error: any) {
+        alert("Đăng nhập thất bại: " + error.message);
+      } finally {
+        setLoading(false);
+      }
     }
-
-    try {
-      Alert.alert("Thông báo", "Tham gia dự án thành công", [
-        { text: "Hủy", onPress: () => console.log("Hủy") },
-        { text: "OK", onPress: () => console.log("Đồng ý") },
-      ]);
-      router.replace("/(tabs)/projectsPage/joinProjectsPage/performProject");
-    } catch (error: any) {
-      alert("Đăng nhập thất bại: " + error.message);
-    } finally {
-      setLoading(false);
-    }
+    else alert("Sai mật khẩu");
   };
 
   return (
@@ -53,7 +45,7 @@ export default function enterPassword() {
       <View style={container.body}>
         <View style={container.header}>
           <Text style={text.header}>Bạn đang tham gia dự án</Text>
-          <Text style={text.headerPrimary}>"Khảo sát khu đất Cờ Đỏ"</Text>
+          <Text style={text.headerPrimary}>{nameProject}</Text>
         </View>
         <View style={container.input}>
           <Text
@@ -70,6 +62,8 @@ export default function enterPassword() {
               placeholderTextColor={Colors.selector}
               aria-labelledby="labelProjectPassword"
               placeholder="Vui lòng nhập mật khẩu dự án"
+              value={pass}
+              onChangeText={setPass}
             />
           </View>
         </View>

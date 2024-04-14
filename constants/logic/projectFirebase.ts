@@ -312,6 +312,6 @@ export {
   namePeriodFirebaseUser,
   nameProjectFirebaseUser,
   projectFirebase,
-  samplingFirebase,
+  samplingFirebase
 };
 

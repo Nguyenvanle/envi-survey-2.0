@@ -20,7 +20,10 @@ export default function enterPassword() {
       console.error("Lỗi khi thêm projectID:", e);
     }
     console.log("inputProjectID -> inputPassword");
-    router.navigate("/(tabs)/projectsPage/joinProjectsPage/enterPassword");
+    router.navigate({
+      pathname: "/(tabs)/projectsPage/joinProjectsPage/enterPassword",
+      params: {pID: pID},
+    });
   };
 
   const pressHandler = async () => {
