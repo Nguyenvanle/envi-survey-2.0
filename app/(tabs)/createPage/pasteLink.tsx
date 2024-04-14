@@ -1,5 +1,7 @@
 import Colors from "@/constants/Colors";
 import { button, container, input, text } from "@/constants/Styles";
+import { addLinkForm } from "@/constants/logic/projectFirebase";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import { Image } from "@rneui/themed";
 import { Link, router } from "expo-router";
 import React, { useState } from "react";
@@ -17,17 +19,36 @@ import { SafeAreaProvider } from "react-native-safe-area-context";
 export default function PasteLinkScreen() {
   const [link, setLink] = useState("");
 
-  const pressHandler = () => {
+  const pressHandler = async () => {
     if (!link) {
       Alert.alert("Lỗi", "Vui lòng nhập liên kết đầy đủ 😊", [{ text: "Ok" }]);
       return;
+    }
+
+    try {
+      const projectId = await AsyncStorage.getItem("@projectID");
+      if (projectId !== null) {
+        // Dữ liệu đã được lấy và có thể sử dụng
+        console.log("Dữ liệu đã được lấy và có thể sử dụng ", projectId);
+        addLinkForm(projectId, link);
+      } else console.error("projectId === null");
+    } catch (e) {
+      // error reading value
+      console.error("Lỗi khi lấy projectID:", e);
     }
 
     // Logic xử lý sau khi liên kết hợp lệ
     Alert.alert("Tạo dự án thành công ✔️", "Tiếp tục tạo dự án?🧐", [
       {
         text: "Cancel",
-        onPress: () => {
+        onPress: async () => {
+          try {
+            await AsyncStorage.removeItem("@projectID");
+            console.log("projectID đã được xóa khỏi asyncStorage");
+          } catch (e) {
+            console.error("Lỗi khi xóa projectID:", e);
+          }
+
           console.log("pastLink -> index");
           router.replace("/");
         },

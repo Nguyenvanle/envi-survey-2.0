@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { Text, TouchableOpacity, View } from "react-native";
 import { button, container } from "./../../Styles";
 
-const CustomDropdown = () => {
+const CustomDropdown = ({ onLocationChange }: any) => {
   const locations = ["Quận Cờ Đỏ", "Quận Ninh Kiều", "Khu 91B"]; // Mảng chứa tên địa điểm
   const [checked, setChecked] = useState(0);
   const [destination, setDestination] = useState(locations[checked]); // Khởi tạo ban đầu với địa điểm đầu tiên trong mảng
@@ -66,7 +66,9 @@ const CustomDropdown = () => {
             titleStyle={{ color: Colors.primary }}
             title="Save"
             onPress={() => {
-              console.log(`Option ${destination} was selected!`); // Log giá trị theo tên địa điểm
+              console.log(`Option ${destination} was selected!`);
+              // Log giá trị theo tên địa điểm
+              onLocationChange(destination);
               toggleDialog();
             }}
           />

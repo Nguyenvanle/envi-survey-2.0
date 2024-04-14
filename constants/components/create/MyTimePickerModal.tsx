@@ -4,7 +4,7 @@ import DateTimePicker from "@react-native-community/datetimepicker";
 import { useState } from "react";
 import { Text, TouchableOpacity, View } from "react-native";
 
-const MyTimePicker = () => {
+const MyTimePicker = ({ onDateChange }: any) => {
   const [date, setDate] = useState(new Date());
   const [show, setShow] = useState(false);
 
@@ -12,6 +12,11 @@ const MyTimePicker = () => {
     const currentDate = selectedDate || date;
     setShow(false);
     setDate(currentDate);
+    // Định dạng ngày thành chuỗi
+    const dateString = currentDate.toLocaleDateString("vi-VN"); // ví dụ sử dụng định dạng ngày của Việt Nam
+    // Gửi dữ liệu dưới dạng chuỗi về component cha
+    console.log(dateString);
+    onDateChange(dateString);
   };
 
   const showDatepicker = () => {

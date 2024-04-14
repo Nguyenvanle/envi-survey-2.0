@@ -19,8 +19,8 @@ export function ProjectsList(props: {
     uid: string;
     name: string;
     manage: string;
-    startDate: string;
-    endDate: string;
+    startDate: any;
+    endDate: any;
   }>;
 }) {
   return props.projects.map((project, index) => (
@@ -86,7 +86,7 @@ export function ProjectsList(props: {
         <View style={HomeStyles.divideContainer}>
           <Feather name="clock" size={16} color={Colors.deepBlue} />
           <Text style={{ ...HomeStyles.miniText, color: Colors.deepBlue }}>
-            {project.startDate}{" "}
+            {project.startDate}
             {/* Update từ props.projects.startDate sang project.startDate */}
           </Text>
         </View>
@@ -94,7 +94,7 @@ export function ProjectsList(props: {
         <View style={HomeStyles.divideContainer}>
           <Feather name="clock" size={16} color={Colors.red} />
           <Text style={{ ...HomeStyles.miniText, color: Colors.red }}>
-            {project.endDate}{" "}
+            {project.endDate}
             {/* Update từ props.projects.endDate sang project.endDate */}
           </Text>
         </View>
