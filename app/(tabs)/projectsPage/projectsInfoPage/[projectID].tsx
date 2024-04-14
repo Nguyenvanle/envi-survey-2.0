@@ -1,6 +1,8 @@
 import Colors from "@/constants/Colors";
 import { button, container } from "@/constants/Styles";
 import { styles } from "@/constants/TienDatStyles";
+import { detailsProjectFirebase, getRemainingDays } from "@/constants/logic/projectFirebase";
+import { nameUserFirebaseUser } from "@/constants/logic/useFirebaseUser";
 import { AntDesign, MaterialIcons } from "@expo/vector-icons";
 import { Avatar } from "@rneui/base";
 import { Link, useLocalSearchParams } from "expo-router";
@@ -14,9 +16,28 @@ import {
   View,
 } from "react-native"; //press world "rnf" to create form quickly
 
+
 export default function IndexProjectInformation() {
   const { projectID } = useLocalSearchParams();
-  console.log(projectID);
+  const {
+    name,
+    start,
+    end,
+    uidManager,
+    question,
+    purpose,
+    isLoadingDetail,
+  } = detailsProjectFirebase(projectID);
+
+  const {
+    remaining,
+    isLoading,
+  } = getRemainingDays(end);
+
+  const {
+    username,
+  } = nameUserFirebaseUser(uidManager);
+  if(isLoading || isLoadingDetail) return;
   return (
     <ScrollView style={container.scrollView}>
       <View style={styles.container}>
@@ -39,10 +60,11 @@ export default function IndexProjectInformation() {
             >
               <View style={styles.aboveInfor}>
                 <Text style={styles.mainText}>
-                  Khảo sát đất đô thị khu vực 91B
+                  {name}
                 </Text>
 
-                <Text style={{ ...styles.text, color: Colors.white }}>
+                <Text style={{ ...styles.text }}>
+                  <Text>Id: </Text>
                   {projectID}
                 </Text>
               </View>
@@ -74,8 +96,8 @@ export default function IndexProjectInformation() {
                       style={StyleSheet.compose(styles.itemText, {
                         color: Colors.primary,
                       })}
-                    >
-                      Start: 19/03/2024
+                    > <Text>Start: </Text>
+                      {start}
                     </Text>
                   </View>
 
@@ -88,8 +110,8 @@ export default function IndexProjectInformation() {
                       style={StyleSheet.compose(styles.itemText, {
                         color: Colors.red,
                       })}
-                    >
-                      Start: 25/04/2024
+                    > <Text>End: </Text>
+                      {end}
                     </Text>
                   </View>
                 </View>
@@ -108,67 +130,7 @@ export default function IndexProjectInformation() {
                     color: Colors.deepBlue,
                   })}
                 >
-                  Còn 1 tháng 7 ngày 24' 12' 45'
-                </Text>
-              </View>
-            </View>
-          </View>
-
-          <View style={styles.subFrame}>
-            <Text style={styles.subTittle}>Tiến độ dự án</Text>
-            <View
-              style={StyleSheet.compose(
-                styles.RectangleShape,
-                styles.WhiteShape
-              )}
-            >
-              <View style={styles.aboveInfor}>
-                <View style={styles.itemComponnent}>
-                  <Image
-                    source={require("@/assets/images/green-paper.png")}
-                    style={styles.smallIcon}
-                  ></Image>
-                  <Text
-                    style={StyleSheet.compose(styles.itemText, {
-                      color: Colors.primary,
-                    })}
-                  >
-                    Tổng biểu mẫu hoàn thành: 40/160
-                  </Text>
-                </View>
-              </View>
-
-              <View style={styles.aboveInfor}>
-                <View style={styles.itemComponnent}>
-                  <Image
-                    source={require("@/assets/images/red-paper.png")}
-                    style={styles.smallIcon}
-                  ></Image>
-                  <Text
-                    style={StyleSheet.compose(styles.itemText, {
-                      color: Colors.red,
-                    })}
-                  >
-                    Số lượng biểu mẫu còn lại: 120
-                  </Text>
-                </View>
-              </View>
-
-              <View
-                style={StyleSheet.compose(styles.vector, styles.colorVector)}
-              ></View>
-
-              <View style={[styles.itemComponnent, { width: "auto" }]}>
-                <Image
-                  source={require("@/assets/images/progress.png")}
-                  style={styles.smallIcon}
-                ></Image>
-                <Text
-                  style={StyleSheet.compose(styles.itemText, {
-                    color: Colors.gray,
-                  })}
-                >
-                  Tiến độ: 25.0%
+                  {remaining}
                 </Text>
               </View>
             </View>
@@ -176,7 +138,6 @@ export default function IndexProjectInformation() {
 
           <View style={styles.subFrame}>
             <Text style={styles.subTittle}>Nhân sự đảm nhiệm</Text>
-
             <View style={styles.userInfoContainer}>
               <View style={styles.infoContainer}>
                 <Avatar
@@ -266,41 +227,6 @@ export default function IndexProjectInformation() {
                 <View style={styles.itemComponnent}>
                   <Text
                     style={StyleSheet.compose(styles.titleDescription, {
-                      color: Colors.primary,
-                    })}
-                  >
-                    Đơn vị tài trợ
-                  </Text>
-                </View>
-              </View>
-
-              <View
-                style={StyleSheet.compose(styles.vector, styles.colorVector)}
-              ></View>
-
-              <View style={styles.aboveInfor}>
-                <View style={styles.itemComponnent}>
-                  <Text
-                    style={StyleSheet.compose(styles.titleDescription, {
-                      color: Colors.gray,
-                    })}
-                  >
-                    Viện Nghiên Cứu Khảo Sát NZIN
-                  </Text>
-                </View>
-              </View>
-            </View>
-
-            <View
-              style={StyleSheet.compose(
-                styles.RectangleShape,
-                styles.WhiteShape
-              )}
-            >
-              <View style={styles.aboveInfor}>
-                <View style={styles.itemComponnent}>
-                  <Text
-                    style={StyleSheet.compose(styles.titleDescription, {
                       color: Colors.success,
                     })}
                   >
@@ -316,8 +242,7 @@ export default function IndexProjectInformation() {
               <View style={styles.aboveInfor}>
                 <View style={styles.itemComponnent}>
                   <Text style={styles.contentDescription}>
-                    Thu thập mẫu đất canh tác và đất phù sa, phân tích mối liên
-                    hệ giữa đa dạng sinh học của đất và sự biến đổi khí hậu.
+                    {question}
                   </Text>
                 </View>
               </View>
@@ -348,8 +273,7 @@ export default function IndexProjectInformation() {
               <View style={styles.aboveInfor}>
                 <View style={styles.itemComponnent}>
                   <Text style={styles.contentDescription}>
-                    Xác định tác động của biến đổi khí hậu đối với đa dạng sinh
-                    học của đất trong khu vực 91B.
+                    {purpose}
                   </Text>
                 </View>
               </View>

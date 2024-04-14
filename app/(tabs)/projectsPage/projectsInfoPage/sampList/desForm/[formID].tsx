@@ -1,30 +1,46 @@
-import Colors from "@/constants/Colors";
 import { container } from "@/constants/Styles";
 import { styles } from "@/constants/TienDatStyles";
-import { Feather } from "@expo/vector-icons";
-import { router, useGlobalSearchParams } from "expo-router";
+import { FormsList } from "@/constants/components/home/FormsList";
+import { LinkFormFirebaseUser, namePeriodFirebaseUser, nameProjectFirebaseUser } from "@/constants/logic/projectFirebase";
+import { useGlobalSearchParams } from "expo-router";
 import React from "react";
 import {
-  Image,
   ScrollView,
   StyleSheet,
   Text,
-  TouchableOpacity,
-  View,
+  View
 } from "react-native";
 
 export default function samplingPeriod() {
-  const { sampID } = useGlobalSearchParams();
-  console.log(sampID);
+  const {projectID} = useGlobalSearchParams();
+  const {formID} = useGlobalSearchParams();
+  
+  const {//lay ten va Ma cua DA
+    projectName,
+    isLoading,
+  } = nameProjectFirebaseUser(projectID);
 
-  const pressHandler = () => {
-    console.log("ProjectInfo -> JoinProject");
-    router.replace("/projectsPage/joinProjectsPage/performProject");
-  };
+  const {//lay ten va ma cua Period
+    periodName,
+    isLoadingPeriod,
+  } = namePeriodFirebaseUser(formID);
 
+  const {
+    linkFormMap,
+    isLoadingMap,
+  } = LinkFormFirebaseUser(formID);
+
+  const linkforms = Array.from(linkFormMap.entries()).map(
+    ([linkFormUid, linkFormData]) => ({
+      uid: linkFormUid,
+      name: linkFormData.name,
+      status: linkFormData.status,
+    })
+  )
+  if(isLoading || isLoadingPeriod) return;
   return (
     <ScrollView style={container.scrollView}>
-      <View style={styles.container}>
+      <View style={{ ...styles.container, paddingBottom: 60 }}>
         <View style={StyleSheet.compose(styles.body, { gap: 10 })}>
           <View style={styles.subFrame}>
             <View
@@ -35,9 +51,9 @@ export default function samplingPeriod() {
             >
               <View style={styles.aboveInfor}>
                 <Text style={styles.mainText}>
-                  Khảo sát đất đô thị khu vực 91B
+                  {projectName}
                 </Text>
-                <Text style={styles.text}>Mã dự án #456431</Text>
+                <Text style={styles.text}>Id: {projectID}</Text>
               </View>
               <View
                 style={StyleSheet.compose(
@@ -50,296 +66,15 @@ export default function samplingPeriod() {
                   alignSelf: "center",
                 })}
               >
-                Đợt 1 - 001
+                {periodName}
               </Text>
             </View>
           </View>
-
           <View style={StyleSheet.compose(styles.subFrame, { gap: 20 })}>
-            <Text style={styles.subTittle}>Chi tiết mẫu</Text>
-
-            <View
-              style={StyleSheet.compose(
-                styles.RectangleShape,
-                styles.WhiteShape
-              )}
-            >
-              <View style={styles.aboveInfor}>
-                <Text style={styles.destinationText}>Đường 19B - KCD 91B</Text>
-              </View>
-              <View
-                style={StyleSheet.compose(styles.vector, styles.colorVector)}
-              ></View>
-
-              <View style={styles.aboveInfor}>
-                <View style={styles.subItem}>
-                  <View style={styles.itemComponnent}>
-                    <Image
-                      source={require("@/assets/images/green-clock.png")}
-                      style={styles.smallIcon}
-                    ></Image>
-                    <Text
-                      style={StyleSheet.compose(styles.itemText, {
-                        color: Colors.primary,
-                      })}
-                    >
-                      Start: 19/03/2024
-                    </Text>
-                  </View>
-
-                  <View style={styles.itemComponnent}>
-                    <Image
-                      source={require("@/assets/images/red-clock.png")}
-                      style={styles.smallIcon}
-                    ></Image>
-                    <Text
-                      style={StyleSheet.compose(styles.itemText, {
-                        color: Colors.red,
-                      })}
-                    >
-                      Start: 25/04/2024
-                    </Text>
-                  </View>
-                </View>
-              </View>
-            </View>
-
-            <View
-              style={StyleSheet.compose(
-                styles.RectangleShape,
-                styles.WhiteShape
-              )}
-            >
-              <View style={styles.aboveInfor}>
-                <Text style={styles.destinationText}>
-                  Chung cư B3 - KCD 91B
-                </Text>
-              </View>
-              <View
-                style={StyleSheet.compose(styles.vector, styles.colorVector)}
-              ></View>
-
-              <View style={styles.aboveInfor}>
-                <View style={styles.subItem}>
-                  <View style={styles.itemComponnent}>
-                    <Image
-                      source={require("@/assets/images/green-clock.png")}
-                      style={styles.smallIcon}
-                    ></Image>
-                    <Text
-                      style={StyleSheet.compose(styles.itemText, {
-                        color: Colors.primary,
-                      })}
-                    >
-                      Start: 19/03/2024
-                    </Text>
-                  </View>
-
-                  <View style={styles.itemComponnent}>
-                    <Image
-                      source={require("@/assets/images/red-clock.png")}
-                      style={styles.smallIcon}
-                    ></Image>
-                    <Text
-                      style={StyleSheet.compose(styles.itemText, {
-                        color: Colors.red,
-                      })}
-                    >
-                      Start: 25/04/2024
-                    </Text>
-                  </View>
-                </View>
-              </View>
-            </View>
-
-            <View
-              style={StyleSheet.compose(
-                styles.RectangleShape,
-                styles.WhiteShape
-              )}
-            >
-              <View style={styles.aboveInfor}>
-                <Text style={styles.destinationText}>
-                  Nhà Sách Y Khoa Cần Thơ
-                </Text>
-              </View>
-              <View
-                style={StyleSheet.compose(styles.vector, styles.colorVector)}
-              ></View>
-
-              <View style={styles.aboveInfor}>
-                <View style={styles.subItem}>
-                  <View style={styles.itemComponnent}>
-                    <Image
-                      source={require("@/assets/images/green-clock.png")}
-                      style={styles.smallIcon}
-                    ></Image>
-                    <Text
-                      style={StyleSheet.compose(styles.itemText, {
-                        color: Colors.primary,
-                      })}
-                    >
-                      Start: 19/03/2024
-                    </Text>
-                  </View>
-
-                  <View style={styles.itemComponnent}>
-                    <Image
-                      source={require("@/assets/images/red-clock.png")}
-                      style={styles.smallIcon}
-                    ></Image>
-                    <Text
-                      style={StyleSheet.compose(styles.itemText, {
-                        color: Colors.red,
-                      })}
-                    >
-                      Start: 25/04/2024
-                    </Text>
-                  </View>
-                </View>
-              </View>
-            </View>
-
-            <View
-              style={StyleSheet.compose(
-                styles.RectangleShape,
-                styles.WhiteShape
-              )}
-            >
-              <View style={styles.aboveInfor}>
-                <Text style={styles.destinationText}>
-                  Trường Mầm Non Rạng Đông
-                </Text>
-              </View>
-              <View
-                style={StyleSheet.compose(styles.vector, styles.colorVector)}
-              ></View>
-
-              <View style={styles.aboveInfor}>
-                <View style={styles.subItem}>
-                  <View style={styles.itemComponnent}>
-                    <Image
-                      source={require("@/assets/images/green-clock.png")}
-                      style={styles.smallIcon}
-                    ></Image>
-                    <Text
-                      style={StyleSheet.compose(styles.itemText, {
-                        color: Colors.primary,
-                      })}
-                    >
-                      Start: 19/03/2024
-                    </Text>
-                  </View>
-
-                  <View style={styles.itemComponnent}>
-                    <Image
-                      source={require("@/assets/images/red-clock.png")}
-                      style={styles.smallIcon}
-                    ></Image>
-                    <Text
-                      style={StyleSheet.compose(styles.itemText, {
-                        color: Colors.red,
-                      })}
-                    >
-                      Start: 25/04/2024
-                    </Text>
-                  </View>
-                </View>
-              </View>
-            </View>
-
-            <View
-              style={StyleSheet.compose(
-                styles.RectangleShape,
-                styles.WhiteShape
-              )}
-            >
-              <View style={styles.aboveInfor}>
-                <Text style={styles.destinationText}>Nhà Sách YMB - THCD</Text>
-              </View>
-              <View
-                style={StyleSheet.compose(styles.vector, styles.colorVector)}
-              ></View>
-
-              <View style={styles.aboveInfor}>
-                <View style={styles.subItem}>
-                  <View style={styles.itemComponnent}>
-                    <Image
-                      source={require("@/assets/images/green-clock.png")}
-                      style={styles.smallIcon}
-                    ></Image>
-                    <Text
-                      style={StyleSheet.compose(styles.itemText, {
-                        color: Colors.primary,
-                      })}
-                    >
-                      Start: 19/03/2024
-                    </Text>
-                  </View>
-
-                  <View style={styles.itemComponnent}>
-                    <Image
-                      source={require("@/assets/images/red-clock.png")}
-                      style={styles.smallIcon}
-                    ></Image>
-                    <Text
-                      style={StyleSheet.compose(styles.itemText, {
-                        color: Colors.red,
-                      })}
-                    >
-                      Start: 25/04/2024
-                    </Text>
-                  </View>
-                </View>
-              </View>
-            </View>
-          </View>
-
-          <View
-            style={StyleSheet.compose(styles.subFrame, {
-              paddingVertical: 30,
-            })}
-          >
-            <View
-              style={StyleSheet.compose(
-                styles.RectangleShape,
-                styles.linkShape
-              )}
-            >
-              <View style={styles.itemComponnent}>
-                <Text
-                  style={StyleSheet.compose(styles.mainText, {
-                    fontSize: 20,
-                    marginVertical: 7,
-                  })}
-                >
-                  Thêm biểu mẫu mới
-                </Text>
-
-                <View
-                  style={StyleSheet.compose(styles.SmallRectangleShape, {
-                    backgroundColor: Colors.primary,
-                  })}
-                >
-                  <TouchableOpacity
-                    style={styles.itemComponnent}
-                    onPress={pressHandler}
-                  >
-                    <Feather name="upload" size={24} color={Colors.white} />
-                    <Text
-                      style={StyleSheet.compose(styles.text, {
-                        color: Colors.white,
-                        justifyContent: "center",
-                        alignItems: "center",
-                        alignSelf: "center",
-                      })}
-                    >
-                      Upload
-                    </Text>
-                  </TouchableOpacity>
-                </View>
-              </View>
-            </View>
+            <Text style={styles.subTittle}>Chi tiết biểu mẫu</Text>
+            <FormsList
+            forms = {linkforms.map((link) => ({...link}))}
+            ></FormsList>
           </View>
         </View>
       </View>
