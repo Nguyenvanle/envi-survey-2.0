@@ -30,10 +30,16 @@ export default function SamplingPeriod() {
   if (isLoading || isLoadingSampling) return;
   return (
     <ScrollView style={container.scrollView}>
-      <SafeAreaProvider style={container.root}>
-        <View style={{ ...styles.container, paddingBottom: 60 }}>
+      <SafeAreaProvider style={{ ...container.root, paddingTop: 0 }}>
+        <View
+          style={{
+            ...styles.container,
+            paddingBottom: 60,
+            paddingTop: 0,
+          }}
+        >
           <View style={StyleSheet.compose(styles.body, { gap: 10 })}>
-            <View style={styles.subFrame}>
+            <View style={{ ...styles.subFrame, paddingHorizontal: 30 }}>
               <Text
                 style={StyleSheet.compose(styles.subTittle, {
                   color: Colors.white,
@@ -43,10 +49,11 @@ export default function SamplingPeriod() {
                 Thông tin chính
               </Text>
               <View
-                style={StyleSheet.compose(
-                  styles.RectangleShape,
-                  styles.MainShape
-                )}
+                style={{
+                  ...styles.RectangleShape,
+                  ...styles.MainShape,
+                  paddingHorizontal: 14,
+                }}
               >
                 <View style={styles.aboveInfor}>
                   <Text style={styles.mainText}>{projectName}</Text>
@@ -61,8 +68,12 @@ export default function SamplingPeriod() {
               </View>
             </View>
 
-            <View style={StyleSheet.compose(styles.subFrame, { gap: 20 })}>
-              <Text style={styles.subTittle}>Buổi lấy mẫu: </Text>
+            <View
+              style={{ ...styles.subFrame, gap: 20, paddingHorizontal: 20 }}
+            >
+              <Text style={{ ...styles.subTittle, paddingHorizontal: 10 }}>
+                Buổi lấy mẫu:{" "}
+              </Text>
               <PeriodsList
                 periods={periods.map((period) => ({ ...period }))}
               ></PeriodsList>

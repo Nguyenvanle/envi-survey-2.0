@@ -40,9 +40,9 @@ export default function samplingPeriod() {
   if(isLoading || isLoadingPeriod) return;
   return (
     <ScrollView style={container.scrollView}>
-      <View style={{ ...styles.container, paddingBottom: 60 }}>
+      <View style={{ ...styles.container, paddingBottom: 60, paddingTop: 0 }}>
         <View style={StyleSheet.compose(styles.body, { gap: 10 })}>
-          <View style={styles.subFrame}>
+          <View style={{ ...styles.subFrame, paddingHorizontal: 30 }}>
             <View
               style={StyleSheet.compose(
                 styles.RectangleShape,
@@ -50,9 +50,7 @@ export default function samplingPeriod() {
               )}
             >
               <View style={styles.aboveInfor}>
-                <Text style={styles.mainText}>
-                  {projectName}
-                </Text>
+                <Text style={styles.mainText}>{projectName}</Text>
                 <Text style={styles.text}>Id: {projectID}</Text>
               </View>
               <View
@@ -70,10 +68,10 @@ export default function samplingPeriod() {
               </Text>
             </View>
           </View>
-          <View style={StyleSheet.compose(styles.subFrame, { gap: 20 })}>
+          <View style={{ ...styles.subFrame, gap: 20, paddingHorizontal: 20 }}>
             <Text style={styles.subTittle}>Chi tiết biểu mẫu</Text>
             <FormsList
-            forms = {linkforms.map((link) => ({...link}))}
+              forms={linkforms.map((link) => ({ ...link }))}
             ></FormsList>
           </View>
         </View>

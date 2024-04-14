@@ -59,9 +59,7 @@ export default function IndexProjectInformation() {
               )}
             >
               <View style={styles.aboveInfor}>
-                <Text style={styles.mainText}>
-                  {name}
-                </Text>
+                <Text style={styles.mainText}>{name}</Text>
 
                 <Text style={{ ...styles.text }}>
                   <Text>Id: </Text>
@@ -96,7 +94,9 @@ export default function IndexProjectInformation() {
                       style={StyleSheet.compose(styles.itemText, {
                         color: Colors.primary,
                       })}
-                    > <Text>Start: </Text>
+                    >
+                      {" "}
+                      <Text>Start: </Text>
                       {start}
                     </Text>
                   </View>
@@ -110,7 +110,9 @@ export default function IndexProjectInformation() {
                       style={StyleSheet.compose(styles.itemText, {
                         color: Colors.red,
                       })}
-                    > <Text>End: </Text>
+                    >
+                      {" "}
+                      <Text>End: </Text>
                       {end}
                     </Text>
                   </View>
@@ -241,40 +243,7 @@ export default function IndexProjectInformation() {
 
               <View style={styles.aboveInfor}>
                 <View style={styles.itemComponnent}>
-                  <Text style={styles.contentDescription}>
-                    {question}
-                  </Text>
-                </View>
-              </View>
-            </View>
-
-            <View
-              style={StyleSheet.compose(
-                styles.RectangleShape,
-                styles.WhiteShape
-              )}
-            >
-              <View style={styles.aboveInfor}>
-                <View style={styles.itemComponnent}>
-                  <Text
-                    style={StyleSheet.compose(styles.titleDescription, {
-                      color: Colors.red,
-                    })}
-                  >
-                    Mục Tiêu
-                  </Text>
-                </View>
-              </View>
-
-              <View
-                style={StyleSheet.compose(styles.vector, styles.colorVector)}
-              ></View>
-
-              <View style={styles.aboveInfor}>
-                <View style={styles.itemComponnent}>
-                  <Text style={styles.contentDescription}>
-                    {purpose}
-                  </Text>
+                  <Text style={styles.contentDescription}>{question}</Text>
                 </View>
               </View>
             </View>
