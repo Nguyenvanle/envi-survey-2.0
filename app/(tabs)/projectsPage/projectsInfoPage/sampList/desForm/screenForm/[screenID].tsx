@@ -12,11 +12,7 @@ export default function formScreen() {
   const { projectID } = useGlobalSearchParams();
   const [initialLoading, setInitialLoading] = useState(true);
   
-  const {
-    link,
-    isLoadingGetLink,
-} = getLinkFirebaseUser(projectID);
-    console.log(link);
+  const { link, isLoadingGetLink } = getLinkFirebaseUser(projectID);
     
     if(isLoadingGetLink) return;
     return (

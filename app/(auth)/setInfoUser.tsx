@@ -24,6 +24,10 @@ export default function setInfoUser() {
     setPosition(selectedPosition);
   };
 
+  const handleBornDate = (newDate: any) => {
+    console.log(newDate);
+  };
+
   const setInfoUserHandler = async () => {
     setLoading(true);
     await setInfoUserMethod(fullName, position);
@@ -61,7 +65,9 @@ export default function setInfoUser() {
         <View style={container.input}>
           <Text style={text.label}>Ngày sinh:</Text>
           <View style={container.button}>
-            <MyTimePicker />
+            <MyTimePicker
+              onDateChange={(newDate: any) => handleBornDate(newDate)}
+            />
           </View>
         </View>
         {/* Phone Input */}
