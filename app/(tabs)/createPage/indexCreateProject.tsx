@@ -145,7 +145,7 @@ export default function createPage(userId: any) {
             alignSelf: "stretch",
           }}
         >
-          Bạn Chưa Có Dự Án 🧐
+          Bạn Muốn Tham Gia Dự Án 🧐
         </Text>
 
         <Text
@@ -171,7 +171,7 @@ export default function createPage(userId: any) {
         </Text>
 
         <ButtonFillContainer
-          link={"../projectsPage/joinProjectsPage/enterLink.tsx"}
+          link={"../projectsPage/joinProjectsPage/enterLink"}
           color={Colors.primary}
           onPress={null}
           title={"Tham Gia Dự Án"}

@@ -188,7 +188,7 @@ export default function IndexProjectInformation() {
 
                 <View style={styles.namePosition}>
                   <Text style={{ ...styles.textPrimary, color: Colors.gray }}>
-                    James Cameron
+                    Nguyễn Văn Lẹ
                   </Text>
                   <Text style={{ ...styles.text, color: Colors.gray }}>
                     Quản Lý
@@ -227,7 +227,7 @@ export default function IndexProjectInformation() {
                   })}
                 >
                   <Link
-                    href={"/projectsPage/projectsInfoPage/samplingPeriod"}
+                    href={"/(tabs)/projectsPage/joinProjectsPage/listEmployees"}
                     asChild
                   >
                     <TouchableOpacity style={button.primary}>
