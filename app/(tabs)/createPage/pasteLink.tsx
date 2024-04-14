@@ -55,7 +55,13 @@ export default function PasteLinkScreen() {
       },
       {
         text: "Ok",
-        onPress: () => {
+        onPress: async () => {
+          try {
+            await AsyncStorage.removeItem("@projectID");
+            console.log("projectID đã được xóa khỏi asyncStorage");
+          } catch (e) {
+            console.error("Lỗi khi xóa projectID:", e);
+          }
           console.log("pastLink -> indexCreateProject");
           router.navigate("/(tabs)/createPage/indexCreateProject");
         },
