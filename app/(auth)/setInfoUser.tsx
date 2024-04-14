@@ -43,6 +43,7 @@ export default function setInfoUser() {
             <TextInput
               style={input.normal}
               placeholder="Nhập họ và tên của bạn"
+              placeholderTextColor={Colors.selector}
               onChangeText={setFullName}
               value={fullName}
             />
@@ -70,6 +71,7 @@ export default function setInfoUser() {
             <TextInput
               style={input.normal}
               placeholder="Nhập số điện thoại của bạn"
+              placeholderTextColor={Colors.selector}
             />
           </View>
         </View>

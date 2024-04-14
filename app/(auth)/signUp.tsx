@@ -62,6 +62,7 @@ export default function signUpScreen() {
                 textContentType="emailAddress"
                 value={email}
                 placeholder="Nhập email"
+                placeholderTextColor={Colors.selector}
                 autoCapitalize="none"
                 onChangeText={(text) => setEmail(text)}
               />
@@ -76,6 +77,7 @@ export default function signUpScreen() {
                 value={password}
                 textContentType="password"
                 placeholder="Nhập mật khẩu"
+                placeholderTextColor={Colors.selector}
                 autoCapitalize="none"
                 onChangeText={(text) => setPassword(text)}
               />
@@ -88,6 +90,7 @@ export default function signUpScreen() {
               <TextInput
                 style={{ ...input.normal }}
                 placeholder="Nhập lại mật khẩu"
+                placeholderTextColor={Colors.selector}
                 onChangeText={() => {}}
                 autoCapitalize="none"
                 secureTextEntry={true}

@@ -20,7 +20,11 @@ export default function SearchPage() {
       ></Image>
       <View style={container.inputsearch}>
         <View style={container.buttonsearch}>
-          <TextInput style={input.normal} placeholder="Tìm Kiếm Dự Án" />
+          <TextInput
+            style={input.normal}
+            placeholder="Tìm Kiếm Dự Án"
+            placeholderTextColor={Colors.selector}
+          />
         </View>
         <View style={container.buttonsearch}>
           <Link href={"/homePage/indexHome"} asChild>

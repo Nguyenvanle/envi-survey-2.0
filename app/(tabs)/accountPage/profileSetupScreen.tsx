@@ -95,6 +95,7 @@ export default function profileSetupScreen() {
           <TextInput
             style={input.normal}
             placeholder="Nhập họ và tên của bạn"
+            placeholderTextColor={Colors.selector}
             onChangeText={setFullName}
             value={fullName}
           />
@@ -107,6 +108,7 @@ export default function profileSetupScreen() {
           <TextInput
             style={input.normal}
             placeholder="Chọn chức vụ của bạn"
+            placeholderTextColor={Colors.selector}
             onChangeText={setPosition}
             value={position}
           />

@@ -130,6 +130,7 @@ export default function createPage(userId: any) {
               <TextInput
                 style={{ ...input.normal }}
                 placeholder="Nhập tên cho dự án"
+                placeholderTextColor={Colors.selector}
                 onChangeText={(text) => handleInputChange("name", text)}
               />
             </View>
@@ -145,6 +146,7 @@ export default function createPage(userId: any) {
                   height: "auto",
                 }}
                 placeholder="Nhập mô tả cho dự án"
+                placeholderTextColor={Colors.selector}
                 onChangeText={(text) => handleInputChange("descript", text)}
                 multiline={true}
                 numberOfLines={4}
@@ -184,6 +186,7 @@ export default function createPage(userId: any) {
               <TextInput
                 style={{ ...input.normal }}
                 placeholder="Nhập mật khẩu cho dự án"
+                placeholderTextColor={Colors.selector}
                 secureTextEntry={true}
                 textContentType="password"
                 autoCapitalize="none"

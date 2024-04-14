@@ -1,44 +1,73 @@
+import { FIREBASE_AUTH } from "@/FirebaseConfig";
 import Colors from "@/constants/Colors";
 import { button, container, input, text } from "@/constants/Styles";
-import { signIn } from "@/constants/logic/useFirebaseUser";
 import { Link, router } from "expo-router";
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
 import React, { useState } from "react";
 import {
   ActivityIndicator,
-  Alert,
-  StyleSheet,
   Text,
   TextInput,
   TouchableOpacity,
   View,
 } from "react-native";
 
-export default function SignInScreen() {
+class Person {
+  fullName: string;
+  position: string;
+
+  constructor(fullName: string, position: string) {
+    this.fullName = fullName;
+    this.position = position;
+  }
+  toString() {
+    return this.fullName + ", " + this.position;
+  }
+}
+
+export default function authScreen() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const signInHandler = async () => {
+  const auth = FIREBASE_AUTH;
+
+  const signIn = async () => {
     setLoading(true);
 
-    const signInMethod = await signIn(email, password);
-
-    if (signInMethod.success) {
-      Alert.alert("Thông Báo", "Đăng nhập thành công 🥰", [
-        {
-          text: "Ok",
-          onPress: () => {
-            console.log("signIn -> home");
-            router.replace("/(tabs)/homePage/indexHome");
-          },
-        },
-      ]);
-    } else {
-      alert("Đăng nhập thất bại \n\n" + signInMethod.message);
+    try {
+      const response = await signInWithEmailAndPassword(auth, email, password);
+      console.log(response);
+      alert("Đăng nhập thành công");
+      router.replace("/(tabs)/homePage/indexHome");
+    } catch (error: any) {
+      alert("Đăng nhập thất bại: " + error.message);
+    } finally {
+      setLoading(false);
     }
-
-    setLoading(false);
   };
+
+  const signUp = async () => {
+    setLoading(true);
+
+    try {
+      const response = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+      console.log(response);
+      alert("Check your emails!");
+    } catch (error: any) {
+      alert("Sign up failed: " + error.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+  const backgroundImage = require("../assets/images/background.jpg");
 
   return (
     <View style={{ ...container.root, paddingBottom: 0 }}>
@@ -54,7 +83,6 @@ export default function SignInScreen() {
                 textContentType="emailAddress"
                 value={email}
                 placeholder="Nhập email"
-                placeholderTextColor={Colors.selector}
                 autoCapitalize="none"
                 onChangeText={(text) => setEmail(text)}
               />
@@ -69,7 +97,6 @@ export default function SignInScreen() {
                 value={password}
                 textContentType="password"
                 placeholder="Nhập mật khẩu"
-                placeholderTextColor={Colors.selector}
                 autoCapitalize="none"
                 onChangeText={(text) => setPassword(text)}
               />
@@ -83,14 +110,14 @@ export default function SignInScreen() {
           <>
             <View style={container.button}>
               {/* 'replace' to remove back button */}
-              <Link href={"/signUp"} asChild>
+              <Link href={"/signingUp"} asChild>
                 <TouchableOpacity style={button.light}>
                   <Text style={button.textLight}>Đăng Ký</Text>
                 </TouchableOpacity>
               </Link>
               {/* 'replace' to remove back button */}
 
-              <TouchableOpacity style={button.primary} onPress={signInHandler}>
+              <TouchableOpacity style={button.primary} onPress={() => signIn()}>
                 <Text style={button.textPrimary}>Đăng Nhập</Text>
               </TouchableOpacity>
             </View>
@@ -100,5 +127,3 @@ export default function SignInScreen() {
     </View>
   );
 }
-
-const styles = StyleSheet.create({});
