@@ -85,6 +85,7 @@ export default function authScreen() {
                 placeholder="Nhập email"
                 autoCapitalize="none"
                 onChangeText={(text) => setEmail(text)}
+                placeholderTextColor={Colors.selector}
               />
             </View>
           </View>
@@ -99,6 +100,7 @@ export default function authScreen() {
                 placeholder="Nhập mật khẩu"
                 autoCapitalize="none"
                 onChangeText={(text) => setPassword(text)}
+                placeholderTextColor={Colors.selector}
               />
             </View>
           </View>

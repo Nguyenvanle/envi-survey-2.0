@@ -72,8 +72,7 @@ export function ProjectsList(props: {
               fontSize: 12,
             }}
           >
-            <Text>Id: </Text>
-            {project.uid}
+            ID: {project.uid}
           </Text>
         </View>
         {/* ... */}

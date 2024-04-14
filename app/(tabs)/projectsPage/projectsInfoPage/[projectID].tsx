@@ -1,7 +1,10 @@
 import Colors from "@/constants/Colors";
 import { button, container } from "@/constants/Styles";
 import { styles } from "@/constants/TienDatStyles";
-import { detailsProjectFirebase, getRemainingDays } from "@/constants/logic/projectFirebase";
+import {
+  detailsProjectFirebase,
+  getRemainingDays,
+} from "@/constants/logic/projectFirebase";
 import { nameUserFirebaseUser } from "@/constants/logic/useFirebaseUser";
 import { AntDesign, MaterialIcons } from "@expo/vector-icons";
 import { Avatar } from "@rneui/base";
@@ -16,28 +19,15 @@ import {
   View,
 } from "react-native"; //press world "rnf" to create form quickly
 
-
 export default function IndexProjectInformation() {
   const { projectID } = useLocalSearchParams();
-  const {
-    name,
-    start,
-    end,
-    uidManager,
-    question,
-    purpose,
-    isLoadingDetail,
-  } = detailsProjectFirebase(projectID);
+  const { name, start, end, uidManager, question, purpose, isLoadingDetail } =
+    detailsProjectFirebase(projectID);
 
-  const {
-    remaining,
-    isLoading,
-  } = getRemainingDays(end);
+  const { remaining, isLoading } = getRemainingDays(end);
 
-  const {
-    username,
-  } = nameUserFirebaseUser(uidManager);
-  if(isLoading || isLoadingDetail) return;
+  const { username } = nameUserFirebaseUser(uidManager);
+  if (isLoading || isLoadingDetail) return;
   return (
     <ScrollView style={container.scrollView}>
       <View style={styles.container}>
@@ -59,13 +49,10 @@ export default function IndexProjectInformation() {
               )}
             >
               <View style={styles.aboveInfor}>
-                <Text style={styles.mainText}>
-                  {name}
-                </Text>
+                <Text style={styles.mainText}>{name}</Text>
 
-                <Text style={{ ...styles.text }}>
-                  <Text>Id: </Text>
-                  {projectID}
+                <Text style={{ ...styles.text, color: Colors.white }}>
+                  ID: {projectID}
                 </Text>
               </View>
               <View
@@ -96,7 +83,9 @@ export default function IndexProjectInformation() {
                       style={StyleSheet.compose(styles.itemText, {
                         color: Colors.primary,
                       })}
-                    > <Text>Start: </Text>
+                    >
+                      {" "}
+                      <Text>Start: </Text>
                       {start}
                     </Text>
                   </View>
@@ -110,7 +99,9 @@ export default function IndexProjectInformation() {
                       style={StyleSheet.compose(styles.itemText, {
                         color: Colors.red,
                       })}
-                    > <Text>End: </Text>
+                    >
+                      {" "}
+                      <Text>End: </Text>
                       {end}
                     </Text>
                   </View>
@@ -241,9 +232,7 @@ export default function IndexProjectInformation() {
 
               <View style={styles.aboveInfor}>
                 <View style={styles.itemComponnent}>
-                  <Text style={styles.contentDescription}>
-                    {question}
-                  </Text>
+                  <Text style={styles.contentDescription}>{question}</Text>
                 </View>
               </View>
             </View>
@@ -272,9 +261,7 @@ export default function IndexProjectInformation() {
 
               <View style={styles.aboveInfor}>
                 <View style={styles.itemComponnent}>
-                  <Text style={styles.contentDescription}>
-                    {purpose}
-                  </Text>
+                  <Text style={styles.contentDescription}>{purpose}</Text>
                 </View>
               </View>
             </View>

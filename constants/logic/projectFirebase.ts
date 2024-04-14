@@ -3,6 +3,7 @@ import {
   addDoc,
   collection,
   doc,
+  getDoc,
   getDocs,
   query,
   setDoc,
@@ -66,5 +67,25 @@ const addLinkForm = async (projectId: any, linkForm: any) => {
   }
 };
 
-export { addLinkForm, addNewProject, projectFirebase };
+const verifyProjectId = async (inputProjectId: string) => {
+  try {
+    // Tạo tham chiếu đến document của project dựa trên inputProjectId
+    const projectDocRef = doc(FIREBASE_DB, "projects", inputProjectId);
+    // Thực hiện truy vấn để lấy document
+    const docSnapshot = await getDoc(projectDocRef);
+    // Kiểm tra xem document có tồn tại không
+    if (docSnapshot.exists()) {
+      console.log("Mã dự án tồn tại: ", docSnapshot.id);
+      return true; // Mã dự án tồn tại
+    } else {
+      console.log("Không tìm thấy mã dự án: ", inputProjectId);
+      return false; // Mã dự án không tồn tại
+    }
+  } catch (error) {
+    console.error("Có lỗi xảy ra khi kiểm tra mã dự án:", error);
+    return false; // Có lỗi xảy ra trong quá trình kiểm tra
+  }
+};
+
+export { addLinkForm, addNewProject, projectFirebase, verifyProjectId };
 

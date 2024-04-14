@@ -1,7 +1,7 @@
 import Colors from "@/constants/Colors";
 import { button, container, input, text } from "@/constants/Styles";
-import { useFirebaseUser } from "@/constants/logic/useFirebaseUser";
-
+import { useProjectById } from "@/constants/logic/projectFirebase";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import { router } from "expo-router";
 import React, { useState } from "react";
 import {
@@ -13,11 +13,28 @@ import {
   View,
 } from "react-native";
 
-export default function enterPassword(userId: any) {
-  const { username, isLoading } = useFirebaseUser(userId);
+export default function enterPassword() {
   const [loading, setLoading] = useState(false);
   const submit = async () => {
     setLoading(true);
+
+    try {
+      const pID = await AsyncStorage.getItem("@joinProjectID");
+      if (pID !== null) {
+        // Dữ liệu đã được lấy và có thể sử dụng
+        console.log("AsyncStorage getItem success ", pID);
+        try {
+          const { project } = useProjectById(pID);
+          console.log(project);
+          if (project) console.log("Truy xuất CSDL thành công");
+        } catch (e) {
+          console.error("Lỗi khi lấy truy xuất csdl:", e);
+        }
+      } else console.error("pId === null");
+    } catch (e) {
+      // error reading value
+      console.error("Lỗi khi lấy pID:", e);
+    }
 
     try {
       Alert.alert("Thông báo", "Tham gia dự án thành công", [
@@ -51,6 +68,7 @@ export default function enterPassword(userId: any) {
             <TextInput
               style={input.normal}
               aria-label="input"
+              placeholderTextColor={Colors.selector}
               aria-labelledby="labelProjectPassword"
               placeholder="Vui lòng nhập mật khẩu dự án"
             />

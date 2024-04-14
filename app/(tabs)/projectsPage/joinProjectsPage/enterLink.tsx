@@ -1,17 +1,55 @@
+import Colors from "@/constants/Colors";
 import { button, container, input, text } from "@/constants/Styles";
-import { useFirebaseUser } from "@/constants/logic/useFirebaseUser";
-import { Link } from "expo-router";
-import React from "react";
-import { Text, TextInput, TouchableOpacity, View } from "react-native";
+import { verifyProjectId } from "@/constants/logic/projectFirebase";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { Button } from "@rneui/themed";
+import { router } from "expo-router";
+import React, { useState } from "react";
+import { Alert, Text, TextInput, TouchableOpacity, View } from "react-native";
 
-export default function enterPassword(userId: any) {
-  const { username, isLoading } = useFirebaseUser(userId);
+export default function enterPassword() {
+  const [pID, setPID] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const successFindHandler = async () => {
+    console.log("Tìm thấy dự án");
+    try {
+      await AsyncStorage.setItem("@joinProjectID", pID);
+      console.log("@joinProjectID đã được thêm vào asyncStorage");
+    } catch (e) {
+      console.error("Lỗi khi thêm projectID:", e);
+    }
+    console.log("inputProjectID -> inputPassword");
+    router.navigate("/(tabs)/projectsPage/joinProjectsPage/enterPassword");
+  };
+
+  const pressHandler = async () => {
+    setLoading(true);
+    console.log("PID: " + pID);
+    if (pID !== "") {
+      if (await verifyProjectId(pID))
+        Alert.alert("Thông báo", "Đã tìm thấy dự án 🥰" + pID, [
+          { text: "OK", onPress: successFindHandler },
+        ]);
+      else
+        Alert.alert("Thông báo", "Không tìm thấy dự án, vui lòng nhập lại 🧐", [
+          { text: "OK", onPress: () => console.log("Không tìm thấy dự án") },
+        ]);
+    } else {
+      Alert.alert("Thông báo", "Vui lòng nhập mã dự án 🧐", [
+        { text: "OK", onPress: () => console.log("Chưa nhập mã dự án") },
+      ]);
+      setLoading(false);
+      return;
+    }
+    setLoading(false);
+  };
 
   return (
     <View style={container.root}>
       <View style={container.body}>
         <View style={container.header}>
-          <Text style={text.header}>Bạn đang tham gia dự án</Text>
+          <Text style={text.headerPrimary}>Điền mã dự án</Text>
         </View>
         <View style={container.input}>
           <Text
@@ -19,23 +57,28 @@ export default function enterPassword(userId: any) {
             aria-label="Label for Username"
             nativeID="labelProjectPassword"
           >
-            Link tham gia
+            Mã dự án
           </Text>
           <View style={container.button}>
             <TextInput
               style={input.normal}
               aria-label="input"
               aria-labelledby="labelProjectPassword"
-              placeholder="Vui lòng điền link tham gia của dự án"
+              placeholderTextColor={Colors.selector}
+              placeholder="Điền mã của dự án cần tham gia"
+              value={pID}
+              onChangeText={setPID}
             />
           </View>
         </View>
         <View style={container.button}>
-          <Link href={"/projectsPage/joinProjectsPage/enterPassword"} asChild>
-            <TouchableOpacity style={button.primary}>
+          <TouchableOpacity style={button.primary} onPress={pressHandler}>
+            {loading ? (
+              <Button loading type="clear" />
+            ) : (
               <Text style={button.textPrimary}>Tham gia</Text>
-            </TouchableOpacity>
-          </Link>
+            )}
+          </TouchableOpacity>
         </View>
       </View>
     </View>

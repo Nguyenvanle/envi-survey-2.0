@@ -37,7 +37,7 @@ export default function Layout() {
       <Stack.Screen
         name="enterLink"
         options={{
-          headerTitle: "Link dự án",
+          headerTitle: "Tham Gia Dự Án",
           headerTitleAlign: "center",
           headerShadowVisible: false,
           headerLeft: () => {
