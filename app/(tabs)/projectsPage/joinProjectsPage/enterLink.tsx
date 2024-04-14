@@ -1,6 +1,6 @@
 import Colors from "@/constants/Colors";
 import { button, container, input, text } from "@/constants/Styles";
-import { verifyProjectId } from "@/constants/logic/projectFirebase";
+import { verifyProjectId } from "@/constants/logic/useFirebaseUser";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { Button } from "@rneui/themed";
 import { router } from "expo-router";

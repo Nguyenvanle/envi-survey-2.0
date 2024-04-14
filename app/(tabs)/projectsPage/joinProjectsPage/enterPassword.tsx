@@ -1,6 +1,5 @@
 import Colors from "@/constants/Colors";
 import { button, container, input, text } from "@/constants/Styles";
-import { useProjectById } from "@/constants/logic/projectFirebase";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { router } from "expo-router";
 import React, { useState } from "react";
@@ -24,9 +23,9 @@ export default function enterPassword() {
         // Dữ liệu đã được lấy và có thể sử dụng
         console.log("AsyncStorage getItem success ", pID);
         try {
-          const { project } = useProjectById(pID);
-          console.log(project);
-          if (project) console.log("Truy xuất CSDL thành công");
+          //Dat ham cua m zo
+
+          console.log("Truy xuất CSDL thành công");
         } catch (e) {
           console.error("Lỗi khi lấy truy xuất csdl:", e);
         }
