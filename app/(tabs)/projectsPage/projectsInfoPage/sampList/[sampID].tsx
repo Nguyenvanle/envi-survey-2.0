@@ -2,7 +2,7 @@ import Colors from "@/constants/Colors";
 import { container } from "@/constants/Styles";
 import { styles } from "@/constants/TienDatStyles";
 import { PeriodsList } from "@/constants/components/home/PeriodsList";
-import { samplingFirebase } from "@/constants/logic/projectFirebase";
+import { nameProjectFirebaseUser, samplingFirebase } from "@/constants/logic/projectFirebase";
 import { useGlobalSearchParams } from "expo-router";
 import React from "react";
 import {
@@ -11,11 +11,17 @@ import {
   Text,
   View
 } from "react-native";
+import { SafeAreaProvider } from "react-native-safe-area-context";
 
 export default function SamplingPeriod() {
   const { projectID } = useGlobalSearchParams();
-  const periodsMap = samplingFirebase(projectID);
-  const periods = Array.from(periodsMap.entries()).map(
+
+  const {
+    samplingsMap,
+    isLoadingSampling,
+  } = samplingFirebase(projectID);
+
+  const periods = Array.from(samplingsMap.entries()).map(
     ([periodUid, periodData]) => ({
     uid: periodUid,
     name: periodData.name,
@@ -23,8 +29,15 @@ export default function SamplingPeriod() {
     end: periodData.end,
   }));
 
+  const {
+    projectName,
+    isLoading,
+  } = nameProjectFirebaseUser(projectID);
+  
+  if(isLoading || isLoadingSampling) return;
   return (
     <ScrollView style={container.scrollView}>
+       <SafeAreaProvider style={container.root}>
       <View style={{ ...styles.container, paddingBottom: 60 }}>
         <View style={StyleSheet.compose(styles.body, { gap: 10 })}>
           <View style={styles.subFrame}>
@@ -44,9 +57,9 @@ export default function SamplingPeriod() {
             >
               <View style={styles.aboveInfor}>
                 <Text style={styles.mainText}>
-                  Khảo sát đất đô thị khu vực 91B
+                  {projectName}
                 </Text>
-                <Text style={styles.text}>Mã dự án #456431</Text>
+                <Text style={styles.text}>Id: {projectID}</Text>
               </View>
               <View
                 style={StyleSheet.compose(
@@ -57,14 +70,15 @@ export default function SamplingPeriod() {
             </View>
           </View>
 
-          <View style={StyleSheet.compose(styles.subFrame, { gap: 20 })}>
-            <Text style={styles.subTittle}>Chi tiết mẫu</Text>
+          <View style={StyleSheet.compose(styles.subFrame, { gap: 20})}>
+            <Text style={styles.subTittle}>Buổi lấy mẫu: </Text>
             <PeriodsList
             periods={periods.map((period) => ({...period}))}
             ></PeriodsList>
           </View>
         </View>
       </View>
+      </SafeAreaProvider>
     </ScrollView>
   );
 }

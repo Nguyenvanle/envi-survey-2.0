@@ -1,7 +1,7 @@
 import Colors from "@/constants/Colors";
 import { button, container } from "@/constants/Styles";
 import { styles } from "@/constants/TienDatStyles";
-import { detailsProjectFirebase } from "@/constants/logic/projectFirebase";
+import { detailsProjectFirebase, getRemainingDays } from "@/constants/logic/projectFirebase";
 import { nameUserFirebaseUser } from "@/constants/logic/useFirebaseUser";
 import { AntDesign, MaterialIcons } from "@expo/vector-icons";
 import { Avatar } from "@rneui/base";
@@ -16,18 +16,6 @@ import {
   View,
 } from "react-native"; //press world "rnf" to create form quickly
 
-const getToday = () => {
-  let date = new Date();
-  let day = String(date.getDate());
-  let month = String(date.getMonth() + 1); // Tháng trong JavaScript bắt đầu từ 0 (0-11)
-  let year = String(date.getFullYear());
-
-  // Thêm số 0 phía trước nếu ngày hoặc tháng chỉ có 1 chữ số
-  day = day.length < 2 ? '0' + day : day;
-  month = month.length < 2 ? '0' + month : month;
-
-  return `Today: Ngày ${day} tháng ${month} năm ${year}`;
-}
 
 export default function IndexProjectInformation() {
   const { projectID } = useLocalSearchParams();
@@ -36,14 +24,20 @@ export default function IndexProjectInformation() {
     start,
     end,
     uidManager,
-    sponsor,
     question,
     purpose,
+    isLoadingDetail,
   } = detailsProjectFirebase(projectID);
+
+  const {
+    remaining,
+    isLoading,
+  } = getRemainingDays(end);
 
   const {
     username,
   } = nameUserFirebaseUser(uidManager);
+  if(isLoading || isLoadingDetail) return;
   return (
     <ScrollView style={container.scrollView}>
       <View style={styles.container}>
@@ -69,7 +63,7 @@ export default function IndexProjectInformation() {
                   {name}
                 </Text>
 
-                <Text style={{ ...styles.text, color: Colors.white }}>
+                <Text style={{ ...styles.text }}>
                   <Text>Id: </Text>
                   {projectID}
                 </Text>
@@ -136,7 +130,7 @@ export default function IndexProjectInformation() {
                     color: Colors.deepBlue,
                   })}
                 >
-                  {getToday()}
+                  {remaining}
                 </Text>
               </View>
             </View>
@@ -144,7 +138,6 @@ export default function IndexProjectInformation() {
 
           <View style={styles.subFrame}>
             <Text style={styles.subTittle}>Nhân sự đảm nhiệm</Text>
-
             <View style={styles.userInfoContainer}>
               <View style={styles.infoContainer}>
                 <Avatar
@@ -223,41 +216,6 @@ export default function IndexProjectInformation() {
 
           <View style={{ ...styles.subFrame, gap: 20 }}>
             <Text style={styles.subTittle}>Mô tả dự án</Text>
-
-            <View
-              style={StyleSheet.compose(
-                styles.RectangleShape,
-                styles.WhiteShape
-              )}
-            >
-              <View style={styles.aboveInfor}>
-                <View style={styles.itemComponnent}>
-                  <Text
-                    style={StyleSheet.compose(styles.titleDescription, {
-                      color: Colors.primary,
-                    })}
-                  >
-                    Đơn vị tài trợ
-                  </Text>
-                </View>
-              </View>
-
-              <View
-                style={StyleSheet.compose(styles.vector, styles.colorVector)}
-              ></View>
-
-              <View style={styles.aboveInfor}>
-                <View style={styles.itemComponnent}>
-                  <Text
-                    style={StyleSheet.compose(styles.titleDescription, {
-                      color: Colors.gray,
-                    })}
-                  >
-                    {sponsor}
-                  </Text>
-                </View>
-              </View>
-            </View>
 
             <View
               style={StyleSheet.compose(

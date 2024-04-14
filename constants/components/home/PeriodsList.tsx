@@ -31,7 +31,7 @@ export function PeriodsList(props: {
             backgroundColor: Colors.blueWhite,
           }}
           onPress={() => {
-            router.replace(`/(tabs)/projectsPage/projectsInfoPage/sampList/${period.uid}`);
+            router.replace(`/(tabs)/projectsPage/projectsInfoPage/sampList/desForm/${period.uid}`);
           }}
         >
           {/* Nội dung còn lại của component */}
