@@ -1,5 +1,4 @@
 import Colors from "@/constants/Colors";
-import { Stack } from "expo-router";
 import { StyleSheet } from "react-native";
 import { text } from "./Styles";
 
@@ -19,12 +18,6 @@ export const styles = StyleSheet.create({
   header: {},
   body: {
     flex: 1,
-    width: "auto",
-    height: "auto",
-    minWidth: 380,
-    minHeight: 650,
-    maxWidth: 380 * 3,
-    maxHeight: 650 * 3,
     paddingVertical: 16,
     flexDirection: "column",
     justifyContent: "center",
@@ -55,15 +48,12 @@ export const styles = StyleSheet.create({
     alignSelf: "stretch",
   },
   SmallRectangleShape: {
-    minWidth: "auto",
-    width: "auto",
-    height: "auto",
     alignItems: "center",
     justifyContent: "center",
     borderRadius: 12,
     flexDirection: "column",
     alignSelf: "stretch",
-    paddingHorizontal: 20,
+    paddingHorizontal: 10,
   },
   vector: {
     minWidth: 250,
@@ -169,7 +159,6 @@ export const styles = StyleSheet.create({
   },
   itemComponnent: {
     display: "flex",
-    width: "auto",
     alignItems: "center",
     alignSelf: "center",
     gap: 6,

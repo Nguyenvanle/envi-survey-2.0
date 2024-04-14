@@ -1,11 +1,14 @@
 import Colors from "@/constants/Colors";
-import { button, container } from "@/constants/Styles";
+import { container } from "@/constants/Styles";
 import { styles } from "@/constants/TienDatStyles";
-import { detailsProjectFirebase, getRemainingDays } from "@/constants/logic/projectFirebase";
+import {
+  detailsProjectFirebase,
+  getRemainingDays,
+} from "@/constants/logic/projectFirebase";
 import { nameUserFirebaseUser } from "@/constants/logic/useFirebaseUser";
 import { AntDesign, MaterialIcons } from "@expo/vector-icons";
 import { Avatar } from "@rneui/base";
-import { Link, useLocalSearchParams } from "expo-router";
+import { router, useLocalSearchParams } from "expo-router";
 import React from "react";
 import {
   Image,
@@ -16,31 +19,18 @@ import {
   View,
 } from "react-native"; //press world "rnf" to create form quickly
 
-
 export default function IndexProjectInformation() {
   const { projectID } = useLocalSearchParams();
-  const {
-    name,
-    start,
-    end,
-    uidManager,
-    question,
-    purpose,
-    isLoadingDetail,
-  } = detailsProjectFirebase(projectID);
+  const { name, start, end, uidManager, question, isLoadingDetail } =
+    detailsProjectFirebase(projectID);
 
-  const {
-    remaining,
-    isLoading,
-  } = getRemainingDays(end);
+  const { remaining, isLoading } = getRemainingDays(end);
 
-  const {
-    username,
-  } = nameUserFirebaseUser(uidManager);
-  if(isLoading || isLoadingDetail) return;
+  const { username } = nameUserFirebaseUser(uidManager);
+  if (isLoading || isLoadingDetail) return;
   return (
     <ScrollView style={container.scrollView}>
-      <View style={styles.container}>
+      <View style={{ ...container.root }}>
         <View style={styles.body}>
           <View style={styles.subFrame}>
             <Text
@@ -151,7 +141,7 @@ export default function IndexProjectInformation() {
 
                 <View style={styles.namePosition}>
                   <Text style={{ ...styles.textPrimary, color: Colors.gray }}>
-                    Nguyễn Văn Lẹ
+                    {username}
                   </Text>
                   <Text style={{ ...styles.text, color: Colors.gray }}>
                     Quản Lý
@@ -168,71 +158,61 @@ export default function IndexProjectInformation() {
               </View>
             </View>
 
-            <View
-              style={StyleSheet.compose(
-                styles.RectangleShape,
-                styles.linkShape
-              )}
+            <TouchableOpacity
+              style={{
+                flex: 0,
+                backgroundColor: Colors.blueWhite,
+                borderRadius: 10,
+              }}
+              onPress={() => {
+                router.navigate(
+                  "/(tabs)/projectsPage/joinProjectsPage/listEmployees"
+                );
+              }}
             >
               <View style={styles.itemComponnent}>
                 <Text
                   style={StyleSheet.compose(styles.mainText, {
                     fontSize: 16,
                     marginVertical: 7,
+                    flex: 1,
+                    paddingHorizontal: 18,
+                    justifyContent: "center",
+                    alignItems: "center",
+                    lineHeight: 36,
+                    alignSelf: "stretch",
+                    color: Colors.primary,
                   })}
                 >
-                  Các thành viên khác
+                  Xem thành viên
                 </Text>
-
-                <View
-                  style={StyleSheet.compose(styles.SmallRectangleShape, {
-                    backgroundColor: Colors.primary,
-                  })}
-                >
-                  <Link
-                    href={"/(tabs)/projectsPage/joinProjectsPage/listEmployees"}
-                    asChild
-                  >
-                    <TouchableOpacity style={button.primary}>
-                      <View style={styles.itemComponnent}>
-                        <Text
-                          style={StyleSheet.compose(styles.text, {
-                            color: Colors.white,
-                          })}
-                        >
-                          Tiếp tục
-                        </Text>
-                        <AntDesign
-                          name="right"
-                          size={24}
-                          color="white"
-                          style={styles.MediumIcon}
-                        />
-                      </View>
-                    </TouchableOpacity>
-                  </Link>
-                </View>
+                <AntDesign
+                  name="right"
+                  size={24}
+                  color={Colors.primary}
+                  style={{ paddingRight: 10 }}
+                />
               </View>
-            </View>
+            </TouchableOpacity>
           </View>
 
           <View style={{ ...styles.subFrame, gap: 20 }}>
-            <Text style={styles.subTittle}>Mô tả dự án</Text>
-
             <View
-              style={StyleSheet.compose(
-                styles.RectangleShape,
-                styles.WhiteShape
-              )}
+              style={{
+                ...styles.RectangleShape,
+                ...styles.WhiteShape,
+              }}
             >
               <View style={styles.aboveInfor}>
                 <View style={styles.itemComponnent}>
                   <Text
                     style={StyleSheet.compose(styles.titleDescription, {
-                      color: Colors.success,
+                      color: Colors.gray,
+                      textAlign: "left",
+                      flex: 1,
                     })}
                   >
-                    Nhiệm Vụ
+                    Mô tả dự án
                   </Text>
                 </View>
               </View>
@@ -243,61 +223,57 @@ export default function IndexProjectInformation() {
 
               <View style={styles.aboveInfor}>
                 <View style={styles.itemComponnent}>
-                  <Text style={styles.contentDescription}>{question}</Text>
+                  <Text
+                    style={{
+                      ...styles.contentDescription,
+                      textAlign: "left",
+                      flex: 1,
+                    }}
+                  >
+                    {question}
+                  </Text>
                 </View>
               </View>
             </View>
           </View>
 
-          <View
-            style={StyleSheet.compose(styles.subFrame, { paddingVertical: 30 })}
-          >
-            <View
-              style={StyleSheet.compose(
-                styles.RectangleShape,
-                styles.linkShape
-              )}
+          <View style={styles.subFrame}>
+            <TouchableOpacity
+              style={{
+                flex: 0,
+                backgroundColor: Colors.blueWhite,
+                borderRadius: 10,
+              }}
+              onPress={() => {
+                router.navigate(
+                  "/(tabs)/projectsPage/joinProjectsPage/listEmployees"
+                );
+              }}
             >
               <View style={styles.itemComponnent}>
                 <Text
                   style={StyleSheet.compose(styles.mainText, {
-                    fontSize: 20,
+                    fontSize: 16,
                     marginVertical: 7,
+                    flex: 1,
+                    paddingHorizontal: 18,
+                    justifyContent: "center",
+                    alignItems: "center",
+                    lineHeight: 36,
+                    alignSelf: "stretch",
+                    color: Colors.primary,
                   })}
                 >
-                  Thông Tin Chi Tiết
+                  Xem thành viên
                 </Text>
-
-                <View
-                  style={StyleSheet.compose(styles.SmallRectangleShape, {
-                    backgroundColor: Colors.primary,
-                  })}
-                >
-                  <Link
-                    href={`/projectsPage/projectsInfoPage/sampList/${projectID}`}
-                    asChild
-                  >
-                    <TouchableOpacity style={button.primary}>
-                      <View style={styles.itemComponnent}>
-                        <Text
-                          style={StyleSheet.compose(styles.text, {
-                            color: Colors.white,
-                          })}
-                        >
-                          Tiếp tục
-                        </Text>
-                        <AntDesign
-                          name="right"
-                          size={24}
-                          color="white"
-                          style={styles.MediumIcon}
-                        />
-                      </View>
-                    </TouchableOpacity>
-                  </Link>
-                </View>
+                <AntDesign
+                  name="right"
+                  size={24}
+                  color={Colors.primary}
+                  style={{ paddingRight: 10 }}
+                />
               </View>
-            </View>
+            </TouchableOpacity>
           </View>
         </View>
       </View>

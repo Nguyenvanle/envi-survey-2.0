@@ -38,8 +38,22 @@ export default function SamplingPeriod() {
             paddingTop: 0,
           }}
         >
-          <View style={StyleSheet.compose(styles.body, { gap: 10 })}>
-            <View style={{ ...styles.subFrame, paddingHorizontal: 30 }}>
+          <View
+            style={{
+              ...styles.body,
+              gap: 10,
+              backgroundColor: "red",
+              padding: 0,
+            }}
+          >
+            <View
+              style={{
+                ...styles.subFrame,
+                paddingHorizontal: 30,
+                backgroundColor: "blue",
+                justifyContent: "flex-start",
+              }}
+            >
               <Text
                 style={StyleSheet.compose(styles.subTittle, {
                   color: Colors.white,
