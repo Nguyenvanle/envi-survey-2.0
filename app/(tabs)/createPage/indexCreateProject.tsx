@@ -40,8 +40,35 @@ export default function createPage(userId: any) {
     }));
   };
 
+  // Hàm kiểm tra liệu đã nhập đủ thông tin chưa
+  const isFormComplete = () => {
+    if (!projectInfo.start && !projectInfo.end) return -1;
+    else
+      return (
+        projectInfo.name.trim() &&
+        projectInfo.descript.trim() &&
+        projectInfo.start &&
+        projectInfo.end &&
+        projectInfo.password.trim() &&
+        projectInfo.destination.trim()
+      );
+  };
+
   // Hàm gọi khi click nút "Xác Nhận"
   const handleAddProject = () => {
+    // Kiểm tra xem form đã đầy đủ thông tin chưa
+
+    if (isFormComplete() === -1) {
+      Alert.alert("Lỗi", "Vui lòng chọn ngày bắt đầu/kết thúc!");
+      return;
+    }
+
+    if (!isFormComplete()) {
+      // Nếu chưa, hiển thị cảnh báo
+      Alert.alert("Lỗi", "Vui lòng nhập đủ thông tin!");
+      return;
+    }
+
     console.log(projectInfo);
     addNewProject(projectInfo)
       .then(async (projectId) => {
@@ -62,7 +89,7 @@ export default function createPage(userId: any) {
               onPress: () => {
                 console.log("indexCreate -> formScreen");
                 router.navigate({
-                  pathname: "/createPage/pasteLink", // Đây là tên của route mà bạn muốn điều hướng đến.
+                  pathname: "/createPage/createProjectScreen", // Đây là tên của route mà bạn muốn điều hướng đến.
                   params: { projectId: projectId }, // Đây là object chứa các tham số bạn muốn truyền.
                 });
               },

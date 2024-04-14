@@ -1,9 +1,7 @@
 import Colors from "@/constants/Colors";
 import { container } from "@/constants/Styles";
 import { Button } from "@rneui/themed";
-import { router, useGlobalSearchParams } from "expo-router";
 import React, { useState } from "react";
-import { Alert } from "react-native";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import WebView from "react-native-webview";
 
@@ -35,26 +33,3 @@ export default function CreateProjectScreen() {
     </SafeAreaProvider>
   );
 }
-
-export const formHandler = () => {
-  const { projectID } = useGlobalSearchParams();
-
-  console.log(projectID);
-
-  Alert.alert("Lưu ý", "Hãy sao chép liên kết Form trước khi tiếp tục 🧐", [
-    {
-      text: "Cancel",
-      onPress: () => {
-        console.log("Chưa sao chép");
-      },
-    },
-    {
-      text: "Ok",
-      onPress: () => {
-        console.log("Đã sao chép");
-        console.log("Form -> Success");
-        router.navigate("/(tabs)/createPage/pasteLink");
-      },
-    },
-  ]);
-};

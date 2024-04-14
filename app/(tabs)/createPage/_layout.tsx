@@ -1,19 +1,29 @@
 import Colors from "@/constants/Colors";
 import { container } from "@/constants/Styles";
 import { AntDesign } from "@expo/vector-icons";
-import { Stack, useGlobalSearchParams } from "expo-router";
-import { TouchableOpacity } from "react-native";
-import { formHandler } from "./createProjectScreen";
+import { Stack, router } from "expo-router";
+import { Alert, TouchableOpacity } from "react-native";
 //============ Là tệp định nghĩa layout chung cho các màn hình trong ứng dụng ===============
 
 export default function Layout() {
   // https://docs.expo.dev/router/advanced/stack/ to Custom Header
-  const { projectID } = useGlobalSearchParams();
-
-  console.log(projectID);
-
   const pressHandler = () => {
-    formHandler();
+    Alert.alert("Lưu ý", "Hãy sao chép liên kết Form trước khi tiếp tục 🧐", [
+      {
+        text: "Cancel",
+        onPress: () => {
+          console.log("Chưa sao chép");
+        },
+      },
+      {
+        text: "Ok",
+        onPress: () => {
+          console.log("Đã sao chép");
+          console.log("Form -> Success");
+          router.navigate("/(tabs)/createPage/pasteLink");
+        },
+      },
+    ]);
   };
 
   return (
