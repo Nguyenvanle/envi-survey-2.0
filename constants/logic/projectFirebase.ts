@@ -338,15 +338,56 @@ const addNewProject = async (newProjectData: any) => {
   }
 };
 
+const listWorkerFireBase = (projectId: any) => {
+  const [listWorkerMap, setProjectsMap] = useState(new Map());
+  const [isLoading, setIsloading] = useState(true);
+
+  useEffect(() => {
+    const getProject = async () => {
+      try {
+        if (projectId) {
+          const projectRef = doc(FIREBASE_DB, "projects", projectId);
+          const projectSnapshot = await getDoc(projectRef);
+          const projectData = projectSnapshot.data();
+          if (projectData && projectData.uidMembers) {
+            const uidMembers = projectData.uidMembers;
+            const usersMap = new Map();
+            for (const uid of uidMembers) {
+              try {
+                const userRef = doc(FIREBASE_DB, 'users', uid);
+                const userSnapshot = await getDoc(userRef);
+                const userData = userSnapshot.data();
+                if (userData) {
+                usersMap.set(uid, userData);
+              }
+              } catch (error) {
+                console.log("An error occurred: ", error);
+                setIsloading(false);
+              }
+            }
+            setProjectsMap(usersMap);
+          }
+          setIsloading(false);
+        }
+      } catch (error) {
+        console.log("An error occurred: ", error);
+        setIsloading(false);
+      }
+    };
+    getProject();
+  }, [projectId]);
+  return { listWorkerMap, isLoading };
+};
+
 export {
   LinkFormFirebaseUser,
   addLinkForm,
   addNewProject,
   detailsProjectFirebase,
   getLinkFirebaseUser,
-  getRemainingDays,
-  namePeriodFirebaseUser,
+  getRemainingDays, listWorkerFireBase, namePeriodFirebaseUser,
   nameProjectFirebaseUser,
   projectFirebase,
   samplingFirebase
 };
+

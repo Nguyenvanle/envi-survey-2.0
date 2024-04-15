@@ -21,7 +21,6 @@ export default function indexHome(userId: any) {
   } = useFirebaseUser(userId);
 
   const projectsMap = projectFirebase(userId);
-
   if (isLoading) {
     return (
       <SafeAreaProvider style={container.root}>
@@ -34,14 +33,13 @@ export default function indexHome(userId: any) {
       </SafeAreaProvider>
     );
   }
-
   const user = {
     name: username || "undefine",
     position: userPosition || "undefine",
-    projectsTaken: 10,
-    projectsCompleted: 8,
+    projectsTaken: projectsMap.size,
+    projectsCompleted: 0,
   };
-  // Giả sử bạn có một mảng projects như sau:
+  // Giả sử bạn có một mảng pNumrojects như sau:
   const projects = Array.from(projectsMap.entries()).map(
     ([projectUid, projectData]) => ({
       uid: projectUid,
