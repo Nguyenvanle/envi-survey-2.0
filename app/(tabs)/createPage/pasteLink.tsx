@@ -38,35 +38,26 @@ export default function PasteLinkScreen() {
     }
 
     // Logic xử lý sau khi liên kết hợp lệ
-    Alert.alert("Tạo dự án thành công ✔️", "Tiếp tục tạo dự án?🧐", [
-      {
-        text: "Cancel",
-        onPress: async () => {
-          try {
-            await AsyncStorage.removeItem("@projectID");
-            console.log("projectID đã được xóa khỏi asyncStorage");
-          } catch (e) {
-            console.error("Lỗi khi xóa projectID:", e);
-          }
+    Alert.alert(
+      "Tạo dự án thành công ✔️",
+      "Dự án của bạn đã được lưu vào hệ thống \nTruy cập vào trang chủ để xem chi tiết dự án này",
+      [
+        {
+          text: "OK",
+          onPress: async () => {
+            try {
+              await AsyncStorage.removeItem("@projectID");
+              console.log("projectID đã được xóa khỏi asyncStorage");
+            } catch (e) {
+              console.error("Lỗi khi xóa projectID:", e);
+            }
 
-          console.log("pastLink -> index");
-          router.replace("/");
+            console.log("pastLink -> index");
+            router.replace("/");
+          },
         },
-      },
-      {
-        text: "Ok",
-        onPress: async () => {
-          try {
-            await AsyncStorage.removeItem("@projectID");
-            console.log("projectID đã được xóa khỏi asyncStorage");
-          } catch (e) {
-            console.error("Lỗi khi xóa projectID:", e);
-          }
-          console.log("pastLink -> indexCreateProject");
-          router.navigate("/(tabs)/createPage/indexCreateProject");
-        },
-      },
-    ]);
+      ]
+    );
   };
 
   return (
