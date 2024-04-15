@@ -246,7 +246,7 @@ export default function IndexProjectInformation() {
               }}
               onPress={() => {
                 router.navigate(
-                  "/(tabs)/projectsPage/joinProjectsPage/listEmployees"
+                  `/projectsPage/projectsInfoPage/sampList/${projectID}`
                 );
               }}
             >
@@ -264,7 +264,7 @@ export default function IndexProjectInformation() {
                     color: Colors.primary,
                   })}
                 >
-                  Xem thành viên
+                  Xem chi tiết
                 </Text>
                 <AntDesign
                   name="right"
