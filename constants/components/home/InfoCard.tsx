@@ -52,7 +52,17 @@ export function InfoCard(props: {
             color={Colors.gray}
           />
 
-          <Text style={HomeStyles.miniText}>Hiện đang có {props.user.projectsTaken} dự án</Text>
+          <Text style={HomeStyles.miniText}>12 dự án</Text>
+        </View>
+
+        <View style={HomeStyles.divideContainer}>
+          <MaterialCommunityIcons
+            name="folder-check-outline"
+            size={16}
+            color={Colors.gray}
+          />
+
+          <Text style={HomeStyles.miniText}>6 dự án</Text>
         </View>
       </View>
     </TouchableOpacity>

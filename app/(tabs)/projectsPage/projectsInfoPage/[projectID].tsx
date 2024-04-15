@@ -166,7 +166,7 @@ export default function IndexProjectInformation() {
               }}
               onPress={() => {
                 router.navigate(
-                  `/(tabs)/projectsPage/projectsInfoPage/workerList/workers`
+                  "/(tabs)/projectsPage/joinProjectsPage/listEmployees"
                 );
               }}
             >
