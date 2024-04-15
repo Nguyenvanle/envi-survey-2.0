@@ -42,7 +42,6 @@ export default function SamplingPeriod() {
             style={{
               ...styles.body,
               gap: 10,
-              backgroundColor: "red",
               padding: 0,
             }}
           >
@@ -50,7 +49,6 @@ export default function SamplingPeriod() {
               style={{
                 ...styles.subFrame,
                 paddingHorizontal: 30,
-                backgroundColor: "blue",
                 justifyContent: "flex-start",
               }}
             >
