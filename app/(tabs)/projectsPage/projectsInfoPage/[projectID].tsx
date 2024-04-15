@@ -86,7 +86,6 @@ export default function IndexProjectInformation() {
                       })}
                     >
                       {" "}
-                      <Text>Start: </Text>
                       {start}
                     </Text>
                   </View>
@@ -102,7 +101,6 @@ export default function IndexProjectInformation() {
                       })}
                     >
                       {" "}
-                      <Text>End: </Text>
                       {end}
                     </Text>
                   </View>

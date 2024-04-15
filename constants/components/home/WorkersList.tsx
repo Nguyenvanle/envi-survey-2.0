@@ -20,6 +20,7 @@ export function WorkerList(props: {
       };
     return props.workers.map((worker, index) => (
         <View
+            key={index}
             style={{
               ...styles.userInfoContainer,
               backgroundColor: Colors.blueWhite,

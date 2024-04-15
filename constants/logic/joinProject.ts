@@ -1,4 +1,5 @@
 import { FIREBASE_AUTH, FIREBASE_DB } from "@/FirebaseConfig";
+import { router } from "expo-router";
 import { doc, getDoc, updateDoc } from "firebase/firestore";
 import { useEffect, useState } from "react";
 
@@ -50,6 +51,7 @@ const initFirebase = (userId: any) => {
           if (!projectData.uidMembers.includes(uid)) {
             const newUidMembers = [...projectData.uidMembers,uid];
             alert("Tham gia dự án thành công!");
+            router.replace('/');
             await updateDoc(projectRef, { uidMembers: newUidMembers });
           } else {alert("Bạn đã là thành viên trong dự án")};
         } else {

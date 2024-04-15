@@ -88,15 +88,6 @@ export default function Layout() {
           },
         }}
       />
-
-      <Stack.Screen
-        name="listEmployees"
-        options={{
-          headerTitle: "Nhân Viên",
-          headerTitleAlign: "center",
-          headerShadowVisible: false,
-        }}
-      />
     </Stack>
   );
 }

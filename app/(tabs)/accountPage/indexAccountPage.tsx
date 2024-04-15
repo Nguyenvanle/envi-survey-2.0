@@ -2,6 +2,7 @@ import Colors from "@/constants/Colors";
 import { container } from "@/constants/Styles";
 import ButtonAccount from "@/constants/components/create/ButtonAccount";
 import { InfoCard } from "@/constants/components/home/InfoCard";
+import { projectFirebase } from "@/constants/logic/projectFirebase";
 import { useFirebaseUser, useSignOut } from "@/constants/logic/useFirebaseUser";
 import AntDesign from "@expo/vector-icons/build/AntDesign";
 import Feather from "@expo/vector-icons/build/Feather";
@@ -17,6 +18,7 @@ export default function indexAccountPage(userId: any) {
     userPosition: userPosition,
   } = useFirebaseUser(userId);
 
+  const projectsMap = projectFirebase(userId);
   if (isLoading) {
     return (
       <SafeAreaProvider style={container.root}>
@@ -32,8 +34,8 @@ export default function indexAccountPage(userId: any) {
   const user = {
     name: username || "undefine",
     position: userPosition || "undefine",
-    projectsTaken: 10,
-    projectsCompleted: 8,
+    projectsTaken: projectsMap.size,
+    projectsCompleted: 0,
   };
 
   const pressHandler = () => {

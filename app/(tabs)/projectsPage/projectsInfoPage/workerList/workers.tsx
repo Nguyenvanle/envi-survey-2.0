@@ -3,37 +3,39 @@ import { container, text } from "@/constants/Styles";
 import { listWorkerFireBase } from "@/constants/logic/projectFirebase";
 import { useGlobalSearchParams } from "expo-router";
 import React from "react";
-import { ScrollView, Text, View } from "react-native";
+import { ScrollView, Text } from "react-native";
 import { SafeAreaProvider } from "react-native-safe-area-context";
-import { WorkerList } from './../../../../../constants/components/home/WorkersList';
+import { WorkerList } from "./../../../../../constants/components/home/WorkersList";
 
 export default function listEmployees() {
-  const {projectID} = useGlobalSearchParams();
+  const { projectID } = useGlobalSearchParams();
 
-  const {
-    listWorkerMap,
-    isLoading,
-  } = listWorkerFireBase(projectID);
-  
+  const { listWorkerMap, isLoading } = listWorkerFireBase(projectID);
+
   const workers = Array.from(listWorkerMap.entries()).map(
     ([workerUid, workerData]) => ({
       uid: workerUid,
       name: workerData.fullName,
     })
   );
-  if(isLoading) return;
+  if (isLoading) return;
   return (
-    <SafeAreaProvider >
-      <ScrollView>
+    <ScrollView style={container.scrollView}>
+      <SafeAreaProvider style={{ ...container.root, padding: 20 }}>
         {/* listEmployees */}
-        <View style={{ ...container.root, gap: 15 , alignItems: "flex-start"}}>
-<Text style={{...text.headerPrimary, fontSize: 20}}>Thành Viên</Text>
+        <Text
+          style={{
+            ...text.headerPrimary,
+            fontSize: 20,
+            alignSelf: "flex-start",
+          }}
+        >
+          Thành Viên
+        </Text>
         <WorkerList
-                workers = {workers.map((worker) => ({ ...worker}))}
-              ></WorkerList>
-
-        </View>
-      </ScrollView>
-    </SafeAreaProvider>
+          workers={workers.map((worker) => ({ ...worker }))}
+        ></WorkerList>
+      </SafeAreaProvider>
+    </ScrollView>
   );
 }
