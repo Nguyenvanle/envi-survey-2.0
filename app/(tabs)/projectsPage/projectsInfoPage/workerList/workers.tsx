@@ -1,5 +1,6 @@
 import { container, text } from "@/constants/Styles";
 
+import Colors from "@/constants/Colors";
 import { listWorkerFireBase } from "@/constants/logic/projectFirebase";
 import { useGlobalSearchParams } from "expo-router";
 import React from "react";
@@ -23,10 +24,10 @@ export default function listEmployees() {
   );
   if(isLoading) return;
   return (
-    <SafeAreaProvider >
+    <SafeAreaProvider  style={ container.root}>
       <ScrollView>
         {/* listEmployees */}
-        <View style={{ ...container.root, gap: 15 , alignItems: "flex-start"}}>
+        <View style={{ ...container.root, gap: 15 , alignItems: "flex-start", backgroundColor: Colors.background}}>
 <Text style={{...text.headerPrimary, fontSize: 20}}>Thành Viên</Text>
         <WorkerList
                 workers = {workers.map((worker) => ({ ...worker}))}
