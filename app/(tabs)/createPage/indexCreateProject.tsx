@@ -22,15 +22,23 @@ import { SafeAreaProvider } from "react-native-safe-area-context";
 export default function createPage(userId: any) {
   const { isLoading, userPosition, uid } = useFirebaseUser(userId);
 
+  function today() {
+    const now = new Date();
+    const year = now.getFullYear();
+    const month = String(now.getMonth() + 1).padStart(2, '0');
+    const day = String(now.getDate()).padStart(2, '0');
+    return `${day}/${month}/${year}`;
+  }
+
   const [projectInfo, setProjectInfo] = useState({
     name: "",
     descript: "",
-    start: null, // cần xác định cách lấy dữ liệu từ MyTimePicker
-    end: null, // cần xác định cách lấy dữ liệu từ MyTimePicker
+    start: today(),
+    end: today(),
     password: "",
-    destination: "", // cần xác định cách lấy dữ liệu từ CustomDropdown
-    // Các thuộc tính khác nếu cần thiết
+    destination: "",
     uidManager: uid,
+    uidMembers: ["zero"],
   });
 
   const handleInputChange = (name: any, value: any) => {
@@ -42,9 +50,11 @@ export default function createPage(userId: any) {
 
   // Hàm kiểm tra liệu đã nhập đủ thông tin chưa
   const isFormComplete = () => {
-    if (!projectInfo.start && !projectInfo.end) return -1;
+    if (projectInfo.destination == "[Chọn địa điểm]") return -1;
     else
       return (
+        console.log(projectInfo.start),
+        console.log(projectInfo.end),
         projectInfo.name.trim() &&
         projectInfo.descript.trim() &&
         projectInfo.start &&
@@ -59,7 +69,7 @@ export default function createPage(userId: any) {
     // Kiểm tra xem form đã đầy đủ thông tin chưa
 
     if (isFormComplete() === -1) {
-      Alert.alert("Lỗi", "Vui lòng chọn ngày bắt đầu/kết thúc!");
+      Alert.alert("Lỗi", "Vui lòng chọn địa điểm khảo sát!");
       return;
     }
 

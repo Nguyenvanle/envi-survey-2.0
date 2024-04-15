@@ -1,5 +1,5 @@
-import { FIREBASE_DB } from "@/FirebaseConfig";
-import { doc, getDoc } from "firebase/firestore";
+import { FIREBASE_AUTH, FIREBASE_DB } from "@/FirebaseConfig";
+import { doc, getDoc, updateDoc } from "firebase/firestore";
 import { useEffect, useState } from "react";
 
 const initFirebase = (userId: any) => {  
@@ -33,8 +33,34 @@ const initFirebase = (userId: any) => {
       }
     }, [userId]);
   
-    return {nameProject,myPass,isLoading};
+    return {nameProject, myPass, isLoading};
   };
 
-export { initFirebase };
+  const addUser = async (projectID: any) => {
+    // Lấy thông tin người dùng hiện tại
+    const uid = FIREBASE_AUTH.currentUser?.uid;
+    
+    // Kiểm tra xem người dùng hiện tại có tồn tại hay không
+    if (projectID) {
+      try {
+        const projectRef = doc(FIREBASE_DB, "projects", projectID);
+        const projectSnapshot = await getDoc(projectRef);
+        if (projectSnapshot.exists()) {
+          const projectData = projectSnapshot.data();
+          if (!projectData.uidMembers.includes(uid)) {
+            const newUidMembers = [...projectData.uidMembers,uid];
+            alert("Tham gia dự án thành công!");
+            await updateDoc(projectRef, { uidMembers: newUidMembers });
+          } else {alert("Bạn đã là thành viên trong dự án")};
+        } else {
+          console.error("Project does not exist.");
+        }
+      } catch (error) {
+        console.error("Error adding user to project:", error);
+      }
+    } else {
+      console.error("No current user.");
+    }
+  };
+export { addUser, initFirebase };
 

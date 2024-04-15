@@ -5,7 +5,7 @@ import { Text, TouchableOpacity, View } from "react-native";
 import { button, container } from "./../../Styles";
 
 const CustomDropdown = ({ onLocationChange }: any) => {
-  const locations = ["Quận Cờ Đỏ", "Quận Ninh Kiều", "Khu 91B"]; // Mảng chứa tên địa điểm
+  const locations = ["[Chọn địa điểm]","Quận Cờ Đỏ", "Quận Ninh Kiều", "Khu 91B","Chợ nổi cái răng","Công viên Nông trại Tân An","Khu du lịch sinh thái Trà Nóc"]; // Mảng chứa tên địa điểm
   const [checked, setChecked] = useState(0);
   const [destination, setDestination] = useState(locations[checked]); // Khởi tạo ban đầu với địa điểm đầu tiên trong mảng
   const [visible, setVisible] = useState(false);

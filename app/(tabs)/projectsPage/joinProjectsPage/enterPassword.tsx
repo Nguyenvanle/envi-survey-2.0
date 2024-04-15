@@ -5,7 +5,6 @@ import { router, useGlobalSearchParams } from "expo-router";
 import React, { useState } from "react";
 import {
   ActivityIndicator,
-  Alert,
   Text,
   TextInput,
   TouchableOpacity,
@@ -25,14 +24,10 @@ if(isLoading) return;
   const submit =  () => {
     if (pass==myPass) {
       try {
-        Alert.alert("Thông báo", "Tham gia dự án thành công", [
-          { text: "Hủy", onPress: () => console.log("Hủy") },
-          { text: "OK", onPress: () => console.log("Đồng ý") },
-        ]);
         addUser(pID);
         router.replace("/");
       } catch (error: any) {
-        alert("Đăng nhập thất bại: " + error.message);
+        alert("Có lỗi!: " + error.message);
       } finally {
         setLoading(false);
       }
